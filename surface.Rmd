@@ -1,0 +1,84 @@
+---
+title: "Marsupial Brain Analyses"
+author: "Orlin Todorov"
+date: "15 January 2019"
+output: 
+  html_document: 
+    fig_caption: yes
+    fig_height: 8
+    fig_width: 10
+---
+
+#SURFACE
+```{r setup, include=FALSE}
+
+install.packages('caper')
+install.packages('surface')
+install.packages('igraph')
+
+require(caper)
+library(surface)
+library(igraph)
+
+rownames(dat) <- data$Names
+Data[1] <- NULL
+
+
+
+#OPTION 1#
+
+surface <- runSurface(tree, dat, exclude = 0, aic_threshold = 0, max_steps = NULL,
+  verbose = FALSE, plotaic = FALSE, error_skip = FALSE, only_best = FALSE,
+  sample_shifts=FALSE, sample_threshold = 2)
+
+
+kk<-length(surface$bwd)
+surfaceTreePlot(tree, surface$bwd[[kk]], labelshifts = T, convcol = TRUE, cex = 0.5)
+surfaceTraitPlot(data_surf, surface$bwd[[kk]], whattraits = c(1,2))
+
+bsum<-surfaceSummary(surface$bwd)
+bsum$alpha
+bsum$sigma_squared
+bsum$theta
+bsum$n_regimes
+
+surfaceSummary(surface$fwd, surface$bwd)
+
+surfaceAICPlot(surface$fwd, surface$bwd)
+
+
+
+#OPTION 2#
+
+tree<-nameNodes(tree)
+olist<-convertTreeData(tree,dat)
+otree<-olist[[1]]; odata<-olist[[2]]
+fwd<-surfaceForward(otree, odata, aic_threshold = 0, exclude = 0, verbose = TRUE, plotaic = TRUE, save_steps=TRUE)
+
+
+
+
+k<-length(fwd)
+fsum<-surfaceSummary(fwd)
+names(fsum)
+
+
+bwd<-surfaceBackward(otree, odata, starting_model = fwd[[k]], aic_threshold = 0, only_best = TRUE, verbose = FALSE, plotaic = FALSE)
+bsum<-surfaceSummary(bwd)
+kk<-length(bwd)
+
+surfaceTreePlot(tree, bwd[[kk]], labelshifts = T)
+
+par(mfrow=c(1,2), mai=c(0.8,0.8,0.2,0.2))
+surfaceTraitPlot(dat, bwd[[kk]], whattraits = c(1,2))
+
+bm<-startingModel(otree,odata,brownian=TRUE)
+ou1<-startingModel(otree,odata)
+surfaceAICPlot(fwd, bwd)
+abline(h=bm[[1]]$aic,lty="longdash")
+abline(h=H12[[1]]$aic,lty="longdash")
+text(c(6,6),c(bm[[1]]$aic, ou1[[1]]$aic, H12[[1]]$aic)-2,c("BM","OU1","H12"),cex=0.5)
+
+
+
+```

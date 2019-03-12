@@ -1,0 +1,620 @@
+---
+title: "Marsupial Brain Analyses"
+author: "Orlin Todorov"
+date: "13 February 2019"
+output:
+  pdf_document: default
+  html_document:
+    fig_caption: yes
+    fig_height: 8
+    fig_width: 10
+---
+#Load packages
+```{r setup, include=FALSE}
+
+require(caper)
+require(ape)
+require(dispRity)
+require(geiger)
+require(multcomp)
+require(phytools)
+require(ape)
+require(geiger)
+require(nlme)
+require(evomap)
+require(adephylo)
+require(phangorn)
+
+# vifs
+require(fmsb) # vifs
+#plotting
+require(ggplot2)
+require(RColorBrewer)
+
+```
+
+
+#Load up data and tree
+```{r setup, include=FALSE}
+data <-read.csv("marsALL.txt", sep = "\t", header = TRUE) 
+tree <-read.tree("tree176.nwk")
+rownames(data) <- data$Names
+clean.data(data, tree)  ## check if data == tree names
+```
+
+
+##Convert vars
+```{r setup, include=FALSE}
+data$Order <- as.factor(data$Order)
+data$Family <- as.factor(data$Family)
+data$Origin <- as.factor(data$Origin)
+data$Status <- as.factor(data$Status)
+data$GeoArea <- as.factor(data$GeoArea)
+data$DiurnalityN <- as.factor(data$DiurnalityN) 
+data$Arboreality <- as.factor(data$Arboreality)
+data$Shelter.safety <- as.factor(data$Shelter.safety)
+data$Diet <- as.factor(data$Diet)
+data$Group.living <- as.factor(data$Group.living)
+data$Parental.care <- as.factor(data$Parental.care)
+data$Mating.system <- as.factor(data$Mating.system)
+data$Torpor <- as.factor(data$Torpor)
+data$Play <- as.factor(data$Play)
+```
+
+##Subsetting
+```{r setup, include=FALSE}
+subsetOZ <- data[data$Origin == "1",]
+subsetNG <- data[data$Origin == "2",]
+subsetAM<- data[data$Origin == "3",]
+```
+
+##Obtain and bind the residuals and look at lambda an kappa
+```{r , message=FALSE, warning=FALSE, fig.width=8,fig.height=10}
+#Create comparative object for ape
+
+mars <- comparative.data(phy = tree, data = data, names.col = Names, 
+                         vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+
+#Allometric slope for residuals
+#Slope 0.57
+model.pgls.res <- pgls(log(Brain) ~ log(BodyN), data = mars, lambda='ML')
+summary(model.pgls.res)
+
+#Obtain kappa so to infer the model of evolution
+mars_3d <- comparative.data(phy = tree, data = data, names.col = Names, vcv.dim=3, vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+model.pgls.kappa <- pgls(log(Brain) ~ log(BodyN), data = mars_3d, kappa ="ML")
+summary (model.pgls.kappa)
+
+#look at the kappa plot
+profile_kappa=pgls.profile(model.pgls.kappa, which="kappa")
+plot(profile_kappa)
+
+#kappa is estimated around 0.8 (if fixing lambda to 0.91) thus it is close to brownian motion
+
+
+#load up comp data with the phylogenetic residuals
+res<-residuals(model.pgls.res, phylo = TRUE) #phylo=T exports phylo corrected residuals
+res<- res/sqrt(var(res))[1] #standartize residuals
+
+#plot and observe that there are no outlies with res>3
+par(mfrow=c(2,2))
+plot(model.pgls.res)
+
+#binding residuals to the main dataset
+data <- cbind (data, res)
+mars <- comparative.data(phy = tree, data = data, names.col = Names, vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+
+```
+
+## Subsetting 2 for model fitting (Body and Brain only)
+```{r , message=FALSE, warning=FALSE, fig.width=8,fig.height=10}
+
+#Change data$ to subset subsetOZ, NG or AM for origin model
+
+dat <- as.data.frame(data$Brain)
+dat$Body <- data$BodyN
+rownames(dat) <- data$Names
+colnames(dat)[which(names(dat) == "data$Brain")] <- "Brain"
+
+#logging
+dat$Brain <- log(dat$Brain)
+dat$Body <- log(dat$Body)
+
+#still not normal so standartizing
+dat$Brain <- dat$Brain/sqrt(var(dat$Brain))[1]
+dat$Body <- dat$Body/sqrt(var(dat$Body))[1]
+
+fitBM<-fitContinuous(tree,dat)
+fitOU<-fitContinuous(tree,dat, model="OU")
+fitEB<-fitContinuous(tree,dat, model="EB")
+
+aic.vals.br<-setNames(c(fitBM$Brain$opt$aicc,fitOU$Brain$opt$aicc,fitEB$Brain$opt$aicc, 'Brain'),
+                   c("BM","OU","EB", "Brain"))
+
+aic.vals.bo<-setNames(c(fitBM$Body$opt$aicc,fitOU$Body$opt$aicc,fitEB$Body$opt$aicc, 'Body'),
+                   c("BM","OU","EB", "Body"))
+
+aic.vals.br
+aic.vals.bo
+
+AICs=c(fitBM$Brain$opt$aicc,fitOU$Brain$opt$aicc,fitEB$Brain$opt$aicc)
+AICmin=AICs-min(AICs)
+W=exp(-0.5*AICmin)/sum(exp(-0.5*AICmin))
+
+W=setNames(W, c("BM", "OU","EB"))
+W
+#brain
+
+AICs=c(fitBM$Body$opt$aicc,fitOU$Body$opt$aicc,fitEB$Body$opt$aicc)
+AICmin=AICs-min(AICs)
+W=exp(-0.5*AICmin)/sum(exp(-0.5*AICmin))
+
+W=setNames(W, c("BM", "OU","EB"))
+W
+#body
+
+####################################
+
+#OZ
+dat <- as.data.frame(subsetOZ$Brain)
+dat$Body <- subsetOZ$BodyN
+rownames(dat) <- subsetOZ$Names
+colnames(dat)[which(names(dat) == "subsetOZ$Brain")] <- "Brain"
+
+#logging
+dat$Brain <- log(dat$Brain)
+dat$Body <- log(dat$Body)
+
+#still not normal so standartizing
+dat$Brain <- dat$Brain/sqrt(var(dat$Brain))[1]
+dat$Body <- dat$Body/sqrt(var(dat$Body))[1]
+
+fitBM<-fitContinuous(tree,dat)
+fitOU<-fitContinuous(tree,dat, model="OU")
+fitEB<-fitContinuous(tree,dat, model="EB")
+
+aic.vals.br<-setNames(c(fitBM$Brain$opt$aicc,fitOU$Brain$opt$aicc,fitEB$Brain$opt$aicc, 'Brain'),
+                   c("BM","OU","EB", "BrainOZ"))
+
+aic.vals.bo<-setNames(c(fitBM$Body$opt$aicc,fitOU$Body$opt$aicc,fitEB$Body$opt$aicc, 'Body'),
+                   c("BM","OU","EB", "BodyOZ"))
+
+aic.vals.br
+aic.vals.bo
+
+AICs=c(fitBM$Brain$opt$aicc,fitOU$Brain$opt$aicc,fitEB$Brain$opt$aicc)
+AICmin=AICs-min(AICs)
+W=exp(-0.5*AICmin)/sum(exp(-0.5*AICmin))
+
+W=setNames(W, c("BM", "OU","EB"))
+W
+#brain
+
+AICs=c(fitBM$Body$opt$aicc,fitOU$Body$opt$aicc,fitEB$Body$opt$aicc)
+AICmin=AICs-min(AICs)
+W=exp(-0.5*AICmin)/sum(exp(-0.5*AICmin))
+
+W=setNames(W, c("BM", "OU","EB"))
+W
+#body
+
+##############################################
+
+#NG
+dat <- as.data.frame(subsetNG$Brain)
+dat$Body <- subsetNG$BodyN
+rownames(dat) <- subsetNG$Names
+colnames(dat)[which(names(dat) == "subsetNG$Brain")] <- "Brain"
+
+#logging
+dat$Brain <- log(dat$Brain)
+dat$Body <- log(dat$Body)
+
+#still not normal so standartizing
+dat$Brain <- dat$Brain/sqrt(var(dat$Brain))[1]
+dat$Body <- dat$Body/sqrt(var(dat$Body))[1]
+
+fitBM<-fitContinuous(tree,dat)
+fitOU<-fitContinuous(tree,dat, model="OU")
+fitEB<-fitContinuous(tree,dat, model="EB")
+
+aic.vals.br<-setNames(c(fitBM$Brain$opt$aicc,fitOU$Brain$opt$aicc,fitEB$Brain$opt$aicc, 'Brain'),
+                   c("BM","OU","EB", "BrainNG"))
+
+aic.vals.bo<-setNames(c(fitBM$Body$opt$aicc,fitOU$Body$opt$aicc,fitEB$Body$opt$aicc, 'Body'),
+                   c("BM","OU","EB", "BodyNG"))
+
+aic.vals.br
+aic.vals.bo
+
+AICs=c(fitBM$Brain$opt$aicc,fitOU$Brain$opt$aicc,fitEB$Brain$opt$aicc)
+AICmin=AICs-min(AICs)
+W=exp(-0.5*AICmin)/sum(exp(-0.5*AICmin))
+
+W=setNames(W, c("BM", "OU","EB"))
+W
+#brain
+
+AICs=c(fitBM$Body$opt$aicc,fitOU$Body$opt$aicc,fitEB$Body$opt$aicc)
+AICmin=AICs-min(AICs)
+W=exp(-0.5*AICmin)/sum(exp(-0.5*AICmin))
+
+W=setNames(W, c("BM", "OU","EB"))
+W
+#body
+
+####################################################
+
+#AM
+
+dat <- as.data.frame(subsetAM$Brain)
+dat$Body <- subsetAM$BodyN
+rownames(dat) <- subsetAM$Names
+colnames(dat)[which(names(dat) == "subsetAM$Brain")] <- "Brain"
+
+#logging
+dat$Brain <- log(dat$Brain)
+dat$Body <- log(dat$Body)
+
+#still not normal so standartizing
+dat$Brain <- dat$Brain/sqrt(var(dat$Brain))[1]
+dat$Body <- dat$Body/sqrt(var(dat$Body))[1]
+
+fitBM<-fitContinuous(tree,dat)
+fitOU<-fitContinuous(tree,dat, model="OU")
+fitEB<-fitContinuous(tree,dat, model="EB")
+
+aic.vals.br<-setNames(c(fitBM$Brain$opt$aicc,fitOU$Brain$opt$aicc,fitEB$Brain$opt$aicc, 'Brain'),
+                   c("BM","OU","EB", "BrainAM"))
+
+aic.vals.bo<-setNames(c(fitBM$Body$opt$aicc,fitOU$Body$opt$aicc,fitEB$Body$opt$aicc, 'Body'),
+                   c("BM","OU","EB", "BodyAM"))
+
+aic.vals.br
+aic.vals.bo
+
+AICs=c(fitBM$Brain$opt$aicc,fitOU$Brain$opt$aicc,fitEB$Brain$opt$aicc)
+AICmin=AICs-min(AICs)
+W=exp(-0.5*AICmin)/sum(exp(-0.5*AICmin))
+
+W=setNames(W, c("BM", "OU","EB"))
+W
+#brain
+
+AICs=c(fitBM$Body$opt$aicc,fitOU$Body$opt$aicc,fitEB$Body$opt$aicc)
+AICmin=AICs-min(AICs)
+W=exp(-0.5*AICmin)/sum(exp(-0.5*AICmin))
+
+W=setNames(W, c("BM", "OU","EB"))
+W
+#body
+
+
+```
+
+##Plotting
+```{r , message=FALSE, warning=FALSE, fig.width=8,fig.height=10}
+
+
+X <- "Brain"
+Y <- "BodyN"
+FR <- "Origin"
+dat <-data[,c(which(colnames(data)==Y),which(colnames(data)==X), which(colnames(data)==FR) ),drop=F]
+colnames(dat)<-c("Dependent","Independent", "Factor" ) 
+
+dat$Dependent <- as.numeric (dat$Dependent)
+dat$Independent <- as.numeric (dat$Independent)
+dat$Factor <- as.factor (dat$Factor)
+
+
+#create custom scale
+myColors <- brewer.pal(4,"Set1") # Pal value must be the same as factor levels
+names(myColors) <- levels(dat$Factor)
+colScale <- scale_colour_manual(name = "Origin",values = myColors, labels=c("Australia", "NG", "Americas"))
+
+
+#Plot regression
+p <- ggplot(dat, aes(log(Dependent), log(Independent), colour = Factor)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+p1 <- p + colScale + labs(tag = '', title="Origin model", subtitle = 'NG and American Marsupials have larger relative brains', caption ='t=2.9, p=0.003, df=172', x ="Body Size", y = "Brain Size", fill = "Origin")
+p1
+
+## manually adjust the slope and intercept from the pgls
+
+p <- ggplot(dat, aes(log(Dependent), log(Independent))) + 
+              geom_point() + 
+              scale_y_continuous(limits=c(-3, 5)) + 
+              scale_x_continuous(limits=c(0, 12)) #+ geom_smooth(method = "lm", se = FALSE#)
+
+
+p1 <- p + geom_abline(intercept = -2.17, slope = 0.574, color="blue", size=1) +
+              labs(
+                tag = '', 
+                title="Brain - Body Allometry", 
+                subtitle = expression(paste('Brain size = -2.17 + Body mass'^'0.57')), 
+                caption = expression(paste('R'^'2'*' = 0.9, F'['(1, 174)'] * ' = 1581, p < 0.0001')), 
+                x ="Body Size", y = "Brain Size")  
+                
+p1
+
+
+# mention it carefully
+# mean(abs(res1))
+# [1] 0.5541467 --> residuals mammals no marsupials (Isler)
+
+# mean(abs(res))
+# [1] 0.2408462 --> residuals my datatset
+```
+
+
+
+
+#PGLS-ing
+##Old models
+```{r setup}
+#Create comparative object
+mars <- comparative.data(phy = tree, data = data, names.col = Names, vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+
+#Dev model Litter size sig
+model.pgls<-pgls(log(Brain) ~ log(Litter.size) + log(Weaning.age) + log(BodyN), data = mars, lambda='ML')
+summary(model.pgls)
+
+model.pgls<-pgls(log(Brain) ~ res, data = mars, lambda='ML')
+summary(model.pgls)
+
+model.pgls<-pgls(log(BodyN) ~ res, data = mars, lambda='ML')
+summary(model.pgls)
+
+VIF(lm(log(Brain) ~ log(Litter.size) + log(Weaning.age) + log(BodyN), data=data))
+
+#Social model NS
+model.pgls2<-pgls(log(Brain) ~ 
+                  Group.living*log(BodyN) + Parental.care + Mating.system + log(Population.density)*log(BodyN) + log(BodyN), data = mars, lambda='ML')
+#redo the models and state that they are slightly modified version
+
+summary(model.pgls2)
+anova(model.pgls2, type='marginal')
+
+model.pgls3<-pgls(log(Brain) ~ log(BodyN)+Group.living + Parental.care + Mating.system + log(Population.density), data = mars, lambda='ML')
+summary(model.pgls3)
+anova(model.pgls3)
+
+#Environmental model HR significant
+model.pgls4<-pgls(log(Brain) ~ DiurnalityN + Shelter.safety + Arboreality + Diet + log(HR) + log(BodyN), data = mars, lambda='ML')
+summary(model.pgls3)
+
+#Origin model - Sig interaction
+model.pgls4<-pgls(log(Brain) ~ log(BodyN)  * Origin, data = mars, lambda='ML')
+summary(model.pgls4)
+
+```
+
+##New Models
+```{r setup}
+
+#Vulnerable and rare 
+model.pglsN1<-pgls(log(Brain) ~ Status + log(BodyN), data = mars, lambda='ML')
+summary(model.pglsN1)
+
+#Torpor NS
+model.pglsN2<-pgls(log(Brain) ~ log(BodyN) + Torpor, data = mars, lambda='ML')
+summary(model.pglsN2)
+
+#Status model - extinct are largest brained
+model.pglsN3<-pgls(log(Brain) ~ log(BodyN) + log(BodyN):Status, data = mars, lambda='ML')
+summary(model.pglsN3)
+
+#Play model - NS rel but sig absolute
+model.pglsN4<-pgls(log(Brain) ~ Play , data = mars, lambda='ML')
+summary(model.pglsN4)
+
+#Res FMR sig
+model.pglsN5<-pgls(res ~ log(FMR.Riek) , data = mars, lambda='ML')
+summary(model.pglsN5)
+
+#interactions not significant
+model.pglsN52<-pgls(log(Brain) ~ log(BodyN)*log(FMR.Riek), data = mars, lambda='ML')
+summary(model.pglsN52)
+
+#========================================#
+
+```
+
+
+
+
+##pANOVA + plots
+```{r , message=FALSE, warning=FALSE, fig.width=8,fig.height=10}
+
+#format workspace
+par( mfrow = c( 3, 3 ) )
+
+#Torpor and play with abs brain size
+
+
+#Set groups and dependent var
+grp<-as.factor(data$Origin)
+relBrain<-as.numeric(data$res)
+
+names(grp)=rownames(data)
+names(relBrain)=rownames(data)
+
+
+#Perform panova
+
+x1=aov.phylo(relBrain ~ grp, 
+             tree, nsim = 1000)
+summary(glht(x1, linfct = mcp(group = "Tukey")))
+
+#plot
+plot (relBrain~grp, main = 'Play', xlab ="Play", ylab = "Brain Size", sub = '')
+
+plot.new() # skip a position
+
+#with proper labelling
+grp <- factor(grp, labels = c("No play", "Some play", "Advanced play"))
+plot(relBrain~grp, main = 'Difference in brain size in respect to play behaviour', xlab ="Play type", ylab = "Brain Size", sub = '')
+
+#Another option for panova
+phylANOVA(tree, grp, relBrain, nsim=1000, posthoc=TRUE, p.adj="holm")
+
+plot.new() # skip a position
+dev.off()  # clear plotting space
+
+```
+
+
+```{r setup}
+#plotting 2
+p = plot(data$FMR.Riek, data$res, col=data$DiurnalityN)
+legend('topright', legend = levels(data$DiurnalityN), col = 1:3, cex = 0.8, pch = 1)
+
+p2 <- p %+% droplevels(subset(data, Diet == 1:2) + colScale)
+p2
+
+```
+
+
+#ANC trait estimation libraries
+##Estimate and plot on tree
+
+```{r setup}
+
+#plot residuals
+
+Names<-rownames(data)
+data$BodyN <- as.numeric(data$BodyN)
+data$Brain <- as.numeric(data$Brain)
+dat<- data$Brain
+names(dat)<-data$Names
+
+anc <- fastAnc(tree, dat, vars=TRUE,CI=TRUE, REML = 1)
+
+
+
+# Plotting options
+dotTree(tree,dat,length=10,ftype="i")
+
+plot(tree,label.offset=5, cex = 0.5)
+nodelabels(cex=anc$ace/5,pch=16)
+tiplabels(cex=data$res/70,pch=16)
+
+
+plotTree.barplot(tree,dat)
+
+plotTree.barplot(tree,dat,args.barplot=list(col=sapply(dat, function(dat) if(dat>=0) "blue" else "red"),xlim=c(-4,4)))
+
+
+phenogram(tree,dat,spread.labels=TRUE, ylim=c(-1,1), fsize=0.7, spread.cost=c(1,0))
+
+fancyTree(tree,type="phenogram95",x=dat,spread.cost=c(1,0))
+
+obj<-contMap(tree,dat,plot=FALSE)
+plot(obj.rel,lwd=7)
+
+
+####################MISC NOTES
+#if we need to exp the logged vars
+anc$ace
+exp(anc$ace)
+
+#Plot Scattergram
+fancyTree(tree,type="scattergram",X=as.matrix(dat),A=as.matrix(anc),control=list(spin=FALSE),label="horizontal")
+
+# why not try fitted values (slope)*x + intercept from allo eq - see if I can get the fitted values directly from pgls
+
+obj<-contMap(tree,dat,plot=FALSE)
+plot(obj,type="fan",legend=0.7*max(nodeHeights(tree)), fsize=c(0.7,0.9))
+
+```
+
+
+##Phenogram
+```{r setup}
+
+trait_all<-c(dat,anc)
+#phenogram(tree,trait_all,col="gray",ylab="trait")
+phenogram(tree,dat,fsize=0.6,spread.costs=c(1,0))
+phenogram(tree,trait_all,spread.labels=TRUE,spread.cost=c(1,0))
+
+#phenogram color a subtree
+#treemap<-paintSubTree(tree,node=findMRCA(tree,c("Potorous_tridactylus","Thylogale_stigmatica")),stem=T,state=2)
+treemap<- paintSubTree(tree,node=178,state=2)
+treemap<- paintSubTree(tree,node=221,state=3)
+cols<-c("gray","red"); names(cols)<-1:2
+phenogram(treemap,trait_all,colors=cols,fsize=1,ftype="i",ylab="Brain size") #lwd=2,ylim=c(1.5,7.5)
+
+```
+
+#SURFACE
+```{r setup}
+
+library(surface)
+library(igraph)
+
+data <-read.csv("marsALL.txt", sep = "\t", header = TRUE) 
+tree <-read.tree("tree176.nwk")
+
+dat <- as.data.frame(data$Brain)
+rownames(dat) <- data$Names
+names(dat)[names(dat) == 'data$Brain'] <- 'Brain'
+
+
+
+surface <- runSurface(tree, dat, exclude = 0, aic_threshold = 0, max_steps = NULL,
+  verbose = FALSE, plotaic = FALSE, error_skip = FALSE, only_best = FALSE,
+  sample_shifts=FALSE, sample_threshold = 2)
+
+
+
+kk<-length(surface$bwd)
+surfaceTreePlot(tree, surface$bwd[[kk]], labelshifts = T, convcol = TRUE, cex=0.6)
+
+bsum<-surfaceSummary(surface$bwd)
+bsum$alpha
+bsum$sigma_squared
+bsum$theta
+bsum$n_regimes
+
+surfaceSummary(surface$fwd, surface$bwd)
+
+surfaceAICPlot(surface$fwd, surface$bwd)
+
+```
+
+#SURFACE 2
+```{r setup}
+
+normalise
+scale(A, center = TRUE, scale = TRUE)
+
+#load up data, tree, names
+
+tree<-nameNodes(tree)
+olist<-convertTreeData(tree,dat)
+otree<-olist[[1]]; odata<-olist[[2]]
+fwd<-surfaceForward(otree, odata, aic_threshold = 0, exclude = 0, verbose = TRUE, plotaic = TRUE, save_steps=TRUE)
+
+
+
+
+k<-length(fwd)
+fsum<-surfaceSummary(fwd)
+names(fsum)
+
+
+bwd<-surfaceBackward(otree, odata, starting_model = fwd[[k]], aic_threshold = 0, only_best = TRUE, verbose = FALSE, plotaic = FALSE)
+bsum<-surfaceSummary(bwd)
+kk<-length(bwd)
+
+surfaceTreePlot(tree, bwd[[kk]], labelshifts = T)
+
+par(mfrow=c(1,2), mai=c(0.8,0.8,0.2,0.2))
+surfaceTraitPlot(dat, bwd[[kk]], whattraits = c(1,2))
+
+bm<-startingModel(otree,odata,brownian=TRUE)
+ou1<-startingModel(otree,odata)
+surfaceAICPlot(fwd, bwd)
+abline(h=bm[[1]]$aic,lty="longdash")
+abline(h=H12[[1]]$aic,lty="longdash")
+text(c(6,6),c(bm[[1]]$aic, ou1[[1]]$aic, H12[[1]]$aic)-2,c("BM","OU1","H12"),cex=0.5)
+

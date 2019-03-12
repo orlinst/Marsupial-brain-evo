@@ -1,0 +1,708 @@
+---
+title: "MCMC"
+author: "Orlin Todorov"
+date: "11 February 2019"
+output:
+  pdf_document: default
+  html_document:
+    fig_caption: yes
+    fig_height: 8
+    fig_width: 10
+---
+
+```{r setup, include=FALSE}
+if(!require(ape)) install.packages("ape")
+if(!require(caper)) install.packages("caper")
+if(!require(MCMCglmm)) install.packages("MCMCglmm")
+```
+
+
+```{r setup, include=FALSE}
+if(!require(devtools)) install.packages("devtools")
+library(devtools)
+install_github("TGuillerme/mulTree", ref = "master")
+```
+
+```{r setup, include=FALSE}}
+library(ape)
+library(caper)
+library(MCMCglmm)
+library(mulTree)
+```
+
+```{r setup, message=FALSE, warning=FALSE}
+data <-read.csv("marsALL.txt", sep = "\t", header = TRUE)
+tree <-read.tree("tree176.nwk")
+rownames(data) <- data$Names
+
+which(tree$edge.length == 0)
+
+
+data$Order <- as.factor(data$Order)
+data$Family <- as.factor(data$Family)
+data$Origin <- as.factor(data$Origin)
+data$Status <- as.factor(data$Status)
+data$GeoArea <- as.factor(data$GeoArea)
+data$DiurnalityN <- as.factor(data$DiurnalityN) 
+data$Arboreality <- as.factor(data$Arboreality)
+data$Shelter.safety <- as.factor(data$Shelter.safety)
+data$Diet <- as.factor(data$Diet)
+data$Group.living <- as.factor(data$Group.living)
+data$Parental.care <- as.factor(data$Parental.care)
+data$Mating.system <- as.factor(data$Mating.system)
+data$Torpor <- as.factor(data$Torpor)
+data$Play <- as.factor(data$Play)
+
+```
+
+
+#doctored by Thomas
+```{r fixing the tree, message=FALSE, warning=FALSE}
+
+require(phytools)
+tree$edge.length[which(tree$edge.length == 0)] <- 0.01*median(tree$edge.length[-which(tree$edge.length == 0)])
+tree <- force.ultrametric(tree,method="extend")
+
+```
+
+#Prepare data
+```{r setup, message=FALSE, warning=FALSE}
+
+data$BodyN <- log(data$BodyN)
+data$Brain <- log(data$Brain)
+data$Weaning.age <- log(data$Weaning.age)
+data$Litter.size <- log (data$Litter.size)
+data$HR <- log(data$HR)
+data$Population.density <- log(data$Population.density)
+data$FMR.Riek <- log (data$FMR.Riek)
+
+stdize = stdize = function(x, ...) {(x - min(x, ...)) / (max(x, ...) - min(x, ...))}
+
+
+data$Brain <- stdize(data$Brain, na.rm = T)
+data$BodyN <- stdize(data$BodyN, na.rm = T)
+data$Weaning.age <- stdize(data$Weaning.age, na.rm = T)
+data$Litter.size <- stdize(data$Litter.size, na.rm = T)
+data$HR <- stdize(data$HR, na.rm = T)
+data$Population.density <- stdize(data$Population.density, na.rm = T)
+data$FMR.Riek <- stdize(data$FMR.Riek, na.rm = T)
+```
+
+
+GO TO MICE
+
+
+#Set formulas
+```{r setup, message=FALSE, warning=FALSE}
+
+formula_dev <- Brain ~ BodyN + Weaning.age + Litter.size
+formula_soc <- Brain ~ Group.living + Parental.care + Mating.system + Population.density +                 BodyN
+formula_env <- Brain ~ DiurnalityN + Shelter.safety + Arboreality + Diet + HR + BodyN
+formula_ori <- Brain ~ BodyN  * Origin
+formula_vul <- Brain ~ Status * BodyN
+formula_tor <- Brain ~ Torpor * BodyN
+formula_pla <- Brain ~ Play * BodyN
+formula_fmr <- Brain ~ FMR.Riek * BodyN
+
+#  and run a simple glm
+glm_mod <- glm(formula = formula_a, family = "gaussian",
+               data = data)
+summary(glm_mod)
+```
+
+
+SKIP IF USING MULTREE
+
+```{r comparative.data, message=FALSE, warning=FALSE}
+# Create the comparative data
+
+row.names(data1) <- data$Names
+row.names(data2) <- data$Names
+row.names(data3) <- data$Names
+row.names(data4) <- data$Names
+row.names(data5) <- data$Names
+data1$Names <- data$Names
+data2$Names <- data$Names
+data3$Names <- data$Names
+data4$Names <- data$Names
+data5$Names <- data$Names
+
+
+comp_data1 <- comparative.data(phy = tree, data =data1,
+      names.col = Names, vcv = TRUE)
+
+comp_data2 <- comparative.data(phy = tree, data =data2,
+      names.col = Names, vcv = TRUE)
+
+comp_data3 <- comparative.data(phy = tree, data =data3,
+      names.col = Names, vcv = TRUE)
+
+comp_data4 <- comparative.data(phy = tree, data =data4,
+      names.col = Names, vcv = TRUE)
+
+comp_data5 <- comparative.data(phy = tree, data =data5,
+      names.col = Names, vcv = TRUE)
+
+#head(comp_data$data)
+# these have been dropped
+# head(comp_data$dropped)
+```
+
+
+GO TO MULTREE
+
+
+```{r fixed lambda, message=FALSE, warning=FALSE}
+# We have the formula and the comparative.data object comp_data which contains
+# but the phylogeny and the data. Lets set the lambda in this case to 1. 
+pgls_l1 <- pgls(formula = formula_a, data = comp_data, lambda = c(1))
+pgls_l0 <- pgls(formula = formula_a, data = comp_data, lambda = c(0.01))
+summary(pgls_l1)
+summary(pgls_l0)
+```
+
+```{r running pgls, message=FALSE, warning=FALSE}
+# Finally we also need to set the lambda in this case to ML. This means the we
+# will using Maximum Likelihood to calculate the lambda.
+pgls_mod <- pgls(formula = formula_a, data = comp_data, lambda = "ML")
+summary(pgls_mod)
+```
+
+```{r lambda, message=FALSE, warning=FALSE}
+pgls_mod$param["lambda"]
+```
+
+```{r lambda_profile, message=FALSE, warning=FALSE}
+mod_profile <- pgls.profile(pgls_mod)
+plot(mod_profile)
+```
+
+```{r priors, message=FALSE, warning=FALSE}
+prior <- list(R = list(V=1, nu=0.002),
+              G = list(G1 = list(V=1, nu=0.002)))
+```
+
+```{r parameters, message=FALSE, warning=FALSE}
+# Number of interations
+nitt <- 22000
+# Length of burnin -> what to ignore (the initial N ot iterations)
+burnin <- 2000
+# Amount of thinning -> lenght of step (sampling rate)
+thin <- 5
+```
+
+```{r MCMCglmm_data, message=FALSE, warning=FALSE}
+#Matched data
+mcmc_data <- comp_data$data
+#As MCMCglmm requires a colume named animal for it to identify it as a phylo
+# model we include an extra colume with the species names in it.
+mcmc_data <- cbind(animal = rownames(mcmc_data), mcmc_data)
+mcmc_tree <- comp_data$phy
+```
+
+```{r MCMCglmm_run, message=FALSE, warning=FALSE, verbose = FALSE}
+mod_mcmc <- MCMCglmm(fixed = formula_a, 
+                     random = ~ animal, 
+                     family = "gaussian",
+                     pedigree = mcmc_tree, 
+                     data = mcmc_data,
+                     nitt = nitt,
+                     burnin = burnin,
+                     thin = thin,
+                     prior = prior)
+```
+
+```{r MCMCglmm_plot, message=FALSE, warning=FALSE, verbose = FALSE}
+plot(mod_mcmc$Sol)
+plot(mod_mcmc$VCV)
+```
+
+
+```{r MCMCglmm_crap_run, message=FALSE, warning=FALSE, verbose = FALSE, echo=FALSE}
+mod_mcmc_short_run <- MCMCglmm(fixed = formula_a, 
+                     random= ~ animal, 
+                     family="gaussian",
+                     pedigree = mcmc_tree, 
+                     data = mcmc_data,
+                     nitt = c(1000),
+                     burnin = c(1),
+                     thin = c(1),
+                     prior = prior,
+                     verbose=FALSE)
+traceplot(mod_mcmc_short_run$VCV[,2])
+```
+
+
+```{r check auto correlation, message=FALSE, warning=FALSE, verbose = FALSE}
+autocorr.diag(mod_mcmc$Sol)
+autocorr.diag(mod_mcmc$VCV)
+```
+
+```{r acf, message=FALSE, warning=FALSE, verbose = FALSE}
+# acf plot for the first fixed estimate in our model (the intercept)
+acf(mod_mcmc$Sol[,1], lag.max = 20)
+# acf plot for the first random term in our model (the animal term)
+acf(mod_mcmc$VCV[,1], lag.max = 20)
+```
+
+
+```{r long run, message=FALSE, warning=FALSE}
+nitt2 <- 240000
+burnin2 = 40000
+thin2 = 100
+mod_mcmc_long <- MCMCglmm(fixed = formula_a, 
+                     random= ~ animal, 
+                     family="gaussian",
+                     pedigree = mcmc_tree, 
+                     data = mcmc_data,
+                     nitt = nitt2,
+                     burnin = burnin2,
+                     thin = thin2,
+                     prior = prior,
+                     verbose = FALSE)
+acf(mod_mcmc_long$VCV[,1], lag.max = 20)
+```
+
+```{r effective sample size, message=FALSE, warning=FALSE, verbose = FALSE}
+# acf plot for the first fixed estimate in our model (the intercept)
+effectiveSize(mod_mcmc_long$Sol)
+effectiveSize(mod_mcmc_long$VCV)
+```
+
+```{r second mcmc mod, message=FALSE, warning=FALSE, verbose = FALSE}
+mod_mcmc_2 <- MCMCglmm(fixed = formula_a, 
+                     random = ~ animal, 
+                     family ="gaussian",
+                     pedigree = mcmc_tree, 
+                     data = mcmc_data,
+                     nitt = nitt2,
+                     burnin = burnin2,
+                     thin = thin2,
+                     prior = prior,
+                     verbose = FALSE)
+```
+
+```{r convergance test, message=FALSE, warning=FALSE, verbose = FALSE}
+# Checking convergence for our fixed factors
+gelman.diag(mcmc.list(mod_mcmc_long$Sol, mod_mcmc_2$Sol))
+# Checking convergence for our random terms
+gelman.diag(mcmc.list(mod_mcmc_long$VCV, mod_mcmc_2$VCV))
+```
+
+```{r MCMCglmm_summay, message=FALSE, warning=FALSE, verbose = FALSE}
+summary(mod_mcmc_long)
+```
+
+
+```{r MCMCglmm_median, message=FALSE, warning=FALSE, verbose = FALSE}
+median(mod_mcmc_long$Sol[,1])
+```
+
+
+# is this like lamba?!
+```{r heritability, message=FALSE, warning=FALSE, verbose = FALSE}
+H <- ( var(mod_mcmc_long$VCV[,"animal"]))/
+      (var(mod_mcmc_long$VCV[,"animal"]) + var(mod_mcmc_long$VCV[,"units"]))
+H
+```
+
+
+
+###################mulTree######################### GO TO FROM HERE
+
+
+
+```{r MCMCglmm_data, message=FALSE, warning=FALSE}
+#Matched data
+mcmc_data <- comp_data1$data
+
+#As MCMCglmm requires a colume named animal for it to identify it as a phylo
+# model we include an extra colume with the species names in it.
+mcmc_data <- cbind(animal = rownames(mcmc_data), mcmc_data)
+mcmc_tree <- comp_data1$phy
+```
+
+
+```{r priors, message=FALSE, warning=FALSE}
+prior <- list(R = list(V=1, nu=0.002),
+              G = list(G1 = list(V=1, nu=0.002)))
+```
+
+
+```{r , message=FALSE, warning=FALSE}
+# Number of interations
+nitt <- 240000
+# Length of burnin -> what to ignore (the initial N ot iterations)
+burnin <- 40000
+# Amount of thinning -> lenght of step (sampling rate)
+thin <- 100
+```
+
+```{r second mcmc mod, message=FALSE, warning=FALSE, verbose = FALSE}
+mod_mcmc <- MCMCglmm(fixed = formula_dev, 
+                     random = ~ animal, 
+                     family ="gaussian",
+                     pedigree = mcmc_tree, 
+                     data = mcmc_data,
+                     nitt = nitt,
+                     burnin = burnin,
+                     thin = thin,
+                     prior = prior,
+                     verbose = FALSE)
+```
+
+
+
+FROM HERE
+
+```{r multree, message=FALSE, warning=FALSE, verbose = FALSE}
+
+mulTree_data1 <- as.mulTree(data = data1, tree = tree,
+                           taxa = "Names")
+
+mulTree_data2 <- as.mulTree(data = data2, tree = tree,
+                           taxa = "Names")
+
+mulTree_data3 <- as.mulTree(data = data3, tree = tree,
+                           taxa = "Names")
+
+mulTree_data4 <- as.mulTree(data = data4, tree = tree,
+                           taxa = "Names")
+
+mulTree_data5 <- as.mulTree(data = data5, tree = tree,
+                           taxa = "Names")
+
+```
+
+```{r multree, message=FALSE, warning=FALSE}
+# The formula
+mul_formula <- formula_soc
+# The MCMC parameters (iterations, thining, burnin)
+mul_parameters <- c(nitt, thin, burnin)
+# The MCMCglmm priors
+mul_priors <- list(R = list(V = 1, nu = 0.002),
+                   G = list(G1 = list(V = 1, nu = 0.002)))
+```
+
+
+```{r running multree, message=FALSE, warning=FALSE}
+mulTree(mulTree.data = mulTree_data1, formula = mul_formula, priors = mul_priors,
+        parameters = mul_parameters, output = "model1", ESS = 1000,
+        chains = 2)
+
+mulTree(mulTree.data = mulTree_data2, formula = mul_formula, priors = mul_priors,
+        parameters = mul_parameters, output = "model2", ESS = 1000,
+        chains = 2)
+
+mulTree(mulTree.data = mulTree_data3, formula = mul_formula, priors = mul_priors,
+        parameters = mul_parameters, output = "model3", ESS = 1000,
+        chains = 2)
+
+mulTree(mulTree.data = mulTree_data4, formula = mul_formula, priors = mul_priors,
+        parameters = mul_parameters, output = "model4", ESS = 1000,
+        chains = 2)
+
+mulTree(mulTree.data = mulTree_data5, formula = mul_formula, priors = mul_priors,
+        parameters = mul_parameters, output = "model5", ESS = 1000,
+        chains = 2)
+```
+
+```{r running multree, message=FALSE, warning=FALSE}
+one_model1 <- read.mulTree("model1-tree1_chain1", model = TRUE)
+one_model2 <- read.mulTree("model2-tree1_chain1", model = TRUE)
+one_model3 <- read.mulTree("model3-tree1_chain1", model = TRUE)
+one_model4 <- read.mulTree("model4-tree1_chain1", model = TRUE)
+one_model5 <- read.mulTree("model5-tree1_chain1", model = TRUE)
+
+one_model1a <- read.mulTree("model1-tree1_chain2", model = TRUE)
+one_model2a <- read.mulTree("model2-tree1_chain2", model = TRUE)
+one_model3a <- read.mulTree("model3-tree1_chain2", model = TRUE)
+one_model4a <- read.mulTree("model4-tree1_chain2", model = TRUE)
+one_model5a <- read.mulTree("model5-tree1_chain2", model = TRUE)
+
+
+
+read.mulTree("model1", convergence = TRUE)
+all_models <- read.mulTree("model1")
+```
+
+
+
+```{r summary all models from multree, message=FALSE, warning=FALSE}
+
+summarised_results <- summary("model1", use.hdr = TRUE, cent.tend = mean,
+                              prob = c(75, 25))
+```
+
+```{r mulTree plots, message=FALSE, warning=FALSE}
+plot(summarised_results, horizontal = TRUE, ylab = "", cex.coeff = 0.8,
+     main = "Posterior distributions", cex.terms = 0.5,
+     terms = c("Intercept", "Body Mass", "Volancy", "Phylogeny", "Residuals"),
+     col = "grey", cex.main = 0.8)
+```
+
+
+sol <- one_model$Sol
+sol <- as.mcmc(sol)
+library(coda)
+codamenu()
+# variance is SD squared!
+
+
+#Combining solution
+```{r mulTree plots, message=FALSE, warning=FALSE}
+sol1 <- one_model1$Sol
+sol1 <- as.mcmc(sol1)
+sumsol1 <- summary(sol1)
+sumsol1 <- as.data.frame(sumsol1$statistics)
+sumsol1$Var <- (sumsol1$SD)^2
+sumsol1$SD <- NULL
+sumsol1$`Naive SE` <- NULL
+sumsol1$`Time-series SE` <- NULL
+
+sol1a <- one_model1a$Sol
+sol1a <- as.mcmc(sol1a)
+sumsol1a <- summary(sol1a)
+sumsol1a <- as.data.frame(sumsol1a$statistics)
+sumsol1a$Var <- (sumsol1a$SD)^2
+sumsol1a$SD <- NULL
+sumsol1a$`Naive SE` <- NULL
+sumsol1a$`Time-series SE` <- NULL
+
+
+sol2 <- one_model2$Sol
+sol2 <- as.mcmc(sol2)
+sumsol2 <- summary(sol2)
+sumsol2 <- as.data.frame(sumsol2$statistics)
+sumsol2$Var <- (sumsol2$SD)^2
+sumsol2$SD <- NULL
+sumsol2$`Naive SE` <- NULL
+sumsol2$`Time-series SE` <- NULL
+
+sol2a <- one_model2a$Sol
+sol2a <- as.mcmc(sol2a)
+sumsol2a <- summary(sol2a)
+sumsol2a<- as.data.frame(sumsol2a$statistics)
+sumsol2a$Var <- (sumsol2a$SD)^2
+sumsol2a$SD <- NULL
+sumsol2a$`Naive SE` <- NULL
+sumsol2a$`Time-series SE` <- NULL
+
+
+sol3 <- one_model3$Sol
+sol3 <- as.mcmc(sol3)
+sumsol3 <- summary(sol3)
+sumsol3 <- as.data.frame(sumsol3$statistics)
+sumsol3$Var <- (sumsol3$SD)^2
+sumsol3$SD <- NULL
+sumsol3$`Naive SE` <- NULL
+sumsol3$`Time-series SE` <- NULL
+
+sol3a <- one_model3a$Sol
+sol3a <- as.mcmc(sol3a)
+sumsol3a <- summary(sol3a)
+sumsol3a <- as.data.frame(sumsol3a$statistics)
+sumsol3a$Var <- (sumsol3a$SD)^2
+sumsol3a$SD <- NULL
+sumsol3a$`Naive SE` <- NULL
+sumsol3a$`Time-series SE` <- NULL
+
+sol4 <- one_model4$Sol
+sol4 <- as.mcmc(sol4)
+sumsol4 <- summary(sol4)
+sumsol4 <- as.data.frame(sumsol4$statistics)
+sumsol4$Var <- (sumsol4$SD)^2
+sumsol4$SD <- NULL
+sumsol4$`Naive SE` <- NULL
+sumsol4$`Time-series SE` <- NULL
+
+sol4a <- one_model4a$Sol
+sol4a <- as.mcmc(sol4a)
+sumsol4a <- summary(sol4a)
+sumsol4a <- as.data.frame(sumsol4a$statistics)
+sumsol4a$Var <- (sumsol4a$SD)^2
+sumsol4a$SD <- NULL
+sumsol4a$`Naive SE` <- NULL
+sumsol4a$`Time-series SE` <- NULL
+
+sol5 <- one_model5$Sol
+sol5 <- as.mcmc(sol5)
+sumsol5 <- summary(sol5)
+sumsol5 <- as.data.frame(sumsol5$statistics)
+sumsol5$Var <- (sumsol5$SD)^2
+sumsol5$SD <- NULL
+sumsol5$`Naive SE` <- NULL
+sumsol5$`Time-series SE` <- NULL
+
+sol5a <- one_model5a$Sol
+sol5a <- as.mcmc(sol5a)
+sumsol5a <- summary(sol5a)
+sumsol5a <- as.data.frame(sumsol5a$statistics)
+sumsol5a$Var <- (sumsol5a$SD)^2
+sumsol5a$SD <- NULL
+sumsol5a$`Naive SE` <- NULL
+sumsol5a$`Time-series SE` <- NULL
+
+results <- list(sumsol1, sumsol2, sumsol3, sumsol4, sumsol5, sumsol1a, sumsol2a, sumsol3a, sumsol4a, sumsol5a)
+```
+
+#Pooling
+```{r pooling, message=FALSE, warning=FALSE}
+
+mbar <-  function (x, col=1) { # function to calculate average parameter estimates and average variances from the results list
+    vals <- rowMeans(matrix(unlist(lapply(x, function (z) z[, col])),
+                            nrow=dim(x[[1]])[1], ncol=length(x)))
+    names(vals) <- rownames(x[[1]])
+    vals
+}
+
+Bm <- function (x) {
+    Qmbar <- mbar(x)
+    Qvals <- matrix(unlist(lapply(x, function (z) z[,1])),
+                    ncol=length(x), nrow=dim(x[[1]])[1])
+    QQ <- apply(Qvals, 2, function (x) x - Qmbar)
+    apply(QQ, 1, function (z) (z %*% z)/(length(z)-1))
+}
+
+Tm <- function (x) {
+    Umbar <- mbar(x,  col=2)
+    Umbar + (1 + 1/length(x)) * Bm(x)
+}
+
+lambda <- function (nu) {
+    (nu + 1)/(nu + 3)
+}
+
+vm <- function (Bm, Tm, m=5){
+    gammahat <- (1+1/m) * sum(Bm/Tm)/length(Bm)
+    (m-1)/(gammahat^2)
+}
+
+
+# Now we do the analysis:
+
+m <- 10
+n <- 176
+k <- 4
+## m = number of imputed datasets
+## n = number of observations
+## k = number of parameters
+
+Bm1 <- Bm(results)
+Tm1 <- Tm(results) # total variance
+
+# calculation of the degrees of freedom for t-tests of parameters
+
+vhatobs <- lambda(n-k)*(n-k)*(1- (1+1/m) * sum(Bm1/Tm1)/length(Bm1))
+vm1 <- vm(Bm1, Tm1)
+vmtilde <-  1/(1/vm1+1/vhatobs)
+
+Qmbar <- mbar(results) # mean parameter estimates
+
+WaldT <- Qmbar/sqrt(Tm1)
+upperCI <- Qmbar + sqrt(Tm1) * qt(.975, vmtilde)
+lowerCI <-  Qmbar - sqrt(Tm1) * qt(.975, vmtilde)
+
+tTable <- cbind(Qmbar, SE=sqrt(Tm1), WaldT,
+                df=vmtilde, p=2*(1-pt(abs(WaldT),
+                                      vmtilde)), lowerCI, upperCI)
+
+```
+
+```{r sink to txt file}
+sink('analysis-output.txt')
+tTable
+sink()
+```
+
+
+```{r plot, message=FALSE, warning=FALSE}
+require(bayesplot)
+
+res.plot <- as.data.frame(tTable)
+
+PLOT ALTERNATIVE
+
+res.plot$upperCI <- NULL
+res.plot$lowerCI <- NULL
+res.plot$p <- NULL
+res.plot$df <- NULL
+res.plot$WaldT <- NULL
+
+#res.plot <- as.data.frame(t(res.plot))
+
+color_scheme_set("red")
+mcmc_intervals(t(res.plot))
+
+
+posterior <- as.array(one_model$Sol)
+
+mcmc_areas(
+  posterior, 
+  prob = 0.8, # 80% intervals
+  prob_outer = 0.99, # 99%
+  point_est = "mean"
+)
+
+mcmc_hist(posterior)
+
+require(ggalt)
+require(forcats)
+
+####ROUND NUMBERS
+res.plot$SE<-round(res.plot$SE, 3)
+res.plot$Qmbar<-round(res.plot$Qmbar, 3)
+
+ggplot(res.plot, aes(x=Qmbar, xend = (Qmbar + SE), y=row.names(res.plot))) +
+              geom_segment(aes(x=Qmbar, 
+                  xend = Qmbar + SE, 
+                  y=row.names(res.plot), 
+                  yend=row.names(res.plot)), 
+                  color="#b2b2b2",
+                  size=1.5) +
+              geom_dumbbell (color="light blue", 
+                      size_x=3.5, 
+                      size_xend = 3.5,
+                      colour_x="#edae52", 
+                      colour_xend = "#9fb059") +
+                labs(x=NULL, y=NULL, 
+                        title="Dumbbell Chart", 
+                        subtitle="Dev model") +
+                geom_text(color="black", size=2, hjust=-0.5,
+                  aes(x=Qmbar, label=Qmbar))
+                
+```
+
+```{r plot 2, message=FALSE, warning=FALSE}
+pdf(file="model.pdf",width=6,height=4)
+p <- ggplot(
+    res.plot, 
+    aes(x = Qmbar, y = fct_rev(row.names(res.plot)), xmin = Qmbar - SE, xmax = Qmbar + SE)) +
+    geom_point(aes(color = row.names(res.plot))) +
+    geom_errorbarh(aes(color = row.names(res.plot)), height=0.05)+
+    geom_vline(xintercept = 0, color = "red", linetype="longdash", size=0.5) +
+    theme_light()
+p$labels$colour <- "Model"
+p$labels$x <- "Posterior estimate + SE"
+p$labels$y <- "Model parameters"
+p
+dev.off()
+
+####
+tiff("model.tif",height=4,width=6,units='in',res=1200)
+p <- ggplot(
+    res.plot, 
+    aes(x = Qmbar, y = fct_rev(row.names(res.plot)), xmin = Qmbar - SE, xmax = Qmbar + SE)) +
+    geom_point(aes(color = row.names(res.plot))) +
+    geom_errorbarh(aes(color = row.names(res.plot)), height=0.05)+
+    geom_vline(xintercept = 0, color = "red", linetype="longdash", size=0.5) +
+    theme_light()
+p$labels$colour <- "Model"
+p$labels$x <- "Posterior estimate + SE"
+p$labels$y <- "Model parameters"
+p
+dev.off()
+```
+
+
+

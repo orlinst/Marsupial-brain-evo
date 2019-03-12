@@ -1,0 +1,901 @@
+Global model call: MCMCglmm.updateable(fixed = formula_soc, random = ~animal, family = "gaussian", 
+    data = mcmc_dataE, prior = prior, pedigree = mcmc_treeE, 
+    nitt = nitt, thin = thin, burnin = burnin)
+---
+Model selection table 
+      (Int)    BdN Grp.lvn Mtn.sys Prn.car   Ppl.dns BdN:Grp.lvn BdN:Mtn.sys BdN:Prn.car BdN:Ppl.dns df  logLik    DIC delta weight
+6   0.09322 0.8599               +                                                                    5 448.480 -801.5  0.00  0.138
+2   0.09590 0.8588                                                                                    4 447.427 -800.7  0.80  0.093
+8   0.08980 0.8618       +       +                                                                    6 448.139 -800.0  1.47  0.066
+70  0.09270 0.8605               +                                         +                          6 448.108 -800.0  1.49  0.066
+10  0.09662 0.8588                       +                                                            5 447.396 -799.8  1.73  0.058
+14  0.09351 0.8603               +       +                                                            6 447.786 -799.5  2.01  0.051
+78  0.09198 0.8626               +       +                                 +                          7 447.503 -798.8  2.64  0.037
+16  0.08932 0.8632       +       +       +                                                            7 447.208 -798.6  2.86  0.033
+72  0.08896 0.8618       +       +                                         +                          7 447.525 -798.6  2.89  0.033
+4   0.09270 0.8607       +                                                                            5 446.148 -798.4  3.04  0.030
+22  0.09813 0.8580               +         -0.009088                                                  6 445.928 -798.3  3.22  0.028
+138 0.09654 0.8572                       +                                             +              6 447.334 -798.2  3.33  0.026
+18  0.10230 0.8558                         -0.011120                                                  5 446.656 -797.7  3.79  0.021
+40  0.09078 0.8596       +       +                             +                                      7 446.615 -797.6  3.86  0.020
+12  0.09284 0.8604       +               +                                                            6 445.221 -797.6  3.87  0.020
+142 0.09308 0.8613               +       +                                             +              7 446.288 -797.5  3.98  0.019
+86  0.09685 0.8599               +         -0.009042                       +                          7 445.943 -797.4  4.10  0.018
+36  0.09217 0.8601       +                                     +                                      6 445.321 -797.3  4.17  0.017
+80  0.08932 0.8633       +       +       +                                 +                          8 445.464 -796.6  4.85  0.012
+24  0.09573 0.8590       +       +         -0.011850                                                  7 446.020 -796.6  4.93  0.012
+26  0.10150 0.8564                       + -0.011780                                                  6 445.219 -796.5  4.97  0.012
+104 0.09057 0.8600       +       +                             +           +                          8 445.340 -796.4  5.12  0.011
+206 0.09138 0.8632               +       +                                 +           +              8 446.214 -796.3  5.17  0.010
+20  0.09764 0.8579       +                 -0.013230                                                  6 444.794 -796.3  5.19  0.010
+274 0.10200 0.8556                         -0.011610                                       0.0012100  6 445.229 -796.1  5.35  0.010
+48  0.09123 0.8600       +       +       +                     +                                      8 445.979 -796.1  5.41  0.009
+44  0.09314 0.8598       +               +                     +                                      7 445.521 -796.1  5.43  0.009
+144 0.08908 0.8626       +       +       +                                             +              8 445.996 -796.0  5.51  0.009
+30  0.09904 0.8593               +       + -0.009788                                                  7 445.326 -795.8  5.65  0.008
+278 0.09940 0.8575               +         -0.010170                                       0.0022150  7 445.465 -795.7  5.75  0.008
+94  0.09714 0.8612               +       + -0.010270                       +                          8 445.642 -795.4  6.08  0.007
+52  0.09724 0.8579       +                 -0.013540           +                                      7 445.089 -795.3  6.22  0.006
+140 0.09336 0.8601       +               +                                             +              7 444.811 -795.2  6.30  0.006
+112 0.09072 0.8605       +       +       +                     +           +                          9 445.559 -795.1  6.41  0.006
+158 0.09877 0.8586               +       + -0.010010                                   +              8 445.025 -794.8  6.67  0.005
+88  0.09562 0.8594       +       +         -0.011790                       +                          8 444.830 -794.8  6.70  0.005
+56  0.09626 0.8585       +       +         -0.011250           +                                      8 444.101 -794.7  6.74  0.005
+280 0.09658 0.8578       +       +         -0.014280                                       0.0048060  8 444.193 -794.6  6.93  0.004
+154 0.10140 0.8564                       + -0.011510                                   +              7 444.826 -794.3  7.16  0.004
+208 0.08838 0.8632       +       +       +                                 +           +              9 445.463 -794.3  7.20  0.004
+28  0.09929 0.8582       +               + -0.014890                                                  7 443.091 -794.0  7.53  0.003
+342 0.09667 0.8603               +         -0.009841                       +               0.0021510  8 444.537 -793.9  7.55  0.003
+276 0.09777 0.8576       +                 -0.014340                                       0.0025850  7 443.300 -793.8  7.70  0.003
+172 0.09292 0.8599       +               +                     +                       +              8 444.902 -793.8  7.72  0.003
+282 0.10200 0.8573                       + -0.012080                                      -0.0001149  7 443.751 -793.7  7.83  0.003
+32  0.09742 0.8604       +       +       + -0.013170                                                  8 444.316 -793.7  7.83  0.003
+286 0.09845 0.8582               +       + -0.010840                                       0.0020560  8 445.193 -793.6  7.92  0.003
+120 0.09617 0.8580       +       +         -0.011790           +           +                          9 444.292 -793.2  8.30  0.002
+176 0.09136 0.8604       +       +       +                     +                       +              9 444.049 -793.0  8.47  0.002
+312 0.09725 0.8568       +       +         -0.013380           +                           0.0036920  9 444.196 -793.0  8.52  0.002
+160 0.09655 0.8609       +       +       + -0.013230                                   +              9 443.939 -793.0  8.53  0.002
+96  0.09563 0.8612       +       +       + -0.012890                       +                          9 444.041 -792.8  8.66  0.002
+308 0.09873 0.8568       +                 -0.014890           +                           0.0031170  8 443.256 -792.8  8.66  0.002
+222 0.09639 0.8613               +       + -0.009402                       +           +              9 443.929 -792.8  8.68  0.002
+60  0.09925 0.8576       +               + -0.014590           +                                      8 443.507 -792.7  8.73  0.002
+350 0.09692 0.8613               +       + -0.010700                       +               0.0009755  9 444.614 -792.7  8.82  0.002
+240 0.08964 0.8614       +       +       +                     +           +           +             10 444.164 -792.5  8.96  0.002
+410 0.10200 0.8576                       + -0.012260                                   +   0.0007477  8 442.424 -792.5  9.01  0.002
+344 0.09684 0.8578       +       +         -0.013590                       +               0.0040630  9 442.663 -792.4  9.08  0.001
+414 0.09792 0.8595               +       + -0.010490                                   +   0.0019600  9 444.352 -792.2  9.25  0.001
+284 0.09912 0.8580       +               + -0.015570                                       0.0019560  8 442.618 -792.1  9.38  0.001
+156 0.09849 0.8590       +               + -0.014210                                   +              8 441.727 -792.0  9.44  0.001
+64  0.09733 0.8590       +       +       + -0.012870           +                                      9 443.627 -792.0  9.47  0.001
+288 0.09639 0.8599       +       +       + -0.014660                                       0.0036250  9 442.401 -791.6  9.91  0.001
+412 0.09980 0.8587       +               + -0.014510                                   +  -0.0002636  9 442.544 -791.2 10.29  0.001
+376 0.09706 0.8576       +       +         -0.013860           +           +               0.0045710 10 442.677 -790.8 10.65  0.001
+ [ reached getOption("max.print") -- omitted 31 rows ]
+Models ranked by DIC(x) 
+Random terms (all models): 
+‘~animal’
+$`6`
+                Estimate Std. Error
+(Intercept)    0.0932227         NA
+BodyN          0.8599371         NA
+Mating.system2 0.0056313         NA
+
+$`2`
+            Estimate Std. Error
+(Intercept) 0.095896         NA
+BodyN       0.858797         NA
+
+$`8`
+                Estimate Std. Error
+(Intercept)    0.0898048         NA
+BodyN          0.8618233         NA
+Group.living2  0.0060662         NA
+Mating.system2 0.0051557         NA
+
+$`70`
+                       Estimate Std. Error
+(Intercept)           0.0926980         NA
+BodyN                 0.8605442         NA
+Mating.system2        0.0083213         NA
+BodyN:Mating.system2 -0.0050055         NA
+
+$`10`
+                 Estimate Std. Error
+(Intercept)    0.09662190         NA
+BodyN          0.85880178         NA
+Parental.care2 0.00017809         NA
+
+$`14`
+                 Estimate Std. Error
+(Intercept)     0.0935131         NA
+BodyN           0.8603327         NA
+Mating.system2  0.0069129         NA
+Parental.care2 -0.0043362         NA
+
+$`78`
+                      Estimate Std. Error
+(Intercept)           0.091984         NA
+BodyN                 0.862576         NA
+Mating.system2        0.010037         NA
+Parental.care2       -0.004455         NA
+BodyN:Mating.system2 -0.005578         NA
+
+$`16`
+                 Estimate Std. Error
+(Intercept)     0.0893192         NA
+BodyN           0.8632111         NA
+Group.living2   0.0063473         NA
+Mating.system2  0.0065936         NA
+Parental.care2 -0.0052072         NA
+
+$`72`
+                        Estimate Std. Error
+(Intercept)           0.08896190         NA
+BodyN                 0.86179714         NA
+Group.living2         0.00603985         NA
+Mating.system2        0.00543356         NA
+BodyN:Mating.system2 -0.00079018         NA
+
+$`4`
+               Estimate Std. Error
+(Intercept)   0.0926996         NA
+BodyN         0.8607328         NA
+Group.living2 0.0064792         NA
+
+$`22`
+                     Estimate Std. Error
+(Intercept)         0.0981340         NA
+BodyN               0.8580411         NA
+Mating.system2      0.0044332         NA
+Population.density -0.0090882         NA
+
+$`138`
+                        Estimate Std. Error
+(Intercept)           0.09654231         NA
+BodyN                 0.85717227         NA
+Parental.care2       -0.00081321         NA
+BodyN:Parental.care2  0.00177277         NA
+
+$`18`
+                    Estimate Std. Error
+(Intercept)         0.102320         NA
+BodyN               0.855822         NA
+Population.density -0.011116         NA
+
+$`40`
+                     Estimate Std. Error
+(Intercept)         0.0907834         NA
+BodyN               0.8595515         NA
+Group.living2       0.0032794         NA
+Mating.system2      0.0051963         NA
+BodyN:Group.living2 0.0050644         NA
+
+$`12`
+                  Estimate Std. Error
+(Intercept)     0.09284061         NA
+BodyN           0.86036379         NA
+Group.living2   0.00644718         NA
+Parental.care2 -0.00091076         NA
+
+$`142`
+                       Estimate Std. Error
+(Intercept)           0.0930839         NA
+BodyN                 0.8613435         NA
+Mating.system2        0.0071141         NA
+Parental.care2       -0.0049939         NA
+BodyN:Parental.care2  0.0014505         NA
+
+$`86`
+                       Estimate Std. Error
+(Intercept)           0.0968519         NA
+BodyN                 0.8599038         NA
+Mating.system2        0.0071937         NA
+Population.density   -0.0090423         NA
+BodyN:Mating.system2 -0.0052872         NA
+
+$`36`
+                     Estimate Std. Error
+(Intercept)         0.0921688         NA
+BodyN               0.8601247         NA
+Group.living2       0.0054589         NA
+BodyN:Group.living2 0.0021398         NA
+
+$`80`
+                       Estimate Std. Error
+(Intercept)           0.0893203         NA
+BodyN                 0.8632992         NA
+Group.living2         0.0061827         NA
+Mating.system2        0.0084111         NA
+Parental.care2       -0.0048876         NA
+BodyN:Mating.system2 -0.0032431         NA
+
+$`24`
+                     Estimate Std. Error
+(Intercept)         0.0957272         NA
+BodyN               0.8590118         NA
+Group.living2       0.0070419         NA
+Mating.system2      0.0034070         NA
+Population.density -0.0118501         NA
+
+$`26`
+                     Estimate Std. Error
+(Intercept)         0.1015049         NA
+BodyN               0.8564308         NA
+Parental.care2     -0.0021546         NA
+Population.density -0.0117833         NA
+
+$`104`
+                       Estimate Std. Error
+(Intercept)           0.0905660         NA
+BodyN                 0.8600150         NA
+Group.living2         0.0022407         NA
+Mating.system2        0.0063293         NA
+BodyN:Group.living2   0.0061388         NA
+BodyN:Mating.system2 -0.0015246         NA
+
+$`206`
+                       Estimate Std. Error
+(Intercept)           0.0913849         NA
+BodyN                 0.8632366         NA
+Mating.system2        0.0118962         NA
+Parental.care2       -0.0071634         NA
+BodyN:Mating.system2 -0.0085892         NA
+BodyN:Parental.care2  0.0059500         NA
+
+$`20`
+                     Estimate Std. Error
+(Intercept)         0.0976358         NA
+BodyN               0.8578583         NA
+Group.living2       0.0077787         NA
+Population.density -0.0132334         NA
+
+$`274`
+                           Estimate Std. Error
+(Intercept)               0.1020319         NA
+BodyN                     0.8555681         NA
+Population.density       -0.0116110         NA
+BodyN:Population.density  0.0012103         NA
+
+$`48`
+                      Estimate Std. Error
+(Intercept)          0.0912344         NA
+BodyN                0.8600194         NA
+Group.living2        0.0027125         NA
+Mating.system2       0.0070733         NA
+Parental.care2      -0.0055740         NA
+BodyN:Group.living2  0.0067080         NA
+
+$`44`
+                       Estimate Std. Error
+(Intercept)          0.09313508         NA
+BodyN                0.85975800         NA
+Group.living2        0.00580711         NA
+Parental.care2      -0.00093743         NA
+BodyN:Group.living2  0.00135912         NA
+
+$`144`
+                        Estimate Std. Error
+(Intercept)           0.08907805         NA
+BodyN                 0.86255729         NA
+Group.living2         0.00620122         NA
+Mating.system2        0.00700457         NA
+Parental.care2       -0.00512695         NA
+BodyN:Parental.care2 -0.00011421         NA
+
+$`30`
+                     Estimate Std. Error
+(Intercept)         0.0990448         NA
+BodyN               0.8592927         NA
+Mating.system2      0.0060690         NA
+Parental.care2     -0.0051397         NA
+Population.density -0.0097880         NA
+
+$`278`
+                           Estimate Std. Error
+(Intercept)               0.0993953         NA
+BodyN                     0.8574681         NA
+Mating.system2            0.0045318         NA
+Population.density       -0.0101694         NA
+BodyN:Population.density  0.0022151         NA
+
+$`94`
+                       Estimate Std. Error
+(Intercept)           0.0971355         NA
+BodyN                 0.8611531         NA
+Mating.system2        0.0097400         NA
+Parental.care2       -0.0054716         NA
+Population.density   -0.0102668         NA
+BodyN:Mating.system2 -0.0070135         NA
+
+$`52`
+                       Estimate Std. Error
+(Intercept)          0.09724052         NA
+BodyN                0.85786797         NA
+Group.living2        0.00725924         NA
+Population.density  -0.01353781         NA
+BodyN:Group.living2  0.00062522         NA
+
+$`140`
+                        Estimate Std. Error
+(Intercept)           0.09336141         NA
+BodyN                 0.86007729         NA
+Group.living2         0.00649919         NA
+Parental.care2       -0.00119154         NA
+BodyN:Parental.care2  0.00069121         NA
+
+$`112`
+                       Estimate Std. Error
+(Intercept)           0.0907150         NA
+BodyN                 0.8605447         NA
+Group.living2         0.0023309         NA
+Mating.system2        0.0093859         NA
+Parental.care2       -0.0057488         NA
+BodyN:Group.living2   0.0070701         NA
+BodyN:Mating.system2 -0.0037440         NA
+
+$`158`
+                        Estimate Std. Error
+(Intercept)           0.09876723         NA
+BodyN                 0.85863977         NA
+Mating.system2        0.00608293         NA
+Parental.care2       -0.00523069         NA
+Population.density   -0.01001054         NA
+BodyN:Parental.care2  0.00020802         NA
+
+$`88`
+                       Estimate Std. Error
+(Intercept)           0.0956209         NA
+BodyN                 0.8594420         NA
+Group.living2         0.0069829         NA
+Mating.system2        0.0035375         NA
+Population.density   -0.0117882         NA
+BodyN:Mating.system2 -0.0003777         NA
+
+$`56`
+                      Estimate Std. Error
+(Intercept)          0.0962618         NA
+BodyN                0.8584654         NA
+Group.living2        0.0051516         NA
+Mating.system2       0.0036602         NA
+Population.density  -0.0112479         NA
+BodyN:Group.living2  0.0033768         NA
+
+$`280`
+                           Estimate Std. Error
+(Intercept)               0.0965787         NA
+BodyN                     0.8577536         NA
+Group.living2             0.0071276         NA
+Mating.system2            0.0033534         NA
+Population.density       -0.0142825         NA
+BodyN:Population.density  0.0048056         NA
+
+$`154`
+                        Estimate Std. Error
+(Intercept)           0.10144637         NA
+BodyN                 0.85642277         NA
+Parental.care2       -0.00201095         NA
+Population.density   -0.01150961         NA
+BodyN:Parental.care2  0.00018727         NA
+
+$`208`
+                       Estimate Std. Error
+(Intercept)           0.0883787         NA
+BodyN                 0.8632229         NA
+Group.living2         0.0063731         NA
+Mating.system2        0.0083967         NA
+Parental.care2       -0.0059775         NA
+BodyN:Mating.system2 -0.0033401         NA
+BodyN:Parental.care2  0.0017534         NA
+
+$`28`
+                     Estimate Std. Error
+(Intercept)         0.0992900         NA
+BodyN               0.8581536         NA
+Group.living2       0.0079711         NA
+Parental.care2     -0.0034721         NA
+Population.density -0.0148866         NA
+
+$`342`
+                           Estimate Std. Error
+(Intercept)               0.0966701         NA
+BodyN                     0.8602603         NA
+Mating.system2            0.0066799         NA
+Population.density       -0.0098407         NA
+BodyN:Mating.system2     -0.0038470         NA
+BodyN:Population.density  0.0021505         NA
+
+$`276`
+                           Estimate Std. Error
+(Intercept)               0.0977690         NA
+BodyN                     0.8576466         NA
+Group.living2             0.0074952         NA
+Population.density       -0.0143362         NA
+BodyN:Population.density  0.0025855         NA
+
+$`172`
+                        Estimate Std. Error
+(Intercept)           0.09292421         NA
+BodyN                 0.85990972         NA
+Group.living2         0.00570179         NA
+Parental.care2       -0.00115028         NA
+BodyN:Group.living2   0.00146375         NA
+BodyN:Parental.care2  0.00021155         NA
+
+$`282`
+                            Estimate Std. Error
+(Intercept)               0.10198150         NA
+BodyN                     0.85727715         NA
+Parental.care2           -0.00219560         NA
+Population.density       -0.01207671         NA
+BodyN:Population.density -0.00011486         NA
+
+$`32`
+                     Estimate Std. Error
+(Intercept)         0.0974201         NA
+BodyN               0.8603892         NA
+Group.living2       0.0076370         NA
+Mating.system2      0.0051685         NA
+Parental.care2     -0.0066215         NA
+Population.density -0.0131723         NA
+
+$`286`
+                           Estimate Std. Error
+(Intercept)               0.0984523         NA
+BodyN                     0.8581688         NA
+Mating.system2            0.0059302         NA
+Parental.care2           -0.0052341         NA
+Population.density       -0.0108409         NA
+BodyN:Population.density  0.0020563         NA
+
+$`120`
+                        Estimate Std. Error
+(Intercept)           9.6171e-02         NA
+BodyN                 8.5803e-01         NA
+Group.living2         6.1737e-03         NA
+Mating.system2        3.2488e-03         NA
+Population.density   -1.1790e-02         NA
+BodyN:Group.living2   1.8875e-03         NA
+BodyN:Mating.system2  9.0901e-05         NA
+
+$`176`
+                        Estimate Std. Error
+(Intercept)           0.09136379         NA
+BodyN                 0.86040324         NA
+Group.living2         0.00207043         NA
+Mating.system2        0.00713831         NA
+Parental.care2       -0.00477367         NA
+BodyN:Group.living2   0.00766814         NA
+BodyN:Parental.care2 -0.00091034         NA
+
+$`312`
+                           Estimate Std. Error
+(Intercept)               0.0972461         NA
+BodyN                     0.8568230         NA
+Group.living2             0.0060670         NA
+Mating.system2            0.0036217         NA
+Population.density       -0.0133771         NA
+BodyN:Group.living2       0.0019689         NA
+BodyN:Population.density  0.0036923         NA
+
+$`160`
+                       Estimate Std. Error
+(Intercept)           0.0965483         NA
+BodyN                 0.8608618         NA
+Group.living2         0.0078003         NA
+Mating.system2        0.0051342         NA
+Parental.care2       -0.0053897         NA
+Population.density   -0.0132317         NA
+BodyN:Parental.care2 -0.0023046         NA
+
+$`96`
+                       Estimate Std. Error
+(Intercept)           0.0956301         NA
+BodyN                 0.8612345         NA
+Group.living2         0.0073561         NA
+Mating.system2        0.0066445         NA
+Parental.care2       -0.0062841         NA
+Population.density   -0.0128861         NA
+BodyN:Mating.system2 -0.0023631         NA
+
+$`308`
+                            Estimate Std. Error
+(Intercept)               0.09873044         NA
+BodyN                     0.85683707         NA
+Group.living2             0.00763268         NA
+Population.density       -0.01489091         NA
+BodyN:Group.living2      -0.00003992         NA
+BodyN:Population.density  0.00311715         NA
+
+$`222`
+                       Estimate Std. Error
+(Intercept)           0.0963883         NA
+BodyN                 0.8612760         NA
+Mating.system2        0.0103207         NA
+Parental.care2       -0.0066903         NA
+Population.density   -0.0094019         NA
+BodyN:Mating.system2 -0.0077277         NA
+BodyN:Parental.care2  0.0024945         NA
+
+$`60`
+                       Estimate Std. Error
+(Intercept)          0.09925335         NA
+BodyN                0.85763989         NA
+Group.living2        0.00810973         NA
+Parental.care2      -0.00367901         NA
+Population.density  -0.01458675         NA
+BodyN:Group.living2 -0.00021952         NA
+
+$`350`
+                            Estimate Std. Error
+(Intercept)               0.09691928         NA
+BodyN                     0.86127455         NA
+Mating.system2            0.01031121         NA
+Parental.care2           -0.00547195         NA
+Population.density       -0.01069729         NA
+BodyN:Mating.system2     -0.00742981         NA
+BodyN:Population.density  0.00097549         NA
+
+$`240`
+                       Estimate Std. Error
+(Intercept)           0.0896403         NA
+BodyN                 0.8614085         NA
+Group.living2         0.0028922         NA
+Mating.system2        0.0099011         NA
+Parental.care2       -0.0063462         NA
+BodyN:Group.living2   0.0061945         NA
+BodyN:Mating.system2 -0.0050348         NA
+BodyN:Parental.care2  0.0017615         NA
+
+$`410`
+                            Estimate Std. Error
+(Intercept)               0.10196849         NA
+BodyN                     0.85764754         NA
+Parental.care2           -0.00151201         NA
+Population.density       -0.01225997         NA
+BodyN:Parental.care2     -0.00083454         NA
+BodyN:Population.density  0.00074772         NA
+
+$`344`
+                            Estimate Std. Error
+(Intercept)               0.09684247         NA
+BodyN                     0.85782032         NA
+Group.living2             0.00709876         NA
+Mating.system2            0.00323132         NA
+Population.density       -0.01359135         NA
+BodyN:Mating.system2      0.00054273         NA
+BodyN:Population.density  0.00406295         NA
+
+$`414`
+                           Estimate Std. Error
+(Intercept)               0.0979241         NA
+BodyN                     0.8594982         NA
+Mating.system2            0.0059621         NA
+Parental.care2           -0.0045159         NA
+Population.density       -0.0104907         NA
+BodyN:Parental.care2     -0.0013670         NA
+BodyN:Population.density  0.0019599         NA
+
+$`284`
+                           Estimate Std. Error
+(Intercept)               0.0991164         NA
+BodyN                     0.8579872         NA
+Group.living2             0.0080609         NA
+Parental.care2           -0.0035352         NA
+Population.density       -0.0155721         NA
+BodyN:Population.density  0.0019562         NA
+
+$`156`
+                       Estimate Std. Error
+(Intercept)           0.0984908         NA
+BodyN                 0.8589971         NA
+Group.living2         0.0079183         NA
+Parental.care2       -0.0027408         NA
+Population.density   -0.0142119         NA
+BodyN:Parental.care2 -0.0021434         NA
+
+$`64`
+                      Estimate Std. Error
+(Intercept)          0.0973259         NA
+BodyN                0.8589919         NA
+Group.living2        0.0057384         NA
+Mating.system2       0.0053864         NA
+Parental.care2      -0.0063786         NA
+Population.density  -0.0128685         NA
+BodyN:Group.living2  0.0034839         NA
+
+$`288`
+                           Estimate Std. Error
+(Intercept)               0.0963916         NA
+BodyN                     0.8599247         NA
+Group.living2             0.0076083         NA
+Mating.system2            0.0054721         NA
+Parental.care2           -0.0066677         NA
+Population.density       -0.0146593         NA
+BodyN:Population.density  0.0036254         NA
+
+$`412`
+                            Estimate Std. Error
+(Intercept)               0.09979728         NA
+BodyN                     0.85867537         NA
+Group.living2             0.00793490         NA
+Parental.care2           -0.00301731         NA
+Population.density       -0.01450836         NA
+BodyN:Parental.care2     -0.00148788         NA
+BodyN:Population.density -0.00026361         NA
+
+$`376`
+                            Estimate Std. Error
+(Intercept)               0.09705837         NA
+BodyN                     0.85755914         NA
+Group.living2             0.00585291         NA
+Mating.system2            0.00307281         NA
+Population.density       -0.01386033         NA
+BodyN:Group.living2       0.00282211         NA
+BodyN:Mating.system2      0.00082244         NA
+BodyN:Population.density  0.00457109         NA
+
+$`224`
+                        Estimate Std. Error
+(Intercept)           9.4524e-02         NA
+BodyN                 8.6153e-01         NA
+Group.living2         7.4735e-03         NA
+Mating.system2        6.9656e-03         NA
+Parental.care2       -6.4809e-03         NA
+Population.density   -1.2805e-02         NA
+BodyN:Mating.system2 -3.0929e-03         NA
+BodyN:Parental.care2 -2.4034e-05         NA
+
+$`478`
+                           Estimate Std. Error
+(Intercept)               0.0974482         NA
+BodyN                     0.8609775         NA
+Mating.system2            0.0100261         NA
+Parental.care2           -0.0070684         NA
+Population.density       -0.0104878         NA
+BodyN:Mating.system2     -0.0074172         NA
+BodyN:Parental.care2      0.0031993         NA
+BodyN:Population.density  0.0013577         NA
+
+$`188`
+                        Estimate Std. Error
+(Intercept)           0.09893334         NA
+BodyN                 0.85946127         NA
+Group.living2         0.00795275         NA
+Parental.care2       -0.00279630         NA
+Population.density   -0.01471474         NA
+BodyN:Group.living2   0.00012143         NA
+BodyN:Parental.care2 -0.00180630         NA
+
+$`352`
+                           Estimate Std. Error
+(Intercept)               0.0957291         NA
+BodyN                     0.8602489         NA
+Group.living2             0.0076126         NA
+Mating.system2            0.0066272         NA
+Parental.care2           -0.0066925         NA
+Population.density       -0.0139970         NA
+BodyN:Mating.system2     -0.0019641         NA
+BodyN:Population.density  0.0027513         NA
+
+$`320`
+                           Estimate Std. Error
+(Intercept)               0.0962260         NA
+BodyN                     0.8584251         NA
+Group.living2             0.0059417         NA
+Mating.system2            0.0053883         NA
+Parental.care2           -0.0066212         NA
+Population.density       -0.0139199         NA
+BodyN:Group.living2       0.0032939         NA
+BodyN:Population.density  0.0031734         NA
+
+$`316`
+                            Estimate Std. Error
+(Intercept)               0.09994932         NA
+BodyN                     0.85799837         NA
+Group.living2             0.00844507         NA
+Parental.care2           -0.00374981         NA
+Population.density       -0.01534436         NA
+BodyN:Group.living2      -0.00045666         NA
+BodyN:Population.density  0.00104721         NA
+
+$`128`
+                       Estimate Std. Error
+(Intercept)           0.0956312         NA
+BodyN                 0.8590982         NA
+Group.living2         0.0053727         NA
+Mating.system2        0.0073173         NA
+Parental.care2       -0.0067465         NA
+Population.density   -0.0126848         NA
+BodyN:Group.living2   0.0036718         NA
+BodyN:Mating.system2 -0.0028699         NA
+
+$`416`
+                           Estimate Std. Error
+(Intercept)               0.0966879         NA
+BodyN                     0.8602236         NA
+Group.living2             0.0076031         NA
+Mating.system2            0.0052432         NA
+Parental.care2           -0.0054890         NA
+Population.density       -0.0147407         NA
+BodyN:Parental.care2     -0.0022779         NA
+BodyN:Population.density  0.0031023         NA
+
+$`192`
+                       Estimate Std. Error
+(Intercept)           0.0981758         NA
+BodyN                 0.8579732         NA
+Group.living2         0.0055416         NA
+Mating.system2        0.0055180         NA
+Parental.care2       -0.0053795         NA
+Population.density   -0.0132636         NA
+BodyN:Group.living2   0.0038013         NA
+BodyN:Parental.care2 -0.0028397         NA
+
+$`256`
+                       Estimate Std. Error
+(Intercept)           0.0963118         NA
+BodyN                 0.8599135         NA
+Group.living2         0.0051859         NA
+Mating.system2        0.0065038         NA
+Parental.care2       -0.0056836         NA
+Population.density   -0.0127331         NA
+BodyN:Group.living2   0.0043053         NA
+BodyN:Mating.system2 -0.0020093         NA
+BodyN:Parental.care2 -0.0023122         NA
+
+$`444`
+                            Estimate Std. Error
+(Intercept)               0.09833766         NA
+BodyN                     0.85920951         NA
+Group.living2             0.00767401         NA
+Parental.care2           -0.00285824         NA
+Population.density       -0.01459019         NA
+BodyN:Group.living2       0.00050585         NA
+BodyN:Parental.care2     -0.00170322         NA
+BodyN:Population.density -0.00099607         NA
+
+$`480`
+                            Estimate Std. Error
+(Intercept)               0.09552545         NA
+BodyN                     0.86100411         NA
+Group.living2             0.00766150         NA
+Mating.system2            0.00645631         NA
+Parental.care2           -0.00664038         NA
+Population.density       -0.01394886         NA
+BodyN:Mating.system2     -0.00142636         NA
+BodyN:Parental.care2     -0.00064135         NA
+BodyN:Population.density  0.00170869         NA
+
+$`384`
+                           Estimate Std. Error
+(Intercept)               0.0971098         NA
+BodyN                     0.8590196         NA
+Group.living2             0.0057111         NA
+Mating.system2            0.0072440         NA
+Parental.care2           -0.0067579         NA
+Population.density       -0.0140724         NA
+BodyN:Group.living2       0.0030308         NA
+BodyN:Mating.system2     -0.0032194         NA
+BodyN:Population.density  0.0029780         NA
+
+$`448`
+                           Estimate Std. Error
+(Intercept)               0.0976646         NA
+BodyN                     0.8574213         NA
+Group.living2             0.0060352         NA
+Mating.system2            0.0055640         NA
+Parental.care2           -0.0055623         NA
+Population.density       -0.0139432         NA
+BodyN:Group.living2       0.0034028         NA
+BodyN:Parental.care2     -0.0022674         NA
+BodyN:Population.density  0.0033682         NA
+
+$`512`
+                           Estimate Std. Error
+(Intercept)               0.0951134         NA
+BodyN                     0.8593245         NA
+Group.living2             0.0056819         NA
+Mating.system2            0.0070836         NA
+Parental.care2           -0.0062349         NA
+Population.density       -0.0138110         NA
+BodyN:Group.living2       0.0036208         NA
+BodyN:Mating.system2     -0.0027493         NA
+BodyN:Parental.care2     -0.0012217         NA
+BodyN:Population.density  0.0025691         NA
+
+$`13`
+                Estimate Std. Error
+(Intercept)     0.407459         NA
+Mating.system2 -0.020254         NA
+Parental.care2  0.029520         NA
+
+$`11`
+                 Estimate Std. Error
+(Intercept)     0.4037585         NA
+Group.living2  -0.0061278         NA
+Parental.care2  0.0190582         NA
+
+$`9`
+               Estimate Std. Error
+(Intercept)    0.401771         NA
+Parental.care2 0.018937         NA
+
+$`15`
+                 Estimate Std. Error
+(Intercept)     0.4148642         NA
+Group.living2  -0.0067744         NA
+Mating.system2 -0.0202955         NA
+Parental.care2  0.0300357         NA
+
+$`1`
+            Estimate Std. Error
+(Intercept)  0.40359         NA
+
+$`5`
+                Estimate Std. Error
+(Intercept)     0.412781         NA
+Mating.system2 -0.012311         NA
+
+$`7`
+                 Estimate Std. Error
+(Intercept)     0.4144919         NA
+Group.living2  -0.0052021         NA
+Mating.system2 -0.0125601         NA
+
+$`3`
+                Estimate Std. Error
+(Intercept)    0.4113509         NA
+Group.living2 -0.0047749         NA
+
+$`29`
+                    Estimate Std. Error
+(Intercept)         0.423305         NA
+Mating.system2     -0.023756         NA
+Parental.care2      0.027508         NA
+Population.density -0.031888         NA
+
+$`25`
+                    Estimate Std. Error
+(Intercept)         0.413055         NA
+Parental.care2      0.015951         NA
+Population.density -0.025127         NA
+
+$`27`
+                     Estimate Std. Error
+(Intercept)         0.4147649         NA
+Group.living2      -0.0035984         NA
+Parental.care2      0.0167494         NA
+Population.density -0.0239294         NA
+
+$`31`
+                     Estimate Std. Error
+(Intercept)         0.4238611         NA
+Group.living2      -0.0033557         NA
+Mating.system2     -0.0241074         NA
+Parental.care2      0.0282832         NA
+Population.density -0.0311472         NA
+
+$`19`
+                     Estimate Std. Error
+(Intercept)         0.4160694         NA
+Group.living2      -0.0020376         NA
+Population.density -0.0277671         NA
+
+$`17`
+                    Estimate Std. Error
+(Intercept)         0.417114         NA
+Population.density -0.027537         NA
+
+$`21`
+                    Estimate Std. Error
+(Intercept)         0.429391         NA
+Mating.system2     -0.015784         NA
+Population.density -0.034543         NA
+
+$`23`
+                     Estimate Std. Error
+(Intercept)         0.4287432         NA
+Group.living2      -0.0018226         NA
+Mating.system2     -0.0159213         NA
+Population.density -0.0340502         NA
+
