@@ -47,6 +47,37 @@ surfaceSummary(surface$fwd, surface$bwd)
 surfaceAICPlot(surface$fwd, surface$bwd)
 
 
+###
+# ??2	Rate of stochastic evolution (one parameter per trait)
+# ??	Rate of adaptation to optima (one parameter per trait)
+# t 1/2	Expected time to evolve halfway to an optimum; log(2)/??
+# ??	Optimum trait value (one parameter per regime per trait)
+# k	Number of regime shifts
+# k'	Number of distinct regimes (after collapsing convergent regimes)
+# k'conv	Number of convergent regimes reached by multiple shifts
+# ???k	k ??? k', the reduction in complexity of the adaptive landscape when accounting for convergence
+# ???k/k	Relative reduction in complexity of the adaptive landscape when accounting for convergence
+# c	Number of shifts that are towards convergent regimes occupied by multiple lineages
+# c/k	Proportion of shifts that are towards convergent regimes
+
+
+#node desccentands by numbers
+require(phangorn)
+Descendants(tree,node=198, type ="all")
+
+#find node descendants by labels
+tips(tree, node)
+
+#identify node by clicking close to it
+identify(tree, nodes = TRUE, tips = FALSE, labels = TRUE, quiet = FALSE)
+
+#plot edges/nodes/tips
+plot(tree)
+edgelabels(tree$edge, c(1, 2, 198), frame = "none", col = "red")
+
+options(max.print=10000)
+ouchDescendants(78, otree)
+
 
 #OPTION 2#
 
@@ -78,6 +109,8 @@ surfaceAICPlot(fwd, bwd)
 abline(h=bm[[1]]$aic,lty="longdash")
 abline(h=H12[[1]]$aic,lty="longdash")
 text(c(6,6),c(bm[[1]]$aic, ou1[[1]]$aic, H12[[1]]$aic)-2,c("BM","OU1","H12"),cex=0.5)
+
+
 
 
 

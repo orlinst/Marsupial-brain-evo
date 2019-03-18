@@ -3,6 +3,15 @@ title: "MCMCglmm on N imputed datasets. Pooling. Plotting"
 output: html_document
 ---
 
+NOTES:
+
+- redo ENV model
+- finalise new models
+
+
+
+
+
 #Packages
 ```{r , message=FALSE, warning=FALSE}
 
@@ -174,7 +183,7 @@ for(imputedsets in 1 : length(imp$imp[[1]])) {
 
 #Reading all models + all chains (if more chains are run, add manually here)
 #setwd("C:/Users/uqotodor_local/Dropbox/05. Github/Marsupial-brain-evo/MCMCmodels/model_dev")
-setwd("C:/Users/uqotodor_local/Dropbox/05. Github/Marsupial-brain-evo/MCMCmodels/model_vul")
+setwd("C:/Users/uqotodor_local/Dropbox/05. Github/Marsupial-brain-evo/MCMCmodels/model_ori3")
 list() -> raw_models_chain1 -> raw_models_chain2
 for(imputedsets in 1:  length(imp$imp[[1]])) {
   raw_models_chain1[[imputedsets]] <- read.mulTree(paste0("model",imputedsets,"-tree1_chain1"), model = TRUE)
@@ -224,11 +233,11 @@ solX <- as.data.frame(list.rbind(all_Sol))
 ##Neat up the names!
 ```{r}
 names(solX)
-names(solX) <- c("Intercept", "Status - 2", "Status - 3", "Body Size", "Status - 2:Body Size", "Status - 3:Body Size" )
+names(solX) <- c("Intercept",    "Parental Care", "Mating System", "Body Size")
 
 
 #env
-# ("Intercept", "Diurnal", "Creposcular", "Shelter safety - intermediate", "Shelter Safety - open", "Terrestrial", "Diet - 2", "Diet - 3", "Diet - 4", "Home Range", "Body Size")
+# ("Intercept", "Diurnal", "Crepuscular", "Shelter Safety - intermediate", "Shelter Safety - open", "Terrestrial", "Diet - 2", "Diet - 3", "Diet - 4", "Home Range", "Body Size")
 
 #dev
 # ("Intercept", "Body Size", "Weaning Age", "Litter Size")
@@ -251,6 +260,12 @@ names(solX) <- c("Intercept", "Status - 2", "Status - 3", "Body Size", "Status -
 
 #vul
 # ("Intercept", "Status - 2", "Status - 3", "Body Size", "Status - 2:Body Size", "Status - 3:Body Size" )
+
+#soc2
+#("Intercept", "Population density",  "Home Range", "Body Size")
+
+#soc3
+#("Intercept",    "Parental Care", "Mating System", "Body Size")
 ```
 
 #Plotting1 : Densities
