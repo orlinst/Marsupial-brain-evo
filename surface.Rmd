@@ -22,7 +22,7 @@ library(igraph)
 
 
 #load surface data - already ln'ed, stdzed, res included
-load("./Data/data_surface.txt")
+load("./Data/surface.txt")
 load("./Data/surface_standartized_res_body.RData")
 tree <-read.tree("./Data/tree176.nwk")
 
@@ -82,6 +82,24 @@ options(max.print=10000)
 #USE THIS ONE
 ouchDescendants(78, otree)
 
+
+
+#plotting the summary table of thetas
+
+library(ggplot2)
+library(reshape2)
+
+Body <- data$Body/5
+Residuals <- data$Residuals
+Regime <- data$name
+
+
+df1 <- data.frame(Body, Residuals, Regime)
+df2 <- melt(df1, id.vars='Regime')
+head(df2)
+
+ggplot(df2, aes(x=Regime, y=value, fill=variable)) +
+    geom_bar(stat='identity', position='dodge') + coord_flip()
 
 #OPTION 2#
 
