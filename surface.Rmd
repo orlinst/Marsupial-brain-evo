@@ -20,9 +20,11 @@ require(caper)
 library(surface)
 library(igraph)
 
-rownames(dat) <- data$Names
-Data[1] <- NULL
 
+#load surface data - already ln'ed, stdzed, res included
+load("./Data/data_surface.txt")
+load("./Data/surface_standartized_res_body.RData")
+tree <-read.tree("./Data/tree176.nwk")
 
 
 #OPTION 1#
@@ -33,8 +35,8 @@ surface <- runSurface(tree, dat, exclude = 0, aic_threshold = 0, max_steps = NUL
 
 
 kk<-length(surface$bwd)
-surfaceTreePlot(tree, surface$bwd[[kk]], labelshifts = T, convcol = TRUE, cex = 0.5)
-surfaceTraitPlot(data_surf, surface$bwd[[kk]], whattraits = c(1,2))
+surfaceTreePlot(tree, surface$bwd[[kk]], labelshifts = T, convcol = TRUE, cex = 0.5, align.tip.label = T)
+surfaceTraitPlot(dat, surface$bwd[[kk]], whattraits = c(1,2))
 
 bsum<-surfaceSummary(surface$bwd)
 bsum$alpha
@@ -48,15 +50,15 @@ surfaceAICPlot(surface$fwd, surface$bwd)
 
 
 ###
-# ??2	Rate of stochastic evolution (one parameter per trait)
-# ??	Rate of adaptation to optima (one parameter per trait)
+#sigma2	Rate of stochastic evolution (one parameter per trait)
+# alpha	Rate of adaptation to optima (one parameter per trait)
 # t 1/2	Expected time to evolve halfway to an optimum; log(2)/??
-# ??	Optimum trait value (one parameter per regime per trait)
+# theta	Optimum trait value (one parameter per regime per trait)
 # k	Number of regime shifts
 # k'	Number of distinct regimes (after collapsing convergent regimes)
 # k'conv	Number of convergent regimes reached by multiple shifts
-# ???k	k ??? k', the reduction in complexity of the adaptive landscape when accounting for convergence
-# ???k/k	Relative reduction in complexity of the adaptive landscape when accounting for convergence
+# delta k	k ??? k', the reduction in complexity of the adaptive landscape when accounting for convergence
+# delta k/k	Relative reduction in complexity of the adaptive landscape when accounting for convergence
 # c	Number of shifts that are towards convergent regimes occupied by multiple lineages
 # c/k	Proportion of shifts that are towards convergent regimes
 
@@ -76,6 +78,8 @@ plot(tree)
 edgelabels(tree$edge, c(1, 2, 198), frame = "none", col = "red")
 
 options(max.print=10000)
+
+#USE THIS ONE
 ouchDescendants(78, otree)
 
 
