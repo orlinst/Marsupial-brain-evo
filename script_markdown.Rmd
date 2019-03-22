@@ -36,8 +36,8 @@ require(RColorBrewer)
 
 #Load up data and tree
 ```{r setup, include=FALSE}
-data <-read.csv("marsALL.txt", sep = "\t", header = TRUE) 
-tree <-read.tree("tree176.nwk")
+data <-read.csv("./Data/marsALL.txt", sep = "\t", header = TRUE) 
+tree <-read.tree("./Data/tree176.nwk")
 rownames(data) <- data$Names
 clean.data(data, tree)  ## check if data == tree names
 ```
