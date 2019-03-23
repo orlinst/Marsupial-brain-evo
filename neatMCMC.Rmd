@@ -104,6 +104,15 @@ formula_ori3 <- Brain ~ DiurnalityN*Origin
 
 ```
 
+```{r}
+formula_dev <- Brain ~ BodyN + Litter.size*regime
+formula_ori <- Brain ~ BodyN + Origin * regime
+formula_vul <- Brain ~ BodyN + Status * regime
+formula_tor <- Brain ~ BodyN + Torpor * regime
+formula_fmr <- Brain ~ BodyN + FMR.Riek * regime
+```
+
+
 #Parameters for the MCMC
 ```{r parameters, message=FALSE, warning=FALSE}
 

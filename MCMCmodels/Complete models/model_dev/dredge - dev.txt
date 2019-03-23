@@ -1,0 +1,107 @@
+Global model call: MCMCglmm.updateable(fixed = formula_dev, random = ~animal, family = "gaussian", 
+    data = mcmc_dataE, prior = prior, pedigree = mcmc_treeE, 
+    nitt = nitt, thin = thin, burnin = burnin)
+---
+Model selection table 
+     (Int)    BdN  Ltt.siz Wnn.age BdN:Ltt.siz BdN:Wnn.age df  logLik    DIC  delta weight
+4  0.12510 0.8479 -0.06456                                  5 451.790 -810.0   0.00  0.393
+12 0.12780 0.8447 -0.06933             0.01248              6 451.925 -809.4   0.57  0.296
+8  0.11750 0.8452 -0.06361 0.01631                          6 450.689 -807.7   2.24  0.128
+16 0.11880 0.8392 -0.06968 0.01652     0.01717              7 450.317 -806.5   3.48  0.069
+24 0.11670 0.8446 -0.06369 0.01572               0.0001927  7 450.611 -806.3   3.67  0.063
+32 0.12370 0.8310 -0.07087 0.01027     0.02134   0.0107600  8 450.137 -805.8   4.22  0.048
+2  0.09605 0.8585                                           4 447.470 -800.5   9.44  0.004
+6  0.08283 0.8547          0.02269                          5 444.224 -796.3  13.67  0.000
+22 0.07286 0.8747          0.03833              -0.0308800  6 444.042 -794.1  15.87  0.000
+1  0.40690                                                  3 428.616 -713.6  96.36  0.000
+5  0.34940                 0.08870                          4 427.649 -713.1  96.84  0.000
+7  0.38340        -0.08130 0.08611                          5 423.064 -702.5 107.52  0.000
+3  0.44440        -0.08899                                  4 421.890 -701.2 108.81  0.000
+
+
+Models ranked by DIC(x) 
+Random terms (all models): 
+‘~animal’
+$`4`
+            Estimate Std. Error
+(Intercept)  0.12507         NA
+BodyN        0.84793         NA
+Litter.size -0.06456         NA
+
+$`12`
+                   Estimate Std. Error
+(Intercept)        0.127843         NA
+BodyN              0.844679         NA
+Litter.size       -0.069334         NA
+BodyN:Litter.size  0.012482         NA
+
+$`8`
+             Estimate Std. Error
+(Intercept)  0.117540         NA
+BodyN        0.845227         NA
+Litter.size -0.063613         NA
+Weaning.age  0.016307         NA
+
+$`16`
+                   Estimate Std. Error
+(Intercept)        0.118751         NA
+BodyN              0.839235         NA
+Litter.size       -0.069681         NA
+Weaning.age        0.016516         NA
+BodyN:Litter.size  0.017166         NA
+
+$`24`
+                     Estimate Std. Error
+(Intercept)        0.11666793         NA
+BodyN              0.84459007         NA
+Litter.size       -0.06369174         NA
+Weaning.age        0.01571970         NA
+BodyN:Weaning.age  0.00019268         NA
+
+$`32`
+                   Estimate Std. Error
+(Intercept)        0.123745         NA
+BodyN              0.831049         NA
+Litter.size       -0.070871         NA
+Weaning.age        0.010267         NA
+BodyN:Litter.size  0.021339         NA
+BodyN:Weaning.age  0.010765         NA
+
+$`2`
+            Estimate Std. Error
+(Intercept) 0.096053         NA
+BodyN       0.858514         NA
+
+$`6`
+            Estimate Std. Error
+(Intercept) 0.082826         NA
+BodyN       0.854727         NA
+Weaning.age 0.022688         NA
+
+$`22`
+                   Estimate Std. Error
+(Intercept)        0.072858         NA
+BodyN              0.874742         NA
+Weaning.age        0.038335         NA
+BodyN:Weaning.age -0.030879         NA
+
+$`1`
+            Estimate Std. Error
+(Intercept)  0.40691         NA
+
+$`5`
+            Estimate Std. Error
+(Intercept) 0.349357         NA
+Weaning.age 0.088696         NA
+
+$`7`
+             Estimate Std. Error
+(Intercept)  0.383368         NA
+Litter.size -0.081302         NA
+Weaning.age  0.086112         NA
+
+$`3`
+             Estimate Std. Error
+(Intercept)  0.444387         NA
+Litter.size -0.088994         NA
+

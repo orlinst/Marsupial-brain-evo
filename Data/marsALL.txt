@@ -1,177 +1,177 @@
-Names	Species	Order	Family	Common Name	Origin	Status	BodyN	Brain	DiurnalityN	Arboreality	Shelter.safety	Diet	Group.living	Parental.care	Mating.system	Litter.size	Weaning.age	HR	Population.density	FMR.Riek	Torpor	Play
-Acrobates_pygmaeus	Acrobates pygmaeus	Diprotodontia	Acrobatidae	Feathertail glider	1	1	14.5	0.35	1	1	1	3	2	2	2	2.8	97.5	2.1	9	34.9	1	1
-Aepyprymnus_rufescens	Aepyprymnus rufescens	Diprotodontia	Potoroidae	Rufous bettong	1	1	2750	12.3	1	2	2	2	2	1	1	1	162.5	110	0.96	1378.6	0	3
-Antechinomys_laniger	Antechinomys laniger	Dasyuromorphia	Dasyuridae	Kultarr	1	2	25	0.47	1	2	1	4	1	1	1	6	95.5				1	1
-Antechinus_agilis	Antechinus agilis	Dasyuromorphia	Dasyuridae	Agile antechinus	1	1	24	0.56	3	1	1	4	2	1	1	9.3	95	1	8.13			
-Antechinus_flavipes	Antechinus flavipes	Dasyuromorphia	Dasyuridae	Yellow footed Antechinus	1	1	45	0.64	3	2	2	4	2	1	1	8.4	90	0.6	1.6	105.7	1	
-Antechinus_minimus	Antechinus minimus	Dasyuromorphia	Dasyuridae	Swamp antechinus	1	2	70	0.74	3	2	2	4	2	1	1	7.4	105	2.7	6.9	135.6		
-Antechinus_stuartii	Antechinus stuartii	Dasyuromorphia	Dasyuridae	Brown antechinus	1	1	27.5	0.76	3	2	2	4	2	1	1	7.2	87.5	0.9	2.87	91	1	2
-Antechinus_swainsonii	Antechinus swainsonii	Dasyuromorphia	Dasyuridae	Dusky antechinus	1	1	53	1.09	1	2	1	4	1	1	1	7.6	88		7.09	147.1	1	
-Bettongia_gaimardi	Bettongia gaimardi	Diprotodontia	Potoroidae	Tasmanian bettong	1	1	1660	11.7	1	2	1	2	1	1	1	1	155	135	0.19	813.6	0	
-Bettongia_lesueur	Bettongia lesueur	Diprotodontia	Potoroidae	Burrowing bettong	1	2	1300	10.5	1	2	1	2	2	1	2	1	165		0.17	476.7		
-Bettongia_penicillata	Bettongia penicillata	Diprotodontia	Potoroidae	Woylie	1	2	1181.25	9.56	1	2	2	2	1	1	1	1	158	65.4	0.26	600.2	0	3
-Bettongia_tropica	Bettongia tropica	Diprotodontia	Potoroidae	Northern bettong	1	2	1200	8.92	1	2	2	2	1	1	1	1	176	70	0.2			
-Burramys_parvus	Burramys parvus	Diprotodontia	Burramyidae	Mountain pygmy possum	1	2	41.5	1	1	2	2	2	1	1	2	3.6	67	7.7	0.65	70	1	1
-Caenolestes_fuliginosus	Caenolestes fuliginosus	Paucituberculata	Caenolestidae	Dusky caenolestid	3	3	20.34	0.77	3	2	2	4				4						
-Caluromys_derbianus	Caluromys derbianus	Didelphimorphia	Didelphidae	Derbys woolly opossum	3	1	340	3.8	1	1	1	2	1	1	1	3.1	120	0.1	13.4		0	
-Caluromys_lanatus	Caluromys lanatus	Didelphimorphia	Didelphidae	Western woolly opossum	3	1	356	3.53	1	1	2	3	1	1	1	2.5	220	0.25	0.13			
-Caluromys_philander	Caluromys philander	Didelphimorphia	Didelphidae	Bare tailed woolly opossum	3	1	170	2.7	1	1	1	2	1	1	1	4.3	120	3	0.97			
-Caluromysiops_irrupta	Caluromysiops irrupta	Didelphimorphia	Didelphidae	Black-shouldered opossum	3	2	397.03	4	1	1		3	1	1	1	2						
-Cercartetus_caudatus	Cercartetus caudatus	Diprotodontia	Burramyidae	Long tailed pygmy possum	2	2	30	0.71	1	1	1	3	2	1		2.9	77		0.5	54.2	1	
-Cercartetus_nanus	Cercartetus nanus	Diprotodontia	Burramyidae	Eastern pygmy possum	1	1	24	0.43	1	1	1	3	2	1	1	3.9	65	0.75	11.56	45.7	1	1
-Chaeropus_ecaudatus	Chaeropus ecaudatus	Paramelemorphia	Chaeropodidae	Pig footed bandicoot	1	3	200	2.4	2	2	2	2	1			2						
-Chironectes_minimus	Chironectes minimus	Didelphimorphia	Didelphidae	Water opossum	3	1	686.67	4.7	1	2	2	4	1	1	1	4	55	180	1.34		0	
-Cryptonanus_chacoensis	Cryptonanus chacoensis	Didelphimorphia	Didelphidae	Chacoan mouse opossums	3	1	13.5	0.49	1	2	3	3		1		7						
-Cryptonanus_unduaviensis	Cryptonanus unduaviensis	Didelphimorphia	Didelphidae	Unduavi gracile opossum	3	2	35	0.8	1	1						12						
-Dactylopsila_palpator	Dactylopsila palpator	Diprotodontia	Petauridae	Long-fingered Triok	2	1	370	6.91	1	1		4				1						
-Dactylopsila_trivirgata	Dactylopsila trivirgata	Diprotodontia	Petauridae	Striped possum	2	2	423	5.83	1	1	1	4	1	1	2	1.75	200	150	0.04	394		1
-Dasycercus_cristicauda	Dasycercus cristicauda	Dasyuromorphia	Dasyuridae	Crest tailed mulgara	1	2	120	1.24	3	2	1	4	1	1	1	7	121	14.4		199.1	1	3
-Dasykaluta_rosamondae	Dasykaluta rosamondae	Dasyuromorphia	Dasyuridae	Kaluta	1	1	27.5	0.54	3	2	2	4	1	1	1	6.3	113			86.6	1	
-Dasyuroides_byrnei	Dasyuroides byrnei	Dasyuromorphia	Dasyuridae	Kowari	1	2	117.5	1.5	3	2	1	4	1	1	1	4.3	118	1400		197.2	1	3
-Dasyurus_albopunctatus	Dasyurus albopunctatus	Dasyuromorphia	Dasyuridae	New Guinean quoll	2	1	627	3.79	3		2	4										
-Dasyurus_geoffroii	Dasyurus geoffroii	Dasyuromorphia	Dasyuridae	Western quoll	1	2	1100	5.17	3	2	2	4	1	1	2	6	157.5	400	0.02	950.9	1	
-Dasyurus_hallucatus	Dasyurus hallucatus	Dasyuromorphia	Dasyuridae	Northern quoll	1	2	597.5	3.38	1	2	2	4	1	1	1	6.6	142.5	100	0.21	652.6	0	3
-Dasyurus_maculatus	Dasyurus maculatus	Dasyuromorphia	Dasyuridae	Spotted tailed quoll	1	2	2500	9.41	3	2	2	4	1	1	2	5.3	197	1744	0.04	1361.5	0	3
-Dasyurus_viverrinus	Dasyurus viverrinus	Dasyuromorphia	Dasyuridae	Eastern quoll	1	2	1100	5.33	3	2	2	4	1	1	1	6	159	44	0.19	935.7	1	3
-Dendrolagus_bennettianus	Dendrolagus bennettianus	Diprotodontia	Macropodidae	Bennett's tree kangaroo	1	2	10525	26	3	1	2	1	1	1	2	1	720	29	0.28	2074.5	0	
-Dendrolagus_dorianus	Dendrolagus dorianusx	Diprotodontia	Macropodidae	Doria's tree-kangaroo	2	2	10500	32.3	3	2	1	2	2	2	2	1	720					3
-Dendrolagus_goodfellowi	Dendrolagus goodfellowix	Diprotodontia	Macropodidae	Goodfellow's tree-kangaroo	2	2	8050	28.4	3	1		2	2		2	1	390				0	
-Dendrolagus_inustus	Dendrolagus inustusx	Diprotodontia	Macropodidae	Grizzled tree-kangaroo	2	2	11500	30.1	3	1	2	2				1	279					
-Dendrolagus_lumholtzi	Dendrolagus lumholtzi	Diprotodontia	Macropodidae	Lumholtzs tree kangaroo	2	2	7025	26.2	3	1	2	2	2	1	2	1	550	2.1	1.28	1636.8	0	3
-Dendrolagus_matschiei	Dendrolagus matschiei	Diprotodontia	Macropodidae	Matschie's tree-kangaroo	2	2	8800	27.5	3	1		2	2	2	2	1	290	25			0	
-Dendrolagus_scottae	Dendrolagus scottae	Diprotodontia	Macropodidae	Tenkile	2	2	9500	29.2	3	1		1	2	2	2	1	900	0.125			0	
-Dendrolagus_spadix	Dendrolagus spadix	Diprotodontia	Macropodidae	Lowlands tree-kangaroo	2	2	9100	28.5	3	1		2				1						
-Didelphis_albiventris	Didelphis albiventris	Didelphimorphia	Didelphidae	White-eared opossum	3	1	2316.4	6.87	3	1	2	4	1	1	1	5	117	0.57	1.1			
-Didelphis_marsupialis	Didelphis marsupialis	Didelphimorphia	Didelphidae	Common possum	3	1	1200	7.3	1	1	1	2	1	1	1	6	94	122	2		0	
-Didelphis_virginiana	Didelphis virginiana	Didelphimorphia	Didelphidae	Virginia opossum	3	1	2000	7.55	1	1	1	2	1	1	1	7.7	94	318	0.27		0	1
-Distoechurus_pennatus	Distoechurus pennatus	Diprotodontia	Acrobatidae	Feather-tailed possum	2		51.5	0.94	1	1		3	2	1	2	1						
-Dorcopsis_veterum	Dorcopsis veterum	Diprotodontia	Macropodidae	Brown dorcopsis	2	1	7500	16.7	3	2		2	2	1	1	1	270					
-Dorcopsulus_vanheurni	Dorcopsulus vanheurni	Diprotodontia	Macropodidae	Small dorcopsis	2	2	1696.5	11.8	1	2		1				1.5		1.5				
-Dromiciops_gliroides	Dromiciops gliroides	Microbiotheria	Microbiotheriidae	Monito del monte	3	2	20	0.81	1	1	1	3	2	1	1	2.5	180	1.6	23		1	
-Echymipera_clara	Echymipera clara	Paramelemorphia	Peramelidae	Clara's echymipera	2	1	1236.5	4.48	1	2												
-Echymipera_kalubu	Echymipera kalubu	Paramelemorphia	Peramelidae	Common echymipera	2		650	3.67	1			3				2.1	12	0.5				
-Echymipera_rufescens	Echymipera rufescens	Paramelemorphia	Peramelidae	Long nosed echymipera	1	2	1062.5	3.73	1	2	1	3	1	1	1	3	70	1.5		596.8	0	
-Glironia_venusta	Glironia venusta	Didelphimorphia	Didelphidae	Bushy-tailed opossum	3	2	136.67	1.9	1	1		2	1		1							
-Gracilinanus_agilis	Gracilinanus agilis	Didelphimorphia	Didelphidae	Agile gracile mouse opossum	3	1	18	0.58	1	1	3	2	1	1	1	12	80	0.13			1	
-Gracilinanus_microtarsus	Gracilinanus microtarsus	Didelphimorphia	Didelphidae	Brazilian gracile mouse opossum	3	1	22.93	0.71	1	1	2	4	1	1	1	10	90	0.14	16		1	
-Gymnobelideus_leadbeateri	Gymnobelideus leadbeateri	Diprotodontia	Petauridae	Leadbeaters possum	1	2	127.5	2.85	1	1	1	3	2	2	2	1.5	115.5	2	2.6	227.9	0	2
-Hemibelideus_lemuroides	Hemibelideus lemuroides	Diprotodontia	Pseudocheiridae	Lemuroid ringtail possum	1	2	974.5	3.15	1	1	1	1	2	2	2	1		1.2	7	654.8		
-Hyladelphys_kalinowskii	Hyladelphys kalinowskii	Didelphimorphia	Didelphidae	Kalinowski's mouse opossum	3	1	13.13	0.565	1	1	1		2			3						
-Isoodon_macrourus	Isoodon macrourus	Paramelemorphia	Peramelidae	Northen brown bandicoot	1	1	1600	4.42	3	2	2	3	1	1	1	3.3	60	6	0.7	737.2	0	
-Isoodon_obesulus	Isoodon obesulus	Paramelemorphia	Peramelidae	Southern brown bandicoot	1	2	755	3.89	3	2	2	3	1	1	1	2.7	62.5	5	1.82	549.1	0	1
-Lagorchestes_conspicillatus	Lagorchestes conspicillatus	Diprotodontia	Macropodidae	Spectacled hare wallaby	1	1	3175	14	1	2	3	1	1	1	1	1	204	10	0.42	679.7	0	2
-Lagorchestes_hirsutus	Lagorchestes hirsutus	Diprotodontia	Macropodidae	Rufous hare wallaby	1	2	1660	7.77	3	2	3	1	1	1	1	1	150		0.27	534.9		
-Lagostrophus_fasciatus	Lagostrophus fasciatus	Diprotodontia	Macropodidae	Banded hare wallaby	1	2	1600	7	1	2	3	1	2	1	2	1	270		0.88	703.7		
-Lasiorhinus_latifrons	Lasiorhinus latifrons	Diprotodontia	Vombatidae	Southern hairy nosed wombat	1	2	27125	55.5	1	2	1	1	1	1	1	1	333	4.8	2.74	3133.3	0	3
-Lestoros_inca	Lestoros inca	Paucituberculata	Caenolestidae	Incan shrew opossum	3	2	19.38	0.79	1	1		4				4						
-Lutreolina_crassicaudata	Lutreolina crassicaudata	Didelphimorphia	Didelphidae	Lutrine opossum	3	1	605.97	3.56	3	1	1	4	2	1	1	8	93	0.38			0	
-Macropus_agilis	Macropus agilis	Diprotodontia	Macropodidae	Agile wallaby	1	1	15000	33.3	3	2	3	1	2	1	1	1	326	38.2	0.18	2607.8	0	3
-Macropus_antilopinus	Macropus antilopinus	Diprotodontia	Macropodidae	Antilopine wallaby	1	2	27025	56.8	3	2	3	1	2	1	1	1	426	840	0.22	4183.1	0	3
-Macropus_eugenii	Macropus eugenii	Diprotodontia	Macropodidae	Tammar wallaby	1	2	6500	23.7	1	2	3	1	2	1	1	1	325	100	0.75	1234.1	0	3
-Macropus_fuliginosus	Macropus fuliginosus	Diprotodontia	Macropodidae	Western grey kangaroo	1	1	36500	58	3	2	3	1	2	1	1	1	540	70	0.41	5999.1	0	3
-Macropus_giganteus	Macropus giganteus	Diprotodontia	Macropodidae	Eastern grey kangaroo	1	1	40750	69.8	3	2	3	1	2	1	1	1	526	160	0.45	7255.4	0	3
-Macropus_irma	Macropus irma	Diprotodontia	Macropodidae	Western brush wallaby	1	1	8000	24.7	2	2	3	1	1	1	1	1	220		0.27	1808	0	
-Macropus_parma	Macropus parma	Diprotodontia	Macropodidae	Parma wallaby	1	2	4500	18.7	3	2	3	1	2	1	1	1	294			1360.1	0	3
-Macropus_parryi	Macropus parryi	Diprotodontia	Macropodidae	Whiptail wallaby	1	1	13500	41.3	2	2	3	1	2	1	1	1	505	3	0.37	2459.2	0	3
-Macropus_robustus	Macropus robustus	Diprotodontia	Macropodidae	Common wallaroo	1	1	25375	59	3	2	2	1	1	1	1	1	380	300	0.31	1689.4	0	3
-Macropus_rufogriseus	Macropus rufogriseus	Diprotodontia	Macropodidae	Red necked wallaby	1	1	16850	36	3	2	3	1	2	1	1	1	440	32	0.36	2734.1	0	3
-Macropus_rufus	Macropus rufus	Diprotodontia	Macropodidae	Red kangaroo	1	1	42000	62.4	3	2	3	1	2	1	1	1	374	774	0.11	4415.3	0	3
-Macrotis_lagotis	Macrotis lagotis	Paramelemorphia	Thylacomyidae	Bilby	1	2	1200	6.57	1	2	1	3	2	1	1	2	109	316		645.1	0	2
-Marmosa_lepida	Marmosa lepida	Didelphimorphia	Didelphidae	Little rufous mouse opossum	3	1	10.093	0.5	1	1		2		1		7						
-Marmosa_mexicana	Marmosa mexicana	Didelphimorphia	Didelphidae	Mexican mouse opossum	3	1	40.55	0.91	1	1	2		1	1		6						
-Marmosa_murina	Marmosa murina	Didelphimorphia	Didelphidae	Linnaeus' mouse opossum	3	1	54.1	1.1	1	1	2	4	1			8.5	62				1	
-Marmosa_robinsoni	Marmosa robinsoni	Didelphimorphia	Didelphidae	Robinson's mouse opossum	3	1	63.94	1.15	1	1		2		1	1	11	70	2.5			1	
-Marmosa_rubra	Marmosa rubra	Didelphimorphia	Didelphidae	Red mouse opossum	3	2	61	1.16	1	1		2				9						
-Marmosops_impavidus	Marmosops impavidus	Didelphimorphia	Didelphidae	Tschudi's slender opossum	3	1	34.95	0.91	1	1		2	1			8						
-Marmosops_incanus	Marmosops incanus	Didelphimorphia	Didelphidae	Gray slender mouse opossum	3	1	60	0.92	1	1		4		1	1							
-Marmosops_noctivagus	Marmosops noctivagus	Didelphimorphia	Didelphidae	White-bellied slender mouse opossum	3	1	52.54	1.11	1	1		2	1									
-Marmosops_parvidens	Marmosops parvidens	Didelphimorphia	Didelphidae	Delicate slender mouse opossum	3	1	20.66	0.63	1	1			1			6.5						
-Metachirus_nudicaudatus	Metachirus nudicaudatus	Didelphimorphia	Didelphidae	Brown four eyed opossum	3	1	380	2.91	1	2	2	3	1			4	100	0.83	1		0	
-Micoureus_demerarae	Micoureus demerarae	Didelphimorphia	Didelphidae	Woolly mouse opossum	3	1	98.58	1.45	1	1	3	3	1									
-Micoureus_regina	Micoureus regina	Didelphimorphia	Didelphidae	Short-furred woolly mouse opossum	3	1	90.88	1.4	1				1									
-Microperoryctes_longicauda	Microperoryctes longicauda	Paramelemorphia	Peramelidae	Striped bandicoot	2	1	538	3.81	1													
-Monodelphis_adusta	Monodelphis adusta	Didelphimorphia	Didelphidae	Sepia short-tailed opossum	3	1	19.15	0.47	1	2		4	1									
-Monodelphis_americana	Monodelphis americana	Didelphimorphia	Didelphidae	Northern three-striped short-tailed opossum	3	1	34.1	0.57	3	2	2	3	1					1				
-Monodelphis_brevicaudata	Monodelphis brevicaudata	Didelphimorphia	Didelphidae	Northern red sided opossum	3	1	84	0.9	1	1		3	1			7			1		1	
-Monodelphis_dimidiata	Monodelphis dimidiata	Didelphimorphia	Didelphidae	Yellow-sided opossum	3	1	36.57	0.6	1			4	2					0.5				
-Monodelphis_domestica	Monodelphis domestica	Didelphimorphia	Didelphidae	Gray short-tailed opossum	3	1	88.88	0.97	1	1	3	4	1	1	1	9	210	0.2			0	3
-Monodelphis_emiliae	Monodelphis emiliae	Didelphimorphia	Didelphidae	Emilia's Short-tailed opossum	3	1	14.29	0.4	2	2			1									
-Monodelphis_osgoodi	Monodelphis osgoodi	Didelphimorphia	Didelphidae	Osgood's short-tailed opossum	3	2	15.04	0.31	1	2		3	1									
-Monodelphis_sorex	Monodelphis sorex	Didelphimorphia	Didelphidae	Shrewish short-tailed opossum	3	1	21.18	0.42	2	2		3	1			19						
-Murexchinus_melanurus	Murexchinus melanurus	Dasyuromorphia	Dasyuridae	Black-tailed antechinus	2	1	31	0.65	1	1		4				4	100					
-Murexia_longicaudata	Murexia longicaudata	Dasyuromorphia	Dasyuridae	Short-furred dasyure	2	1	100	1.68	3	1	2	4				4						
-Myoictis_melas	Myoictis melas	Dasyuromorphia	Dasyuridae	Three-striped dasyure	2	1	91	2.05	1			4										
-Myrmecobius_fasciatus	Myrmecobius fasciatus	Dasyuromorphia	Myrmecobiidae	Numbat	1	2	537.5	4.25	2	2	2	4	1	1	2	4	270	50	0.05	252.5	1	3
-Neophascogale_lorentzii	Neophascogale lorentzi	Dasyuromorphia	Dasyuridae	Speckled dasyure	2	1	212	2.45	3	2		3				4						
-Ningaui_ridei	Ningaui ridei	Dasyuromorphia	Dasyuridae	Wongai ningaui	1	1	8.5	0.24	1	2	1	4	1	1	1	6.2	91			36.4	1	
-Ningaui_timealeyi	Ningaui timealeyi	Dasyuromorphia	Dasyuridae	Southern ningaui	1	1	6	0.26	1	2	3	4	1	1	1	6.3	95			28.5		
-Notoryctes_typhlops	Notoryctes typhlops	Notoryctemorphia	Notoryctidae	Kakarratul (marsupial mole)	1	2	55	0.78	3	2	1	4	1	1	1	1				84.6	1	
-Onychogalea_fraenata	Onychogalea fraenata	Diprotodontia	Macropodidae	Brindled nailtail wallaby	1	2	5750	14.7	1	2	3	1	1	1	1	1	165	90	0.2	1507.2		
-Onychogalea_unguifera	Onychogalea unguifera	Diprotodontia	Macropodidae	Northern nailtail wallaby	1	1	6650	16.7	1	2	3	1	1	1	1	1				1524.5		
-Paramurexia_rothschildi	Paramurexia rothschildi	Dasyuromorphia	Dasyuridae	Broad-striped dasyure	2	2	67	1.05	2	2	2	4										
-Parantechinus_apicalis	Parantechinus apicalis	Dasyuromorphia	Dasyuridae	Dibbler	1	2	74.5	1.2	1	2	2	4	1	1	1	7.1	105	6	6	142.6		
-Perameles_bougainville	Perameles bougainville	Paramelemorphia	Peramelidae	Western barred bandicoot	1	2	215	3.21	3	2	2	2	1	1	1	1.9		14.2	0.34	218.6		
-Perameles_gunnii	Perameles gunnii	Paramelemorphia	Peramelidae	Eastern barred bandicoot	1	2	750	4.5	1	2	2	2	1	1	1	2.4	58.5	4.29	6.65	508.5	0	1
-Perameles_nasuta	Perameles nasuta	Paramelemorphia	Peramelidae	Long nosed bandicoot	1	1	925	4.96	1	2	2	3	1	1	1	2.7	66	4.4	0.9	537.8	0	
-Peroryctes_raffrayana	Peroryctes raffrayana	Paramelemorphia	Peroryctidae	Raffray's bandicoot	2	1	830	6.33	3		2	4	1	1	1	3	60					
-Petauroides_volans	Petauroides volans	Diprotodontia	Pseudocheiridae	Greater glider	1	1	1300	4.69	1	1	1	1	1	2	2	1	250	2.6	1.18	527.6	0	1
-Petaurus_australis	Petaurus australis	Diprotodontia	Petauridae	Yellow bellied glider	1	2	557.5	5.71	1	1	1	3	2	2	2	1	145	60	0.12	428.8		3
-Petaurus_breviceps	Petaurus breviceps	Diprotodontia	Petauridae	Sugarglider	1	1	127.5	2.09	1	1	1	3	2	2	2	2	120	0.7	5.01	195.3	1	3
-Petaurus_norfolcensis	Petaurus norfolcensis	Diprotodontia	Petauridae	Squirrel glider	1	1	230	3.02	1	1	1	2	2	2	2	1.8	120	2.8	1.54	267.8		
-Petrogale_assimilis	Petrogale assimilis	Diprotodontia	Macropodidae	Allied rock wallaby	1	2	4500	17.5	3	2	2	1	2	1	2	1	296.5	10	0.86	1227.2		3
-Petrogale_concinna	Petrogale concinna	Diprotodontia	Macropodidae	Narbarlek	1	2	1300	11	3	2	2	1	2	1		1	192.5			646.6		
-Petrogale_penicillata	Petrogale penicillata	Diprotodontia	Macropodidae	Short eared rock wallaby	1	2	7100	23.9	1	2	2	1	2	1	1	1	290	15	3	1596.8		3
-Petrogale_xanthopus	Petrogale xanthopus	Diprotodontia	Macropodidae	Yellow footed rock wallaby	1	2	9000	23	1	2	2	1	1	1	2	1	344	200	0.15	2047		
-Petropseudes_dahli	Petropseudes dahli	Diprotodontia	Pseudocheiridae	Rock ringtail possum	1	1	1640	5	1	2	2	1	2	2	2	1		0.9	0.18	818.6		
-Phalanger_carmelitae	Phalanger  carmelitae	Diprotodontia	Phalangeridae	Mountain cuscus	2		1000	8.49	1													
-Phalanger_gymnotis	Phalanger  gymnotis	Diprotodontia	Phalangeridae	Ground cuscus	2		2700	13	1	1	2	1	1	1	1	1	165					
-Phalanger_orientalis	Phalanger orientalis	Diprotodontia	Phalangeridae	Southern common cuscus	2	1	2000	8.9	1	1	2	1	1	1		1.5				895.3		
-Phascogale_calura	Phascogale calura	Dasyuromorphia	Dasyuridae	Red tailed phascogale	1	2	51.5	0.91	1	1	1	4	1	1	1	7.5	90	40		74.9		
-Phascogale_tapoatafa	Phascogale tapoatafa	Dasyuromorphia	Dasyuridae	Brush tailed phascogale	1	2	193.5	1.81	1	1	1	4	1	1	1	6.1	159.5		1.11	193.9	0	1
-Phascolarctos_cinereus	Phascolarctos cinereus	Diprotodontia	Phascolarctidae	Koala	1	1	9500	30.2	3	1	2	1	1	1	1	1	365	100	3	1683.5	0	2
-Phascolosorex_dorsalis	Phascolosorex dorsalis	Dasyuromorphia	Dasyuridae	Narrow-striped marsupial shrew	2		47.5	1.11	1													
-Phascomurexia_naso	Phascomurexia naso	Dasyuromorphia	Dasyuridae	Long-nosed dasyure	2		51.5	0.77	3	2	1	4				3	60					
-Philander_opossum	Philander opossum	Didelphimorphia	Didelphidae	Gray four eyed opossum	3	1	427	3.83	3	2	2	2	1	1	1	4.7	85	0.39	1.25		0	
-Planigale_gilesi	Planigale gilesi	Dasyuromorphia	Dasyuridae	Giles planigale	1	2	9.2	0.17	3	2	2	4	1	1	1	6.1	75		7.4	31.2	1	1
-Planigale_ingrami	Planigale ingrami	Dasyuromorphia	Dasyuridae	Long tailed planigale	1	1	4.2	0.15	1	2	2	4	1	1	1	6	90			20.2	1	
-Planigale_maculata	Planigale maculata	Dasyuromorphia	Dasyuridae	Common planigale	1	1	9.1	0.2	3	2	2	4	1	1	1	7.7	71			32.4	1	1
-Planigale_novaeguineae	Planigale novaeguineae	Dasyuromorphia	Dasyuridae	New Guinean planigale	2		14.9	0.27	1													
-Planigale_tenuirostris	Planigale tenuirostris	Dasyuromorphia	Dasyuridae	Narrow nosed planigale	1	2	6.05	0.14	1	2	2	4	1	1	1	6	95			25.2	1	1
-Potorous_tridactylus	Potorous tridactylus	Diprotodontia	Potoroidae	Long nosed potoroo	1	2	1100	9.53	3	2	3	2	1	1	1	1	158.5		0.99	531.2	0	3
-Pseudantechinus_bilarni	Pseudantechinus bilarni	Dasyuromorphia	Dasyuridae	Sandstone pseudantechinus	1	1	27.5	0.65	1	2	2	4	1	1	1	4.8	100.5					
-Pseudantechinus_macdonnellensis	Pseudantechinus macdonnellensis	Dasyuromorphia	Dasyuridae	Fat tailed pseudantechinus	1	1	31.25	0.49	3	2	2	4	1	1	1	5.9	98	1.77	0.1	91.7	1	
-Pseudocheirus_peregrinus	Pseudocheirus peregrinus	Diprotodontia	Pseudocheiridae	Common ringtail possum	1	1	800	4.52	1	1	1	2	2	2	2	2	195	1	13.74	598.2	0	2
-Pseudochirops_albertisii	Pseudochirops albertisii	Diprotodontia	Pseudocheiridae	D'Albertis' ringtail possum	2		784.5	4.68	1													
-Pseudochirops_archeri	Pseudocheirus archeri	Diprotodontia	Pseudocheiridae	Green ringtail possum	1	2	1155.5	5.87	1	1	2	1	1	1	2	1	180		1.5	656.8		
-Pseudochirops_corinnae	Pseudochirops corinnae	Diprotodontia	Pseudocheiridae	Plush-coated ringtail possum	2		1123	5.36	1													
-Pseudochirops_cupreus	Pseudochirops cupreus	Diprotodontia	Pseudocheiridae	Coppery ringtail possum	2		1700	7.54	1													
-Pseudochirulus_canescens	Pseudochirulus canescens	Diprotodontia	Pseudocheiridae	Lowland ringtail possum	2		300	1.8	1	1					2	2	155					
-Pseudochirulus_caroli	Pseudochirulus caroli	Diprotodontia	Pseudocheiridae	Weyland ringtail possum	2		440	3.2	1													
-Pseudochirulus_forbesi	Pseudochirulus forbesi	Diprotodontia	Pseudocheiridae	Painted ringtail possum	2		650	3.36	1													
-Pseudochirulus_herbertensis	Pseudochirulus herbertensis	Diprotodontia	Pseudocheiridae	Herbert River ringtail possum	1	2	1110.5	4.32	1	1	1	1	1	1	1	1.8	160	1	9	444.3		
-Pseudochirulus_mayeri	Pseudochirulus mayeri	Diprotodontia	Pseudocheiridae	Pygmy ringtail possum	2		154.5	2.01	1	1		1	1	1	2	1	155					
-Rhyncholestes_raphanurus	Rhyncholestes raphanurus	Paucituberculata	Caenolestidae	Chilean shrew opossum	3	2	25.85	0.69	1		1	4	2	2	2	6						
-Sarcophilus_harrisii	Sarcophilus harrisii	Dasyuromorphia	Dasyuridae	Tasmanian devil	1	2	7000	16.26	1	2	1	4	1	1	1	2.9	210	700	0.06		0	3
-Setonix_brachyurus	Setonix brachyurus	Diprotodontia	Macropodidae	Quokka	1	2	3000	13.9	3	2	3	1	2	1	1	1	440	6.39	11.4	638.1	0	3
-Sminthopsis_crassicaudata	Sminthopsis crassicaudata	Dasyuromorphia	Dasyuridae	Fat tailed dunnart	1	1	15	0.36	1	2	2	4	1	1	1	7.4	67.5		0.5	68	1	2
-Sminthopsis_griseoventer	Sminthopsis griseoventer	Dasyuromorphia	Dasyuridae	Grey bellied dunnart	1	2	17.5	0.49	1			4	1	1	1	8	70			57.1		
-Sminthopsis_leucopus	Sminthopsis leucopus	Dasyuromorphia	Dasyuridae	White footed dunnart	1	2	24	0.41	1	2	2	4	1	1	1	8	85	1	6.18	67.4		
-Spilocuscus_maculatus	Spilocuscus maculatus	Diprotodontia	Phalangeridae	Common spotted cuscus	2	2	3200	13.4	1	1	2	3	1	1	2	1	240		0.41	1266.8	0	
-Spilocuscus_rufoniger	Spilocuscus rufoniger	Diprotodontia	Phalangeridae	Black-spotted cuscus	2	1	6500	16.8	1	1		4	1									
-Tarsipes_rostratus	Tarsipes rostratus	Diprotodontia	Tarsipedidae	Honey possum	1	2	10.5	0.36	3	1	1	3	1	1	1	2.6	82	0.54	297	37.3	1	2
-Thylacinus_cynocephalus	Thylacinus cynocephalus	Dasyuromorphia	Thylacinidae	Thylacine	1	3	25000	51.19	3	2	3	4	2	2	2	3						
-Thylamys_elegans	Thylamys elegans	Didelphimorphia	Didelphidae	Elegant fat-tailed mouse opossum	3	1	26.17	0.72	1	2	2	4	1	1		12		0.11			1	
-Thylamys_pallidior	Thylamys pallidior	Didelphimorphia	Didelphidae	White-bellied fat-tailed mouse opossum	3	1	16.9	0.57	1			4	1								1	
-Thylamys_pusillus	Thylamys pusilla	Didelphimorphia	Didelphidae	Common fat-tailed mouse opossum	3	1	18.57	0.54	1	1		4	1			14.5					1	
-Thylamys_venustus	Thylamys venustus	Didelphimorphia	Didelphidae	Buff-bellied fat-tailed mouse opossum	3	2	25.58	0.67	1	1		4	1								1	
-Thylogale_billardierii	Thylogale billardierii	Diprotodontia	Macropodidae	Tasmanian pademelon	1	1	5450	22.1	1	2	3	1	2	1	1	1	290	170	2.5	1589.7		3
-Thylogale_browni	Thylogale browni	Diprotodontia	Macropodidae	Brown's pademelon	2		5478	18.3	1				1									
-Thylogale_brunii	Thylogale brunii	Diprotodontia	Macropodidae	Dusky pademelon	2		3620	17.5	1				1									
-Thylogale_stigmatica	Thylogale stigmatica	Diprotodontia	Macropodidae	Red legged pademelon	1	1	4600	17.8	3	2	3	1	2	1	1	1	252.5	4	3.25	1338.6		3
-Thylogale_thetis	Thylogale thetis	Diprotodontia	Macropodidae	Red necked pademelon	1	1	5400	19.2	3	2	3	1	2	1	1	1	210	30	3.6	1428		3
-Tlacuatzin_canescens	Tlacuatzin canescens	Didelphimorphia	Didelphidae	Gray mouse opossum	3	1	17.48	0.58	1		2	3	1		1	11		0.11	2.25			
-Trichosurus_caninus	Trichosurus caninus	Diprotodontia	Phalangeridae	Short eared brushtail possum	1	1	3500	11.8	1	1	1	1	1	1	2	1	242		0.55	1340		
-Trichosurus_vulpecula	Trichosurus vulpecula	Diprotodontia	Phalangeridae	Common brushtail possum	1	1	2625	11	1	1	1	3	1	1	2	1	184.5	19.5	2.1	1136.3	0	2
-Vombatus_ursinus	Vombatus ursinus	Diprotodontia	Vombatidae	Common wombat	1	2	26000	59	3	2	1	1	2	1	1	1	446	82	0.38	4901		3
-Wallabia_bicolor	Wallabia bicolor	Diprotodontia	Macropodidae	Swamp wallaby	1	1	15000	32.9	1	2	3	1	2	1	1	1	450	82.6	0.31	2584.2	0	3
-Wyulda_squamicaudata	Wyulda squamicaudata	Diprotodontia	Phalangeridae	Scaly tailed possum	1	2	1350	10.1	1	2	2	1	1	1	1	1	240	1	3.45	776.3		
+Names	Species	Order	Family	Common Name	Regime	Origin	Status	BodyN	Brain	DiurnalityN	Arboreality	Shelter.safety	Diet	Group.living	Parental.care	Mating.system	Litter.size	Weaning.age	HR	Population.density	FMR.Riek	Torpor	Play
+Acrobates_pygmaeus	Acrobates pygmaeus	Diprotodontia	Acrobatidae	Feathertail glider	0	1	1	14.5	0.35	1	1	1	3	2	2	2	2.8	97.5	2.1	9	34.9	1	1
+Aepyprymnus_rufescens	Aepyprymnus rufescens	Diprotodontia	Potoroidae	Rufous bettong	3	1	1	2750	12.3	1	2	2	2	2	1	1	1	162.5	110	0.96	1378.6	0	3
+Antechinomys_laniger	Antechinomys laniger	Dasyuromorphia	Dasyuridae	Kultarr	0	1	2	25	0.47	1	2	1	4	1	1	1	6	95.5				1	1
+Antechinus_agilis	Antechinus agilis	Dasyuromorphia	Dasyuridae	Agile antechinus	0	1	1	24	0.56	3	1	1	4	2	1	1	9.3	95	1	8.13			
+Antechinus_flavipes	Antechinus flavipes	Dasyuromorphia	Dasyuridae	Yellow footed Antechinus	0	1	1	45	0.64	3	2	2	4	2	1	1	8.4	90	0.6	1.6	105.7	1	
+Antechinus_minimus	Antechinus minimus	Dasyuromorphia	Dasyuridae	Swamp antechinus	0	1	2	70	0.74	3	2	2	4	2	1	1	7.4	105	2.7	6.9	135.6		
+Antechinus_stuartii	Antechinus stuartii	Dasyuromorphia	Dasyuridae	Brown antechinus	0	1	1	27.5	0.76	3	2	2	4	2	1	1	7.2	87.5	0.9	2.87	91	1	2
+Antechinus_swainsonii	Antechinus swainsonii	Dasyuromorphia	Dasyuridae	Dusky antechinus	0	1	1	53	1.09	1	2	1	4	1	1	1	7.6	88		7.09	147.1	1	
+Bettongia_gaimardi	Bettongia gaimardi	Diprotodontia	Potoroidae	Tasmanian bettong	3	1	1	1660	11.7	1	2	1	2	1	1	1	1	155	135	0.19	813.6	0	
+Bettongia_lesueur	Bettongia lesueur	Diprotodontia	Potoroidae	Burrowing bettong	3	1	2	1300	10.5	1	2	1	2	2	1	2	1	165		0.17	476.7		
+Bettongia_penicillata	Bettongia penicillata	Diprotodontia	Potoroidae	Woylie	3	1	2	1181.25	9.56	1	2	2	2	1	1	1	1	158	65.4	0.26	600.2	0	3
+Bettongia_tropica	Bettongia tropica	Diprotodontia	Potoroidae	Northern bettong	3	1	2	1200	8.92	1	2	2	2	1	1	1	1	176	70	0.2			
+Burramys_parvus	Burramys parvus	Diprotodontia	Burramyidae	Mountain pygmy possum	0	1	2	41.5	1	1	2	2	2	1	1	2	3.6	67	7.7	0.65	70	1	1
+Caenolestes_fuliginosus	Caenolestes fuliginosus	Paucituberculata	Caenolestidae	Dusky caenolestid	0	3	3	20.34	0.77	3	2	2	4				4						
+Caluromys_derbianus	Caluromys derbianus	Didelphimorphia	Didelphidae	Derbys woolly opossum	4	3	1	340	3.8	1	1	1	2	1	1	1	3.1	120	0.1	13.4		0	
+Caluromys_lanatus	Caluromys lanatus	Didelphimorphia	Didelphidae	Western woolly opossum	4	3	1	356	3.53	1	1	2	3	1	1	1	2.5	220	0.25	0.13			
+Caluromys_philander	Caluromys philander	Didelphimorphia	Didelphidae	Bare tailed woolly opossum	4	3	1	170	2.7	1	1	1	2	1	1	1	4.3	120	3	0.97			
+Caluromysiops_irrupta	Caluromysiops irrupta	Didelphimorphia	Didelphidae	Black-shouldered opossum	0	3	2	397.03	4	1	1		3	1	1	1	2						
+Cercartetus_caudatus	Cercartetus caudatus	Diprotodontia	Burramyidae	Long tailed pygmy possum	0	2	2	30	0.71	1	1	1	3	2	1		2.9	77		0.5	54.2	1	
+Cercartetus_nanus	Cercartetus nanus	Diprotodontia	Burramyidae	Eastern pygmy possum	0	1	1	24	0.43	1	1	1	3	2	1	1	3.9	65	0.75	11.56	45.7	1	1
+Chaeropus_ecaudatus	Chaeropus ecaudatus	Paramelemorphia	Chaeropodidae	Pig footed bandicoot	7	1	3	200	2.4	2	2	2	2	1			2						
+Chironectes_minimus	Chironectes minimus	Didelphimorphia	Didelphidae	Water opossum	3	3	1	686.67	4.7	1	2	2	4	1	1	1	4	55	180	1.34		0	
+Cryptonanus_chacoensis	Cryptonanus chacoensis	Didelphimorphia	Didelphidae	Chacoan mouse opossums	0	3	1	13.5	0.49	1	2	3	3		1		7						
+Cryptonanus_unduaviensis	Cryptonanus unduaviensis	Didelphimorphia	Didelphidae	Unduavi gracile opossum	0	3	2	35	0.8	1	1						12						
+Dactylopsila_palpator	Dactylopsila palpator	Diprotodontia	Petauridae	Long-fingered Triok	4	2	1	370	6.91	1	1		4				1						
+Dactylopsila_trivirgata	Dactylopsila trivirgata	Diprotodontia	Petauridae	Striped possum	4	2	2	423	5.83	1	1	1	4	1	1	2	1.75	200	150	0.04	394		1
+Dasycercus_cristicauda	Dasycercus cristicauda	Dasyuromorphia	Dasyuridae	Crest tailed mulgara	0	1	2	120	1.24	3	2	1	4	1	1	1	7	121	14.4		199.1	1	3
+Dasykaluta_rosamondae	Dasykaluta rosamondae	Dasyuromorphia	Dasyuridae	Kaluta	0	1	1	27.5	0.54	3	2	2	4	1	1	1	6.3	113			86.6	1	
+Dasyuroides_byrnei	Dasyuroides byrnei	Dasyuromorphia	Dasyuridae	Kowari	0	1	2	117.5	1.5	3	2	1	4	1	1	1	4.3	118	1400		197.2	1	3
+Dasyurus_albopunctatus	Dasyurus albopunctatus	Dasyuromorphia	Dasyuridae	New Guinean quoll	3	2	1	627	3.79	3		2	4										
+Dasyurus_geoffroii	Dasyurus geoffroii	Dasyuromorphia	Dasyuridae	Western quoll	3	1	2	1100	5.17	3	2	2	4	1	1	2	6	157.5	400	0.02	950.9	1	
+Dasyurus_hallucatus	Dasyurus hallucatus	Dasyuromorphia	Dasyuridae	Northern quoll	3	1	2	597.5	3.38	1	2	2	4	1	1	1	6.6	142.5	100	0.21	652.6	0	3
+Dasyurus_maculatus	Dasyurus maculatus	Dasyuromorphia	Dasyuridae	Spotted tailed quoll	3	1	2	2500	9.41	3	2	2	4	1	1	2	5.3	197	1744	0.04	1361.5	0	3
+Dasyurus_viverrinus	Dasyurus viverrinus	Dasyuromorphia	Dasyuridae	Eastern quoll	3	1	2	1100	5.33	3	2	2	4	1	1	1	6	159	44	0.19	935.7	1	3
+Dendrolagus_bennettianus	Dendrolagus bennettianus	Diprotodontia	Macropodidae	Bennett's tree kangaroo	8	1	2	10525	26	3	1	2	1	1	1	2	1	720	29	0.28	2074.5	0	
+Dendrolagus_dorianus	Dendrolagus dorianusx	Diprotodontia	Macropodidae	Doria's tree-kangaroo	8	2	2	10500	32.3	3	2	1	2	2	2	2	1	720					3
+Dendrolagus_goodfellowi	Dendrolagus goodfellowix	Diprotodontia	Macropodidae	Goodfellow's tree-kangaroo	8	2	2	8050	28.4	3	1		2	2		2	1	390				0	
+Dendrolagus_inustus	Dendrolagus inustusx	Diprotodontia	Macropodidae	Grizzled tree-kangaroo	8	2	2	11500	30.1	3	1	2	2				1	279					
+Dendrolagus_lumholtzi	Dendrolagus lumholtzi	Diprotodontia	Macropodidae	Lumholtzs tree kangaroo	8	2	2	7025	26.2	3	1	2	2	2	1	2	1	550	2.1	1.28	1636.8	0	3
+Dendrolagus_matschiei	Dendrolagus matschiei	Diprotodontia	Macropodidae	Matschie's tree-kangaroo	8	2	2	8800	27.5	3	1		2	2	2	2	1	290	25			0	
+Dendrolagus_scottae	Dendrolagus scottae	Diprotodontia	Macropodidae	Tenkile	8	2	2	9500	29.2	3	1		1	2	2	2	1	900	0.125			0	
+Dendrolagus_spadix	Dendrolagus spadix	Diprotodontia	Macropodidae	Lowlands tree-kangaroo	8	2	2	9100	28.5	3	1		2				1						
+Didelphis_albiventris	Didelphis albiventris	Didelphimorphia	Didelphidae	White-eared opossum	3	3	1	2316.4	6.87	3	1	2	4	1	1	1	5	117	0.57	1.1			
+Didelphis_marsupialis	Didelphis marsupialis	Didelphimorphia	Didelphidae	Common possum	3	3	1	1200	7.3	1	1	1	2	1	1	1	6	94	122	2		0	
+Didelphis_virginiana	Didelphis virginiana	Didelphimorphia	Didelphidae	Virginia opossum	3	3	1	2000	7.55	1	1	1	2	1	1	1	7.7	94	318	0.27		0	1
+Distoechurus_pennatus	Distoechurus pennatus	Diprotodontia	Acrobatidae	Feather-tailed possum	0	2		51.5	0.94	1	1		3	2	1	2	1						
+Dorcopsis_veterum	Dorcopsis veterum	Diprotodontia	Macropodidae	Brown dorcopsis	8	2	1	7500	16.7	3	2		2	2	1	1	1	270					
+Dorcopsulus_vanheurni	Dorcopsulus vanheurni	Diprotodontia	Macropodidae	Small dorcopsis	3	2	2	1696.5	11.8	1	2		1				1.5		1.5				
+Dromiciops_gliroides	Dromiciops gliroides	Microbiotheria	Microbiotheriidae	Monito del monte	0	3	2	20	0.81	1	1	1	3	2	1	1	2.5	180	1.6	23		1	
+Echymipera_clara	Echymipera clara	Paramelemorphia	Peramelidae	Clara's echymipera	7	2	1	1236.5	4.48	1	2												
+Echymipera_kalubu	Echymipera kalubu	Paramelemorphia	Peramelidae	Common echymipera	7	2		650	3.67	1			3				2.1	12	0.5				
+Echymipera_rufescens	Echymipera rufescens	Paramelemorphia	Peramelidae	Long nosed echymipera	7	1	2	1062.5	3.73	1	2	1	3	1	1	1	3	70	1.5		596.8	0	
+Glironia_venusta	Glironia venusta	Didelphimorphia	Didelphidae	Bushy-tailed opossum	4	3	2	136.67	1.9	1	1		2	1		1							
+Gracilinanus_agilis	Gracilinanus agilis	Didelphimorphia	Didelphidae	Agile gracile mouse opossum	0	3	1	18	0.58	1	1	3	2	1	1	1	12	80	0.13			1	
+Gracilinanus_microtarsus	Gracilinanus microtarsus	Didelphimorphia	Didelphidae	Brazilian gracile mouse opossum	0	3	1	22.93	0.71	1	1	2	4	1	1	1	10	90	0.14	16		1	
+Gymnobelideus_leadbeateri	Gymnobelideus leadbeateri	Diprotodontia	Petauridae	Leadbeaters possum	4	1	2	127.5	2.85	1	1	1	3	2	2	2	1.5	115.5	2	2.6	227.9	0	2
+Hemibelideus_lemuroides	Hemibelideus lemuroides	Diprotodontia	Pseudocheiridae	Lemuroid ringtail possum	3	1	2	974.5	3.15	1	1	1	1	2	2	2	1		1.2	7	654.8		
+Hyladelphys_kalinowskii	Hyladelphys kalinowskii	Didelphimorphia	Didelphidae	Kalinowski's mouse opossum	0	3	1	13.13	0.565	1	1	1		2			3						
+Isoodon_macrourus	Isoodon macrourus	Paramelemorphia	Peramelidae	Northen brown bandicoot	7	1	1	1600	4.42	3	2	2	3	1	1	1	3.3	60	6	0.7	737.2	0	
+Isoodon_obesulus	Isoodon obesulus	Paramelemorphia	Peramelidae	Southern brown bandicoot	7	1	2	755	3.89	3	2	2	3	1	1	1	2.7	62.5	5	1.82	549.1	0	1
+Lagorchestes_conspicillatus	Lagorchestes conspicillatus	Diprotodontia	Macropodidae	Spectacled hare wallaby	6	1	1	3175	14	1	2	3	1	1	1	1	1	204	10	0.42	679.7	0	2
+Lagorchestes_hirsutus	Lagorchestes hirsutus	Diprotodontia	Macropodidae	Rufous hare wallaby	6	1	2	1660	7.77	3	2	3	1	1	1	1	1	150		0.27	534.9		
+Lagostrophus_fasciatus	Lagostrophus fasciatus	Diprotodontia	Macropodidae	Banded hare wallaby	3	1	2	1600	7	1	2	3	1	2	1	2	1	270		0.88	703.7		
+Lasiorhinus_latifrons	Lasiorhinus latifrons	Diprotodontia	Vombatidae	Southern hairy nosed wombat	5	1	2	27125	55.5	1	2	1	1	1	1	1	1	333	4.8	2.74	3133.3	0	3
+Lestoros_inca	Lestoros inca	Paucituberculata	Caenolestidae	Incan shrew opossum	0	3	2	19.38	0.79	1	1		4				4						
+Lutreolina_crassicaudata	Lutreolina crassicaudata	Didelphimorphia	Didelphidae	Lutrine opossum	3	3	1	605.97	3.56	3	1	1	4	2	1	1	8	93	0.38			0	
+Macropus_agilis	Macropus agilis	Diprotodontia	Macropodidae	Agile wallaby	0	1	1	15000	33.3	3	2	3	1	2	1	1	1	326	38.2	0.18	2607.8	0	3
+Macropus_antilopinus	Macropus antilopinus	Diprotodontia	Macropodidae	Antilopine wallaby	5	1	2	27025	56.8	3	2	3	1	2	1	1	1	426	840	0.22	4183.1	0	3
+Macropus_eugenii	Macropus eugenii	Diprotodontia	Macropodidae	Tammar wallaby	0	1	2	6500	23.7	1	2	3	1	2	1	1	1	325	100	0.75	1234.1	0	3
+Macropus_fuliginosus	Macropus fuliginosus	Diprotodontia	Macropodidae	Western grey kangaroo	5	1	1	36500	58	3	2	3	1	2	1	1	1	540	70	0.41	5999.1	0	3
+Macropus_giganteus	Macropus giganteus	Diprotodontia	Macropodidae	Eastern grey kangaroo	5	1	1	40750	69.8	3	2	3	1	2	1	1	1	526	160	0.45	7255.4	0	3
+Macropus_irma	Macropus irma	Diprotodontia	Macropodidae	Western brush wallaby	0	1	1	8000	24.7	2	2	3	1	1	1	1	1	220		0.27	1808	0	
+Macropus_parma	Macropus parma	Diprotodontia	Macropodidae	Parma wallaby	8	1	2	4500	18.7	3	2	3	1	2	1	1	1	294			1360.1	0	3
+Macropus_parryi	Macropus parryi	Diprotodontia	Macropodidae	Whiptail wallaby	8	1	1	13500	41.3	2	2	3	1	2	1	1	1	505	3	0.37	2459.2	0	3
+Macropus_robustus	Macropus robustus	Diprotodontia	Macropodidae	Common wallaroo	5	1	1	25375	59	3	2	2	1	1	1	1	1	380	300	0.31	1689.4	0	3
+Macropus_rufogriseus	Macropus rufogriseus	Diprotodontia	Macropodidae	Red necked wallaby	8	1	1	16850	36	3	2	3	1	2	1	1	1	440	32	0.36	2734.1	0	3
+Macropus_rufus	Macropus rufus	Diprotodontia	Macropodidae	Red kangaroo	5	1	1	42000	62.4	3	2	3	1	2	1	1	1	374	774	0.11	4415.3	0	3
+Macrotis_lagotis	Macrotis lagotis	Paramelemorphia	Thylacomyidae	Bilby	7	1	2	1200	6.57	1	2	1	3	2	1	1	2	109	316		645.1	0	2
+Marmosa_lepida	Marmosa lepida	Didelphimorphia	Didelphidae	Little rufous mouse opossum	0	3	1	10.093	0.5	1	1		2		1		7						
+Marmosa_mexicana	Marmosa mexicana	Didelphimorphia	Didelphidae	Mexican mouse opossum	0	3	1	40.55	0.91	1	1	2		1	1		6						
+Marmosa_murina	Marmosa murina	Didelphimorphia	Didelphidae	Linnaeus' mouse opossum	0	3	1	54.1	1.1	1	1	2	4	1			8.5	62				1	
+Marmosa_robinsoni	Marmosa robinsoni	Didelphimorphia	Didelphidae	Robinson's mouse opossum	0	3	1	63.94	1.15	1	1		2		1	1	11	70	2.5			1	
+Marmosa_rubra	Marmosa rubra	Didelphimorphia	Didelphidae	Red mouse opossum	0	3	2	61	1.16	1	1		2				9						
+Marmosops_impavidus	Marmosops impavidus	Didelphimorphia	Didelphidae	Tschudi's slender opossum	0	3	1	34.95	0.91	1	1		2	1			8						
+Marmosops_incanus	Marmosops incanus	Didelphimorphia	Didelphidae	Gray slender mouse opossum	0	3	1	60	0.92	1	1		4		1	1							
+Marmosops_noctivagus	Marmosops noctivagus	Didelphimorphia	Didelphidae	White-bellied slender mouse opossum	0	3	1	52.54	1.11	1	1		2	1									
+Marmosops_parvidens	Marmosops parvidens	Didelphimorphia	Didelphidae	Delicate slender mouse opossum	0	3	1	20.66	0.63	1	1			1			6.5						
+Metachirus_nudicaudatus	Metachirus nudicaudatus	Didelphimorphia	Didelphidae	Brown four eyed opossum	3	3	1	380	2.91	1	2	2	3	1			4	100	0.83	1		0	
+Micoureus_demerarae	Micoureus demerarae	Didelphimorphia	Didelphidae	Woolly mouse opossum	9	3	1	98.58	1.45	1	1	3	3	1									
+Micoureus_regina	Micoureus regina	Didelphimorphia	Didelphidae	Short-furred woolly mouse opossum	9	3	1	90.88	1.4	1				1									
+Microperoryctes_longicauda	Microperoryctes longicauda	Paramelemorphia	Peramelidae	Striped bandicoot	0	2	1	538	3.81	1													
+Monodelphis_adusta	Monodelphis adusta	Didelphimorphia	Didelphidae	Sepia short-tailed opossum	0	3	1	19.15	0.47	1	2		4	1									
+Monodelphis_americana	Monodelphis americana	Didelphimorphia	Didelphidae	Northern three-striped short-tailed opossum	0	3	1	34.1	0.57	3	2	2	3	1					1				
+Monodelphis_brevicaudata	Monodelphis brevicaudata	Didelphimorphia	Didelphidae	Northern red sided opossum	9	3	1	84	0.9	1	1		3	1			7			1		1	
+Monodelphis_dimidiata	Monodelphis dimidiata	Didelphimorphia	Didelphidae	Yellow-sided opossum	0	3	1	36.57	0.6	1			4	2					0.5				
+Monodelphis_domestica	Monodelphis domestica	Didelphimorphia	Didelphidae	Gray short-tailed opossum	9	3	1	88.88	0.97	1	1	3	4	1	1	1	9	210	0.2			0	3
+Monodelphis_emiliae	Monodelphis emiliae	Didelphimorphia	Didelphidae	Emilia's Short-tailed opossum	0	3	1	14.29	0.4	2	2			1									
+Monodelphis_osgoodi	Monodelphis osgoodi	Didelphimorphia	Didelphidae	Osgood's short-tailed opossum	0	3	2	15.04	0.31	1	2		3	1									
+Monodelphis_sorex	Monodelphis sorex	Didelphimorphia	Didelphidae	Shrewish short-tailed opossum	0	3	1	21.18	0.42	2	2		3	1			19						
+Murexchinus_melanurus	Murexchinus melanurus	Dasyuromorphia	Dasyuridae	Black-tailed antechinus	0	2	1	31	0.65	1	1		4				4	100					
+Murexia_longicaudata	Murexia longicaudata	Dasyuromorphia	Dasyuridae	Short-furred dasyure	7	2	1	100	1.68	3	1	2	4				4						
+Myoictis_melas	Myoictis melas	Dasyuromorphia	Dasyuridae	Three-striped dasyure	0	2	1	91	2.05	1			4										
+Myrmecobius_fasciatus	Myrmecobius fasciatus	Dasyuromorphia	Myrmecobiidae	Numbat	1	1	2	537.5	4.25	2	2	2	4	1	1	2	4	270	50	0.05	252.5	1	3
+Neophascogale_lorentzii	Neophascogale lorentzi	Dasyuromorphia	Dasyuridae	Speckled dasyure	0	2	1	212	2.45	3	2		3				4						
+Ningaui_ridei	Ningaui ridei	Dasyuromorphia	Dasyuridae	Wongai ningaui	0	1	1	8.5	0.24	1	2	1	4	1	1	1	6.2	91			36.4	1	
+Ningaui_timealeyi	Ningaui timealeyi	Dasyuromorphia	Dasyuridae	Southern ningaui	0	1	1	6	0.26	1	2	3	4	1	1	1	6.3	95			28.5		
+Notoryctes_typhlops	Notoryctes typhlops	Notoryctemorphia	Notoryctidae	Kakarratul (marsupial mole)	0	1	2	55	0.78	3	2	1	4	1	1	1	1				84.6	1	
+Onychogalea_fraenata	Onychogalea fraenata	Diprotodontia	Macropodidae	Brindled nailtail wallaby	2	1	2	5750	14.7	1	2	3	1	1	1	1	1	165	90	0.2	1507.2		
+Onychogalea_unguifera	Onychogalea unguifera	Diprotodontia	Macropodidae	Northern nailtail wallaby	2	1	1	6650	16.7	1	2	3	1	1	1	1	1				1524.5		
+Paramurexia_rothschildi	Paramurexia rothschildi	Dasyuromorphia	Dasyuridae	Broad-striped dasyure	0	2	2	67	1.05	2	2	2	4										
+Parantechinus_apicalis	Parantechinus apicalis	Dasyuromorphia	Dasyuridae	Dibbler	0	1	2	74.5	1.2	1	2	2	4	1	1	1	7.1	105	6	6	142.6		
+Perameles_bougainville	Perameles bougainville	Paramelemorphia	Peramelidae	Western barred bandicoot	1	1	2	215	3.21	3	2	2	2	1	1	1	1.9		14.2	0.34	218.6		
+Perameles_gunnii	Perameles gunnii	Paramelemorphia	Peramelidae	Eastern barred bandicoot	1	1	2	750	4.5	1	2	2	2	1	1	1	2.4	58.5	4.29	6.65	508.5	0	1
+Perameles_nasuta	Perameles nasuta	Paramelemorphia	Peramelidae	Long nosed bandicoot	1	1	1	925	4.96	1	2	2	3	1	1	1	2.7	66	4.4	0.9	537.8	0	
+Peroryctes_raffrayana	Peroryctes raffrayana	Paramelemorphia	Peroryctidae	Raffray's bandicoot	7	2	1	830	6.33	3		2	4	1	1	1	3	60					
+Petauroides_volans	Petauroides volans	Diprotodontia	Pseudocheiridae	Greater glider	3	1	1	1300	4.69	1	1	1	1	1	2	2	1	250	2.6	1.18	527.6	0	1
+Petaurus_australis	Petaurus australis	Diprotodontia	Petauridae	Yellow bellied glider	4	1	2	557.5	5.71	1	1	1	3	2	2	2	1	145	60	0.12	428.8		3
+Petaurus_breviceps	Petaurus breviceps	Diprotodontia	Petauridae	Sugarglider	4	1	1	127.5	2.09	1	1	1	3	2	2	2	2	120	0.7	5.01	195.3	1	3
+Petaurus_norfolcensis	Petaurus norfolcensis	Diprotodontia	Petauridae	Squirrel glider	4	1	1	230	3.02	1	1	1	2	2	2	2	1.8	120	2.8	1.54	267.8		
+Petrogale_assimilis	Petrogale assimilis	Diprotodontia	Macropodidae	Allied rock wallaby	2	1	2	4500	17.5	3	2	2	1	2	1	2	1	296.5	10	0.86	1227.2		3
+Petrogale_concinna	Petrogale concinna	Diprotodontia	Macropodidae	Narbarlek	2	1	2	1300	11	3	2	2	1	2	1		1	192.5			646.6		
+Petrogale_penicillata	Petrogale penicillata	Diprotodontia	Macropodidae	Short eared rock wallaby	2	1	2	7100	23.9	1	2	2	1	2	1	1	1	290	15	3	1596.8		3
+Petrogale_xanthopus	Petrogale xanthopus	Diprotodontia	Macropodidae	Yellow footed rock wallaby	2	1	2	9000	23	1	2	2	1	1	1	2	1	344	200	0.15	2047		
+Petropseudes_dahli	Petropseudes dahli	Diprotodontia	Pseudocheiridae	Rock ringtail possum	3	1	1	1640	5	1	2	2	1	2	2	2	1		0.9	0.18	818.6		
+Phalanger_carmelitae	Phalanger  carmelitae	Diprotodontia	Phalangeridae	Mountain cuscus	0	2		1000	8.49	1													
+Phalanger_gymnotis	Phalanger  gymnotis	Diprotodontia	Phalangeridae	Ground cuscus	0	2		2700	13	1	1	2	1	1	1	1	1	165					
+Phalanger_orientalis	Phalanger orientalis	Diprotodontia	Phalangeridae	Southern common cuscus	0	2	1	2000	8.9	1	1	2	1	1	1		1.5				895.3		
+Phascogale_calura	Phascogale calura	Dasyuromorphia	Dasyuridae	Red tailed phascogale	0	1	2	51.5	0.91	1	1	1	4	1	1	1	7.5	90	40		74.9		
+Phascogale_tapoatafa	Phascogale tapoatafa	Dasyuromorphia	Dasyuridae	Brush tailed phascogale	0	1	2	193.5	1.81	1	1	1	4	1	1	1	6.1	159.5		1.11	193.9	0	1
+Phascolarctos_cinereus	Phascolarctos cinereus	Diprotodontia	Phascolarctidae	Koala	5	1	1	9500	30.2	3	1	2	1	1	1	1	1	365	100	3	1683.5	0	2
+Phascolosorex_dorsalis	Phascolosorex dorsalis	Dasyuromorphia	Dasyuridae	Narrow-striped marsupial shrew	0	2		47.5	1.11	1													
+Phascomurexia_naso	Phascomurexia naso	Dasyuromorphia	Dasyuridae	Long-nosed dasyure	0	2		51.5	0.77	3	2	1	4				3	60					
+Philander_opossum	Philander opossum	Didelphimorphia	Didelphidae	Gray four eyed opossum	3	3	1	427	3.83	3	2	2	2	1	1	1	4.7	85	0.39	1.25		0	
+Planigale_gilesi	Planigale gilesi	Dasyuromorphia	Dasyuridae	Giles planigale	0	1	2	9.2	0.17	3	2	2	4	1	1	1	6.1	75		7.4	31.2	1	1
+Planigale_ingrami	Planigale ingrami	Dasyuromorphia	Dasyuridae	Long tailed planigale	0	1	1	4.2	0.15	1	2	2	4	1	1	1	6	90			20.2	1	
+Planigale_maculata	Planigale maculata	Dasyuromorphia	Dasyuridae	Common planigale	0	1	1	9.1	0.2	3	2	2	4	1	1	1	7.7	71			32.4	1	1
+Planigale_novaeguineae	Planigale novaeguineae	Dasyuromorphia	Dasyuridae	New Guinean planigale	0	2		14.9	0.27	1													
+Planigale_tenuirostris	Planigale tenuirostris	Dasyuromorphia	Dasyuridae	Narrow nosed planigale	0	1	2	6.05	0.14	1	2	2	4	1	1	1	6	95			25.2	1	1
+Potorous_tridactylus	Potorous tridactylus	Diprotodontia	Potoroidae	Long nosed potoroo	3	1	2	1100	9.53	3	2	3	2	1	1	1	1	158.5		0.99	531.2	0	3
+Pseudantechinus_bilarni	Pseudantechinus bilarni	Dasyuromorphia	Dasyuridae	Sandstone pseudantechinus	0	1	1	27.5	0.65	1	2	2	4	1	1	1	4.8	100.5					
+Pseudantechinus_macdonnellensis	Pseudantechinus macdonnellensis	Dasyuromorphia	Dasyuridae	Fat tailed pseudantechinus	0	1	1	31.25	0.49	3	2	2	4	1	1	1	5.9	98	1.77	0.1	91.7	1	
+Pseudocheirus_peregrinus	Pseudocheirus peregrinus	Diprotodontia	Pseudocheiridae	Common ringtail possum	3	1	1	800	4.52	1	1	1	2	2	2	2	2	195	1	13.74	598.2	0	2
+Pseudochirops_albertisii	Pseudochirops albertisii	Diprotodontia	Pseudocheiridae	D'Albertis' ringtail possum	3	2		784.5	4.68	1													
+Pseudochirops_archeri	Pseudocheirus archeri	Diprotodontia	Pseudocheiridae	Green ringtail possum	7	1	2	1155.5	5.87	1	1	2	1	1	1	2	1	180		1.5	656.8		
+Pseudochirops_corinnae	Pseudochirops corinnae	Diprotodontia	Pseudocheiridae	Plush-coated ringtail possum	3	2		1123	5.36	1													
+Pseudochirops_cupreus	Pseudochirops cupreus	Diprotodontia	Pseudocheiridae	Coppery ringtail possum	3	2		1700	7.54	1													
+Pseudochirulus_canescens	Pseudochirulus canescens	Diprotodontia	Pseudocheiridae	Lowland ringtail possum	4	2		300	1.8	1	1					2	2	155					
+Pseudochirulus_caroli	Pseudochirulus caroli	Diprotodontia	Pseudocheiridae	Weyland ringtail possum	4	2		440	3.2	1													
+Pseudochirulus_forbesi	Pseudochirulus forbesi	Diprotodontia	Pseudocheiridae	Painted ringtail possum	4	2		650	3.36	1													
+Pseudochirulus_herbertensis	Pseudochirulus herbertensis	Diprotodontia	Pseudocheiridae	Herbert River ringtail possum	3	1	2	1110.5	4.32	1	1	1	1	1	1	1	1.8	160	1	9	444.3		
+Pseudochirulus_mayeri	Pseudochirulus mayeri	Diprotodontia	Pseudocheiridae	Pygmy ringtail possum	4	2		154.5	2.01	1	1		1	1	1	2	1	155					
+Rhyncholestes_raphanurus	Rhyncholestes raphanurus	Paucituberculata	Caenolestidae	Chilean shrew opossum	0	3	2	25.85	0.69	1		1	4	2	2	2	6						
+Sarcophilus_harrisii	Sarcophilus harrisii	Dasyuromorphia	Dasyuridae	Tasmanian devil	2	1	2	7000	16.26	1	2	1	4	1	1	1	2.9	210	700	0.06		0	3
+Setonix_brachyurus	Setonix brachyurus	Diprotodontia	Macropodidae	Quokka	8	1	2	3000	13.9	3	2	3	1	2	1	1	1	440	6.39	11.4	638.1	0	3
+Sminthopsis_crassicaudata	Sminthopsis crassicaudata	Dasyuromorphia	Dasyuridae	Fat tailed dunnart	0	1	1	15	0.36	1	2	2	4	1	1	1	7.4	67.5		0.5	68	1	2
+Sminthopsis_griseoventer	Sminthopsis griseoventer	Dasyuromorphia	Dasyuridae	Grey bellied dunnart	0	1	2	17.5	0.49	1			4	1	1	1	8	70			57.1		
+Sminthopsis_leucopus	Sminthopsis leucopus	Dasyuromorphia	Dasyuridae	White footed dunnart	0	1	2	24	0.41	1	2	2	4	1	1	1	8	85	1	6.18	67.4		
+Spilocuscus_maculatus	Spilocuscus maculatus	Diprotodontia	Phalangeridae	Common spotted cuscus	0	2	2	3200	13.4	1	1	2	3	1	1	2	1	240		0.41	1266.8	0	
+Spilocuscus_rufoniger	Spilocuscus rufoniger	Diprotodontia	Phalangeridae	Black-spotted cuscus	0	2	1	6500	16.8	1	1		4	1									
+Tarsipes_rostratus	Tarsipes rostratus	Diprotodontia	Tarsipedidae	Honey possum	0	1	2	10.5	0.36	3	1	1	3	1	1	1	2.6	82	0.54	297	37.3	1	2
+Thylacinus_cynocephalus	Thylacinus cynocephalus	Dasyuromorphia	Thylacinidae	Thylacine	5	1	3	25000	51.19	3	2	3	4	2	2	2	3						
+Thylamys_elegans	Thylamys elegans	Didelphimorphia	Didelphidae	Elegant fat-tailed mouse opossum	0	3	1	26.17	0.72	1	2	2	4	1	1		12		0.11			1	
+Thylamys_pallidior	Thylamys pallidior	Didelphimorphia	Didelphidae	White-bellied fat-tailed mouse opossum	0	3	1	16.9	0.57	1			4	1								1	
+Thylamys_pusillus	Thylamys pusilla	Didelphimorphia	Didelphidae	Common fat-tailed mouse opossum	0	3	1	18.57	0.54	1	1		4	1			14.5					1	
+Thylamys_venustus	Thylamys venustus	Didelphimorphia	Didelphidae	Buff-bellied fat-tailed mouse opossum	0	3	2	25.58	0.67	1	1		4	1								1	
+Thylogale_billardierii	Thylogale billardierii	Diprotodontia	Macropodidae	Tasmanian pademelon	6	1	1	5450	22.1	1	2	3	1	2	1	1	1	290	170	2.5	1589.7		3
+Thylogale_browni	Thylogale browni	Diprotodontia	Macropodidae	Brown's pademelon	6	2		5478	18.3	1				1									
+Thylogale_brunii	Thylogale brunii	Diprotodontia	Macropodidae	Dusky pademelon	6	2		3620	17.5	1				1									
+Thylogale_stigmatica	Thylogale stigmatica	Diprotodontia	Macropodidae	Red legged pademelon	6	1	1	4600	17.8	3	2	3	1	2	1	1	1	252.5	4	3.25	1338.6		3
+Thylogale_thetis	Thylogale thetis	Diprotodontia	Macropodidae	Red necked pademelon	6	1	1	5400	19.2	3	2	3	1	2	1	1	1	210	30	3.6	1428		3
+Tlacuatzin_canescens	Tlacuatzin canescens	Didelphimorphia	Didelphidae	Gray mouse opossum	0	3	1	17.48	0.58	1		2	3	1		1	11		0.11	2.25			
+Trichosurus_caninus	Trichosurus caninus	Diprotodontia	Phalangeridae	Short eared brushtail possum	6	1	1	3500	11.8	1	1	1	1	1	1	2	1	242		0.55	1340		
+Trichosurus_vulpecula	Trichosurus vulpecula	Diprotodontia	Phalangeridae	Common brushtail possum	6	1	1	2625	11	1	1	1	3	1	1	2	1	184.5	19.5	2.1	1136.3	0	2
+Vombatus_ursinus	Vombatus ursinus	Diprotodontia	Vombatidae	Common wombat	5	1	2	26000	59	3	2	1	1	2	1	1	1	446	82	0.38	4901		3
+Wallabia_bicolor	Wallabia bicolor	Diprotodontia	Macropodidae	Swamp wallaby	8	1	1	15000	32.9	1	2	3	1	2	1	1	1	450	82.6	0.31	2584.2	0	3
+Wyulda_squamicaudata	Wyulda squamicaudata	Diprotodontia	Phalangeridae	Scaly tailed possum	0	1	2	1350	10.1	1	2	2	1	1	1	1	1	240	1	3.45	776.3		

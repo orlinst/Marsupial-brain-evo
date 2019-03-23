@@ -22,9 +22,11 @@ library(igraph)
 
 
 #load surface data - already ln'ed, stdzed, res included
-load("./Data/surface.txt")
+load("./Data/data_surface.txt")
 load("./Data/surface_standartized_res_body.RData")
 tree <-read.tree("./Data/tree176.nwk")
+
+summary <-read.csv("./Data/surface_summary.txt", sep = "\t", header = TRUE) 
 
 
 #OPTION 1#
@@ -89,9 +91,9 @@ ouchDescendants(78, otree)
 library(ggplot2)
 library(reshape2)
 
-Body <- data$Body/5
-Residuals <- data$Residuals
-Regime <- data$name
+Body <- summary$Body
+Residuals <- summary$Residuals
+Regime <- summary$name
 
 
 df1 <- data.frame(Body, Residuals, Regime)
@@ -127,10 +129,10 @@ surfaceTraitPlot(dat, bwd[[kk]], whattraits = c(1,2))
 
 bm<-startingModel(otree,odata,brownian=TRUE)
 ou1<-startingModel(otree,odata)
-surfaceAICPlot(fwd, bwd)
+surfaceAICPlot(surface$fwd, surface$bwd)
 abline(h=bm[[1]]$aic,lty="longdash")
-abline(h=H12[[1]]$aic,lty="longdash")
-text(c(6,6),c(bm[[1]]$aic, ou1[[1]]$aic, H12[[1]]$aic)-2,c("BM","OU1","H12"),cex=0.5)
+abline(h=ou1[[1]]$aic,lty="longdash")
+text(c(6,6),c(bm[[1]]$aic, ou1[[1]]$aic)-2,c("BM","OU1"),cex=0.5)
 
 
 
