@@ -36,7 +36,6 @@ data_mice$Species <- NULL
 data_mice$Order <- NULL
 data_mice$Family <- NULL
 data_mice$Common.Name <- NULL
-data_mice$GeoArea <- NULL
 data_mice$Status..Endangered..Vulnerable..Common..Abundant..Rare..or.sparse...Declining..Limited. <- NULL
 data_mice$Dimorphism <- NULL
 data_mice$ased <- NULL
