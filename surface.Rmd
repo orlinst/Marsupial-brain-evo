@@ -22,11 +22,11 @@ library(igraph)
 
 
 #load surface data - already ln'ed, stdzed, res included
-load("./Data/data_surface.txt")
-load("./Data/surface_standartized_res_body.RData")
+load("./Data/surface/data_surface.txt")
+load("./Data/surface/surface_standartized_res_body.RData")
 tree <-read.tree("./Data/tree176.nwk")
 
-summary <-read.csv("./Data/surface_summary.txt", sep = "\t", header = TRUE) 
+summary <-read.csv("./Data/surface/surface_summary.txt", sep = "\t", header = TRUE) 
 
 
 #OPTION 1#
@@ -90,10 +90,13 @@ ouchDescendants(78, otree)
 
 library(ggplot2)
 library(reshape2)
+require(wesanderson)
+names(wes_palettes)
+coco <- wes_palette("Cavalcanti1")
 
-Body <- summary$Body
+Body <- summary$Body/8
 Residuals <- summary$Residuals
-Regime <- summary$name
+Regime <- summary$X
 
 
 df1 <- data.frame(Body, Residuals, Regime)
@@ -101,7 +104,8 @@ df2 <- melt(df1, id.vars='Regime')
 head(df2)
 
 ggplot(df2, aes(x=Regime, y=value, fill=variable)) +
-    geom_bar(stat='identity', position='dodge') + coord_flip()
+    geom_bar(stat='identity', position='dodge') + 
+    scale_fill_manual(values = coco)+  coord_flip()
 
 #OPTION 2#
 
