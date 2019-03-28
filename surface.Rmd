@@ -22,7 +22,7 @@ library(igraph)
 
 
 #load surface data - already ln'ed, stdzed, res included
-load("./Data/surface/data_surface.txt")
+load("./Data/surface/data_surface.RData")
 load("./Data/surface/surface_standartized_res_body.RData")
 tree <-read.tree("./Data/tree176.nwk")
 
@@ -37,6 +37,7 @@ surface <- runSurface(tree, dat, exclude = 0, aic_threshold = 0, max_steps = NUL
 
 
 kk<-length(surface$bwd)
+#require(pals)
 surfaceTreePlot(tree, surface$bwd[[kk]], labelshifts = T, convcol = TRUE, cex = 0.5, align.tip.label = T)
 surfaceTraitPlot(dat, surface$bwd[[kk]], whattraits = c(1,2))
 
@@ -105,7 +106,9 @@ head(df2)
 
 ggplot(df2, aes(x=Regime, y=value, fill=variable)) +
     geom_bar(stat='identity', position='dodge') + 
-    scale_fill_manual(values = coco)+  coord_flip()
+    scale_fill_manual(values = coco)+  coord_flip() +
+  theme_bw() + theme(panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank())
 
 #OPTION 2#
 

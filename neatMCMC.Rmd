@@ -3,15 +3,6 @@ title: "MCMCglmm on N imputed datasets. Pooling. Plotting"
 output: html_document
 ---
 
-NOTES:
-
-- redo ENV model
-- finalise new models
-
-
-
-
-
 #Packages
 ```{r , message=FALSE, warning=FALSE}
 
