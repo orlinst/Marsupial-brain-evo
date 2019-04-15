@@ -1,0 +1,12 @@
+gls.ancova(Brain~Body,vcv(tree), Model_S, Model_S1)
+             df     Sum Sq Mean Sum Sq F value Pr(>F)
+FullModel     4 15817.2621     91.9608  5.0739 0.0072
+ReducedModel  2 16750.4575      96.267  
+
+Model_S<-model.matrix(as.formula(Brain~BodyN),data)
+Model_S1<-model.matrix(as.formula(Brain~BodyN:Origin),data)
+
+                           GVIF Df GVIF^(1/(2*Df))
+data$BodyN             1.157314  1        1.075785
+data$Origin            1.913814  2        1.176183
+data$BodyN:data$Origin 1.820555  2        1.161585

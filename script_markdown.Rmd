@@ -93,7 +93,7 @@ plot(profile_kappa)
 
 
 #load up comp data with the phylogenetic residuals
-res<-residuals(model.pgls.res, phylo = TRUE) #phylo=T exports phylo corrected residuals
+res<-residuals(model.pgls.res) #phylo=T exports phylo corrected residuals
 res<- res/sqrt(var(res))[1] #standartize residuals
 
 #plot and observe that there are no outlies with res>3
