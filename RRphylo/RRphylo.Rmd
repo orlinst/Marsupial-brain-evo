@@ -29,15 +29,24 @@ data1 <- log(data1)
 stdize = stdize = function(x, ...) {(x - min(x, ...)) / (max(x, ...) - min(x, ...))}
 data1$Brain <- stdize(data1$Brain)
 data1$Body <- stdize(data1$Body)
+
+
+
+
+
+###SUBSETTING###
+data1 <- as.data.frame(subsetOZ$res)
+rownames(data1) <- subsetOZ$Names
+treeOZ <- clean.data(data1, tree)
+treeOZ <- treeOZ$tree
 ```
 
 RRphylo
 ```{r}
 RR <- RRphylo(tree, data1)
 search.conv(RR,tree,data1, PGLSf=TRUE,nsim=1000,rsim=1000, clus=.5, min.dist = 3, foldername ="Data")
-search.shift(RR, auto.recognize = "yes", test.single = "no", status.type= "clade", foldername ="Data")
+search.shift(RR, auto.recognize = "yes", test.single = "no", status.type= "clade", nrep =5000, f=10, foldername ="Data")
 #cov = can add covariate
-
 ```
 
 

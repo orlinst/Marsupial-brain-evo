@@ -49,7 +49,6 @@ data$Order <- as.factor(data$Order)
 data$Family <- as.factor(data$Family)
 data$Origin <- as.factor(data$Origin)
 data$Status <- as.factor(data$Status)
-data$GeoArea <- as.factor(data$GeoArea)
 data$DiurnalityN <- as.factor(data$DiurnalityN) 
 data$Arboreality <- as.factor(data$Arboreality)
 data$Shelter.safety <- as.factor(data$Shelter.safety)
@@ -74,6 +73,18 @@ subsetAM<- data[data$Origin == "3",]
 
 mars <- comparative.data(phy = tree, data = data, names.col = Names, 
                          vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+
+
+####
+marsOZ <- comparative.data(phy = tree, data = subsetOZ, names.col = Names, 
+                         vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+marsNG <- comparative.data(phy = tree, data = subsetNG, names.col = Names, 
+                         vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+marsAM <- comparative.data(phy = tree, data = subsetAM, names.col = Names, 
+                         vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+
+#####
+
 
 #Allometric slope for residuals
 #Slope 0.57
