@@ -65,6 +65,21 @@ data$Play <- as.factor(data$Play)
 subsetOZ <- data[data$Origin == "1",]
 subsetNG <- data[data$Origin == "2",]
 subsetAM<- data[data$Origin == "3",]
+
+subsetOZNG <- data[data$Origin == "1" | data$Origin == "2"  ,]
+
+
+treeOZ <- clean.data(subsetOZ, tree)
+treeOZ <- treeOZ$tree
+
+treeNG <- clean.data(subsetNG, tree)
+treeNG <- treeNG$tree
+
+treeAM <- clean.data(subsetAM, tree)
+treeAM <- treeAM$tree
+
+treeOZNG <- clean.data(subsetOZNG, tree)
+treeOZNG <- treeOZNG$tree
 ```
 
 ##Obtain and bind the residuals and look at lambda an kappa
@@ -82,7 +97,8 @@ marsNG <- comparative.data(phy = tree, data = subsetNG, names.col = Names,
                          vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
 marsAM <- comparative.data(phy = tree, data = subsetAM, names.col = Names, 
                          vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
-
+marsOZNG <- comparative.data(phy = tree, data = subsetOZNG, names.col = Names, 
+                         vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
 #####
 
 
@@ -90,6 +106,12 @@ marsAM <- comparative.data(phy = tree, data = subsetAM, names.col = Names,
 #Slope 0.57
 model.pgls.res <- pgls(log(Brain) ~ log(BodyN), data = mars, lambda='ML')
 summary(model.pgls.res)
+
+
+model.pgls.res.OZ <- pgls(log(Brain) ~ log(BodyN), data = marsOZ, lambda='ML')
+model.pgls.res.AM <- pgls(log(Brain) ~ log(BodyN), data = marsAM, lambda='ML')
+model.pgls.res.NG <- pgls(log(Brain) ~ log(BodyN), data = marsNG, lambda='ML')
+model.pgls.res.OZNG <- pgls(log(Brain) ~ log(BodyN), data = marsOZNG, lambda='ML')
 
 #Obtain kappa so to infer the model of evolution
 mars_3d <- comparative.data(phy = tree, data = data, names.col = Names, vcv.dim=3, vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)

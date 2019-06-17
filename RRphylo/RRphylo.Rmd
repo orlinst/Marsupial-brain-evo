@@ -35,10 +35,10 @@ data1$Body <- stdize(data1$Body)
 
 
 ###SUBSETTING###
-data1 <- as.data.frame(subsetOZ$res)
+data1 <- as.data.frame(model.pgls.res.OZ$res)
 rownames(data1) <- subsetOZ$Names
-treeOZ <- clean.data(data1, tree)
-treeOZ <- treeOZ$tree
+tree <- treeOZ
+
 ```
 
 RRphylo
