@@ -80,6 +80,17 @@ treeAM <- treeAM$tree
 
 treeOZNG <- clean.data(subsetOZNG, tree)
 treeOZNG <- treeOZNG$tree
+
+
+p <- ggplot() + 
+    theme_bw() +
+    geom_jitter(aes(log(subsetOZ$Brain), log(subsetOZ$BodyN)), colour="red", shape = 15) + geom_smooth(aes(log(subsetOZ$Brain), log(subsetOZ$BodyN)), colour = "red", method=lm, se=FALSE, linetype = "dashed") +
+    geom_jitter(aes(log(subsetAM$Brain), log(subsetAM$BodyN)), colour="blue", shape = 17) + geom_smooth(aes(log(subsetAM$Brain), log(subsetAM$BodyN)), colour = "blue", method=lm, se=FALSE, linetype = "dotted") + 
+    geom_jitter(aes(log(subsetNG$Brain), log(subsetNG$BodyN)), colour="blue", shape = 3) + geom_smooth(aes(log(subsetNG$Brain), log(subsetNG$BodyN)), colour = "black", method=lm, se=FALSE, linetype = "longdash") 
+
+
+
+
 ```
 
 ##Obtain and bind the residuals and look at lambda an kappa
