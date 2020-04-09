@@ -86,8 +86,16 @@ p <- ggplot() +
     theme_bw() +
     geom_jitter(aes(log(subsetOZ$Brain), log(subsetOZ$BodyN)), colour="red", shape = 15) + geom_smooth(aes(log(subsetOZ$Brain), log(subsetOZ$BodyN)), colour = "red", method=lm, se=FALSE, linetype = "dashed") +
     geom_jitter(aes(log(subsetAM$Brain), log(subsetAM$BodyN)), colour="blue", shape = 17) + geom_smooth(aes(log(subsetAM$Brain), log(subsetAM$BodyN)), colour = "blue", method=lm, se=FALSE, linetype = "dotted") + 
-    geom_jitter(aes(log(subsetNG$Brain), log(subsetNG$BodyN)), colour="blue", shape = 3) + geom_smooth(aes(log(subsetNG$Brain), log(subsetNG$BodyN)), colour = "black", method=lm, se=FALSE, linetype = "longdash") 
+    geom_jitter(aes(log(subsetNG$Brain), log(subsetNG$BodyN)), colour="blue", shape = 3) + geom_smooth(aes(log(subsetNG$Brain), log(subsetNG$BodyN)), colour = "black", method=lm, se=FALSE, linetype = "longdash") + 
+   labs(x = "ln(Brain)", y = "ln(Body)")
 
+
+p <- ggplot() + 
+    theme_bw() +
+    geom_jitter(aes(log(subsetOK$Brain), log(subsetOK$BodyN)), colour="black", shape = 15) + geom_smooth(aes(log(subsetOK$Brain), log(subsetOK$BodyN)), colour = "black", method=lm, se=FALSE) +
+    geom_jitter(aes(log(subsetTR$Brain), log(subsetTR$BodyN)), colour="blue", shape = 17) + geom_smooth(aes(log(subsetTR$Brain), log(subsetTR$BodyN)), colour = "blue", method=lm, se=FALSE, linetype = "dashed") +
+   labs(x = "ln(Brain), Red = NT, Blue = T", y = "ln(Body)")
+    
 
 
 
