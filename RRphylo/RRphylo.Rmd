@@ -61,6 +61,14 @@ tree <- treeOZ
 
 
 
+data1 <- as.data.frame(model.pgls.res.Da$residuals)
+rownames(data1) <- subsetDa$Names
+tree <- treeDa
+
+data1 <- as.data.frame(model.pgls.res.Di$residuals)
+rownames(data1) <- subsetDi$Names
+tree <- treeDi
+
 
 ```
 
@@ -68,8 +76,18 @@ RRphylo
 ```{r}
 RR <- RRphylo(tree, data1)
 search.conv(RR,tree,data1, PGLSf=TRUE,nsim=1000,rsim=1000, clus=.5, min.dist = 3, foldername ="Data")
-search.shift(RR, auto.recognize = "yes", test.single = "no", status.type= "clade", nrep =5000, f=10, foldername ="Data")
+search.shift(RR, auto.recognize = "yes", test.single = "no", status.type= "clade", nrep =5000, f=5, foldername ="Data")
 #cov = can add covariate
 ```
+
+
+treeDi <- ggtree(tree, layout="circular") + 
+  geom_hilight(node=137, fill="firebrick2", alpha=.6) + 
+  geom_hilight(node=108, fill="limegreen", alpha=.6) +
+  geom_hilight(node=87, fill="firebrick2", alpha=.6)
+
+treeDi + geom_cladelabel(137, 'Acrobatidae + Pseudocheiridae +', angle=-25, hjust = "center", offset.text=5, barsize=3.5, color='red4', offset = 2.5, fontsize = 5) +
+    geom_cladelabel(108, 'Macropodidae', angle=5, hjust = "center", offset.text=5, barsize=3.5, color = 'darkgreen', offset = 2.5, fontsize = 5) + 
+    geom_cladelabel(87, 'Potoroidae', angle=90, hjust = "center", offset.text=5, barsize=3.5, color='red4', offset = 2.5, fontsize = 5)
 
 
