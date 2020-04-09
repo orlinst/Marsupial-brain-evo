@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
@@ -1483,7 +1484,7 @@ window.initializeCodeFolding = function(show) {
 
     // create a collapsable div to wrap the code in
     var div = $('<div class="collapse r-code-collapse"></div>');
-    if (show)
+    if (show || $(this)[0].classList.contains('fold-show'))
       div.addClass('in');
     var id = 'rcode-643E0F36' + currentIndex++;
     div.attr('id', id);
@@ -1613,7 +1614,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -1711,28 +1711,10 @@ summary {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 <style type="text/css">
 .code-folding-btn { margin-bottom: 4px; }
 </style>
-<script>
-$(document).ready(function () {
-  window.initializeSourceEmbed("RRphylo.Rmd");
-  window.initializeCodeFolding("show" === "show");
-});
-</script>
 
 
 
@@ -1774,53 +1756,43 @@ $(document).ready(function () {
 <p>The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YSA8LSByZWFkLmNzdihcIi4vRGF0YS9tYXJzQUxMLnR4dFwiLCBzZXAgPSBcIlxcdFwiLCBoZWFkZXIgPSBUUlVFKVxudHJlZSA8LXJlYWQudHJlZShcIi4vRGF0YS90cmVlMTc2Lm53a1wiKVxuYGBgIn0= -->
-<pre class="r"><code>data &lt;- read.csv(&quot;./Data/marsALL.txt&quot;, sep = &quot;\t&quot;, header = TRUE)
-tree &lt;-read.tree(&quot;./Data/tree176.nwk&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YSA8LSByZWFkLmNzdihcIi4vRGF0YS9tYXJzQUxMLnR4dFwiLCBzZXAgPSBcIlxcdFwiLCBoZWFkZXIgPSBUUlVFKVxuYGBgIn0= -->
+<pre class="r"><code>data &lt;- read.csv(&quot;./Data/marsALL.txt&quot;, sep = &quot;\t&quot;, header = TRUE)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiY2Fubm90IG9wZW4gZmlsZSAnLi9EYXRhL21hcnNBTEwudHh0JzogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeUVycm9yIGluIGZpbGUoZmlsZSwgXCJydFwiKSA6IGNhbm5vdCBvcGVuIHRoZSBjb25uZWN0aW9uXG4ifQ== -->
+<pre><code>cannot open file &#39;./Data/marsALL.txt&#39;: No such file or directoryError in file(file, &quot;rt&quot;) : cannot open the connection</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Subset log and norm</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YTEgPC0gYXMuZGF0YS5mcmFtZShkYXRhJEJvZHlOKVxuZGF0YTEgPC0gY2JpbmQoZGF0YSRCcmFpbiwgZGF0YTEpXG5yb3duYW1lcyhkYXRhMSkgPC0gZGF0YSROYW1lc1xuY29sbmFtZXMoZGF0YTEpIDwtIGMoXCJCcmFpblwiLCBcIkJvZHlcIilcbmRhdGExIDwtIGxvZyhkYXRhMSlcbnN0ZGl6ZSA9IHN0ZGl6ZSA9IGZ1bmN0aW9uKHgsIC4uLikgeyh4IC0gbWluKHgsIC4uLikpIC8gKG1heCh4LCAuLi4pIC0gbWluKHgsIC4uLikpfVxuZGF0YTEkQnJhaW4gPC0gc3RkaXplKGRhdGExJEJyYWluKVxuZGF0YTEkQm9keSA8LSBzdGRpemUoZGF0YTEkQm9keSlcblxuXG5cblxuXG4jIyNTVUJTRVRUSU5HIyMjXG5kYXRhMSA8LSBhcy5kYXRhLmZyYW1lKG1vZGVsLnBnbHMucmVzLk9aJHJlcylcbnJvd25hbWVzKGRhdGExKSA8LSBzdWJzZXRPWiROYW1lc1xudHJlZSA8LSB0cmVlT1pcblxuYGBgIn0= -->
-<pre class="r"><code>data1 &lt;- as.data.frame(data$BodyN)
-data1 &lt;- cbind(data$Brain, data1)
-rownames(data1) &lt;- data$Names
-colnames(data1) &lt;- c(&quot;Brain&quot;, &quot;Body&quot;)
-data1 &lt;- log(data1)
-stdize = stdize = function(x, ...) {(x - min(x, ...)) / (max(x, ...) - min(x, ...))}
-data1$Brain &lt;- stdize(data1$Brain)
-data1$Body &lt;- stdize(data1$Body)
-
-
-
-
-
-###SUBSETTING###
-data1 &lt;- as.data.frame(model.pgls.res.OZ$res)
-rownames(data1) &lt;- subsetOZ$Names
-tree &lt;- treeOZ
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubWFyc0RhIDwtIGNvbXBhcmF0aXZlLmRhdGEocGh5ID0gdHJlZSwgZGF0YSA9IHN1YnNldERhLCBuYW1lcy5jb2wgPSBOYW1lcywgXG4gICAgICAgICAgICAgICAgICAgICAgICAgdmN2ID0gVFJVRSwgbmEub21pdCA9IEZBTFNFLCB3YXJuLmRyb3BwZWQgPSBUUlVFKVxuXG5gYGAifQ== -->
+<pre class="r"><code>marsDa &lt;- comparative.data(phy = tree, data = subsetDa, names.col = Names, 
+                         vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
 </code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiRGF0YSBkcm9wcGVkIGluIGNvbXBpbGluZyBjb21wYXJhdGl2ZSBkYXRhIG9iamVjdFxuIn0= -->
+<pre><code>Data dropped in compiling comparative data object</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>RRphylo</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2VhcmNoLnNoaWZ0KFJSLCBhdXRvLnJlY29nbml6ZSA9IFwieWVzXCIsIHRlc3Quc2luZ2xlID0gXCJub1wiLCBzdGF0dXMudHlwZT0gXCJjbGFkZVwiLCBucmVwID01MDAwLCBmPTEwLCBmb2xkZXJuYW1lID1cIkRhdGFcIilcblxuYGBgIn0= -->
-<pre class="r"><code>search.shift(RR, auto.recognize = &quot;yes&quot;, test.single = &quot;no&quot;, status.type= &quot;clade&quot;, nrep =5000, f=10, foldername =&quot;Data&quot;)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuc2VhcmNoLnNoaWZ0KFJSLCBhdXRvLnJlY29nbml6ZSA9IFxceWVzXFwsIHRlc3Quc2luZ2xlID0gXFxub1xcLCBzdGF0dXMudHlwZT0gXFxjbGFkZVxcLCBucmVwID01MDAwLCBmPTEwLCBmb2xkZXJuYW1lID1cXERhdGFcXClcblxuYGBgXG5gYGAifQ== -->
+<p><code>r</code>r search.shift(RR, auto.recognize = , test.single = , status.type= , nrep =5000, f=10, foldername =)</p>
+<pre><code></code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcGRmKGZpbGUgPSBwYXN0ZShmb2xkZXJuYW1lLCBcIkFSIHJlc3VsdHMgZm9yIHJhdGUgZGlmZmVyZW5jZXMucGRmXCIsICA6IFxuICBjYW5ub3Qgb3BlbiBmaWxlICdEYXRhL0FSIHJlc3VsdHMgZm9yIHJhdGUgZGlmZmVyZW5jZXMucGRmJ1xuIn0= -->
-<pre><code>Error in pdf(file = paste(foldername, &quot;AR results for rate differences.pdf&quot;,  : 
+<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcGRmKGZpbGUgPSBwYXN0ZShmb2xkZXJuYW1lLCBcXEFSIHJlc3VsdHMgZm9yIHJhdGUgZGlmZmVyZW5jZXMucGRmXFwsICA6IFxuICBjYW5ub3Qgb3BlbiBmaWxlICdEYXRhL0FSIHJlc3VsdHMgZm9yIHJhdGUgZGlmZmVyZW5jZXMucGRmJ1xuIn0= -->
+<pre><code>Error in pdf(file = paste(foldername, \AR results for rate differences.pdf\,  : 
   cannot open file &#39;Data/AR results for rate differences.pdf&#39;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KQWRkIGEgbmV3IGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqSW5zZXJ0IENodW5rKiBidXR0b24gb24gdGhlIHRvb2xiYXIgb3IgYnkgcHJlc3NpbmcgKkN0cmwrQWx0K0kqLg0KDQpXaGVuIHlvdSBzYXZlIHRoZSBub3RlYm9vaywgYW4gSFRNTCBmaWxlIGNvbnRhaW5pbmcgdGhlIGNvZGUgYW5kIG91dHB1dCB3aWxsIGJlIHNhdmVkIGFsb25nc2lkZSBpdCAoY2xpY2sgdGhlICpQcmV2aWV3KiBidXR0b24gb3IgcHJlc3MgKkN0cmwrU2hpZnQrSyogdG8gcHJldmlldyB0aGUgSFRNTCBmaWxlKS4NCg0KVGhlIHByZXZpZXcgc2hvd3MgeW91IGEgcmVuZGVyZWQgSFRNTCBjb3B5IG9mIHRoZSBjb250ZW50cyBvZiB0aGUgZWRpdG9yLiBDb25zZXF1ZW50bHksIHVubGlrZSAqS25pdCosICpQcmV2aWV3KiBkb2VzIG5vdCBydW4gYW55IFIgY29kZSBjaHVua3MuIEluc3RlYWQsIHRoZSBvdXRwdXQgb2YgdGhlIGNodW5rIHdoZW4gaXQgd2FzIGxhc3QgcnVuIGluIHRoZSBlZGl0b3IgaXMgZGlzcGxheWVkLg0KDQoNCmBgYHtyfQ0KZGF0YSA8LSByZWFkLmNzdigiLi9EYXRhL21hcnNBTEwudHh0Iiwgc2VwID0gIlx0IiwgaGVhZGVyID0gVFJVRSkNCnRyZWUgPC1yZWFkLnRyZWUoIi4vRGF0YS90cmVlMTc2Lm53ayIpDQpgYGANCg0KU3Vic2V0IGxvZyBhbmQgbm9ybQ0KYGBge3J9DQpkYXRhMSA8LSBhcy5kYXRhLmZyYW1lKGRhdGEkQm9keU4pDQpkYXRhMSA8LSBjYmluZChkYXRhJEJyYWluLCBkYXRhMSkNCnJvd25hbWVzKGRhdGExKSA8LSBkYXRhJE5hbWVzDQpjb2xuYW1lcyhkYXRhMSkgPC0gYygiQnJhaW4iLCAiQm9keSIpDQpkYXRhMSA8LSBsb2coZGF0YTEpDQpzdGRpemUgPSBzdGRpemUgPSBmdW5jdGlvbih4LCAuLi4pIHsoeCAtIG1pbih4LCAuLi4pKSAvIChtYXgoeCwgLi4uKSAtIG1pbih4LCAuLi4pKX0NCmRhdGExJEJyYWluIDwtIHN0ZGl6ZShkYXRhMSRCcmFpbikNCmRhdGExJEJvZHkgPC0gc3RkaXplKGRhdGExJEJvZHkpDQoNCg0KDQoNCg0KIyMjU1VCU0VUVElORyMjIw0KZGF0YTEgPC0gYXMuZGF0YS5mcmFtZShtb2RlbC5wZ2xzLnJlcy5PWiRyZXMpDQpyb3duYW1lcyhkYXRhMSkgPC0gc3Vic2V0T1okTmFtZXMNCnRyZWUgPC0gdHJlZU9aDQoNCmBgYA0KDQpSUnBoeWxvDQpgYGB7cn0NClJSIDwtIFJScGh5bG8odHJlZSwgZGF0YTEpDQpzZWFyY2guY29udihSUix0cmVlLGRhdGExLCBQR0xTZj1UUlVFLG5zaW09MTAwMCxyc2ltPTEwMDAsIGNsdXM9LjUsIG1pbi5kaXN0ID0gMywgZm9sZGVybmFtZSA9IkRhdGEiKQ0Kc2VhcmNoLnNoaWZ0KFJSLCBhdXRvLnJlY29nbml6ZSA9ICJ5ZXMiLCB0ZXN0LnNpbmdsZSA9ICJubyIsIHN0YXR1cy50eXBlPSAiY2xhZGUiLCBucmVwID01MDAwLCBmPTEwLCBmb2xkZXJuYW1lID0iRGF0YSIpDQojY292ID0gY2FuIGFkZCBjb3ZhcmlhdGUNCmBgYA0KDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KQWRkIGEgbmV3IGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqSW5zZXJ0IENodW5rKiBidXR0b24gb24gdGhlIHRvb2xiYXIgb3IgYnkgcHJlc3NpbmcgKkN0cmwrQWx0K0kqLg0KDQpXaGVuIHlvdSBzYXZlIHRoZSBub3RlYm9vaywgYW4gSFRNTCBmaWxlIGNvbnRhaW5pbmcgdGhlIGNvZGUgYW5kIG91dHB1dCB3aWxsIGJlIHNhdmVkIGFsb25nc2lkZSBpdCAoY2xpY2sgdGhlICpQcmV2aWV3KiBidXR0b24gb3IgcHJlc3MgKkN0cmwrU2hpZnQrSyogdG8gcHJldmlldyB0aGUgSFRNTCBmaWxlKS4NCg0KVGhlIHByZXZpZXcgc2hvd3MgeW91IGEgcmVuZGVyZWQgSFRNTCBjb3B5IG9mIHRoZSBjb250ZW50cyBvZiB0aGUgZWRpdG9yLiBDb25zZXF1ZW50bHksIHVubGlrZSAqS25pdCosICpQcmV2aWV3KiBkb2VzIG5vdCBydW4gYW55IFIgY29kZSBjaHVua3MuIEluc3RlYWQsIHRoZSBvdXRwdXQgb2YgdGhlIGNodW5rIHdoZW4gaXQgd2FzIGxhc3QgcnVuIGluIHRoZSBlZGl0b3IgaXMgZGlzcGxheWVkLg0KDQoNCmBgYHtyfQ0KZGF0YSA8LSByZWFkLmNzdigiLi9EYXRhL21hcnNBTEwudHh0Iiwgc2VwID0gIlx0IiwgaGVhZGVyID0gVFJVRSkNCnRyZWUgPC1yZWFkLnRyZWUoIi4vRGF0YS90cmVlMTc2Lm53ayIpDQpgYGANCg0KU3Vic2V0IGxvZyBhbmQgbm9ybQ0KYGBge3J9DQpkYXRhMSA8LSBhcy5kYXRhLmZyYW1lKGRhdGEkQm9keU4pDQpkYXRhMSA8LSBjYmluZChkYXRhJEJyYWluLCBkYXRhMSkNCnJvd25hbWVzKGRhdGExKSA8LSBkYXRhJE5hbWVzDQpjb2xuYW1lcyhkYXRhMSkgPC0gYygiQnJhaW4iLCAiQm9keSIpDQpkYXRhMSA8LSBsb2coZGF0YTEpDQpzdGRpemUgPSBzdGRpemUgPSBmdW5jdGlvbih4LCAuLi4pIHsoeCAtIG1pbih4LCAuLi4pKSAvIChtYXgoeCwgLi4uKSAtIG1pbih4LCAuLi4pKX0NCmRhdGExJEJyYWluIDwtIHN0ZGl6ZShkYXRhMSRCcmFpbikNCmRhdGExJEJvZHkgPC0gc3RkaXplKGRhdGExJEJvZHkpDQoNCg0Kc3Vic2V0RGEgPC0gZGF0YVtkYXRhJE9yZGVyID09ICJEYXN5dXJvbW9ycGhpYSIsXQ0Kc3Vic2V0RGkgPC0gZGF0YVtkYXRhJE9yZGVyID09ICJEaXByb3RvZG9udGlhIixdDQoNCnRyZWVEYSA8LSBjbGVhbi5kYXRhKHN1YnNldERhLCB0cmVlKQ0KdHJlZURhIDwtIHRyZWVEYSR0cmVlDQoNCnRyZWVEaSA8LSBjbGVhbi5kYXRhKHN1YnNldERpLCB0cmVlKQ0KdHJlZURpIDwtIHRyZWVEaSR0cmVlDQoNCg0KbWFyc0RpIDwtIGNvbXBhcmF0aXZlLmRhdGEocGh5ID0gdHJlZSwgZGF0YSA9IHN1YnNldERpLCBuYW1lcy5jb2wgPSBOYW1lcywgDQogICAgICAgICAgICAgICAgICAgICAgICAgdmN2ID0gVFJVRSwgbmEub21pdCA9IEZBTFNFLCB3YXJuLmRyb3BwZWQgPSBUUlVFKQ0KbWFyc0RhIDwtIGNvbXBhcmF0aXZlLmRhdGEocGh5ID0gdHJlZSwgZGF0YSA9IHN1YnNldERhLCBuYW1lcy5jb2wgPSBOYW1lcywgDQogICAgICAgICAgICAgICAgICAgICAgICAgdmN2ID0gVFJVRSwgbmEub21pdCA9IEZBTFNFLCB3YXJuLmRyb3BwZWQgPSBUUlVFKQ0KDQptb2RlbC5wZ2xzLnJlcy5EaSA8LSBwZ2xzKGxvZyhCcmFpbikgfiBsb2coQm9keU4pLCBkYXRhID0gbWFyc0RpLCBsYW1iZGE9J01MJykNCm1vZGVsLnBnbHMucmVzLkRhIDwtIHBnbHMobG9nKEJyYWluKSB+IGxvZyhCb2R5TiksIGRhdGEgPSBtYXJzRGEsIGxhbWJkYT0nTUwnKQ0KDQoNCg0KDQojIyNTVUJTRVRUSU5HIyMjDQpkYXRhMSA8LSBhcy5kYXRhLmZyYW1lKG1vZGVsLnBnbHMucmVzLk9aJHJlcykNCnJvd25hbWVzKGRhdGExKSA8LSBzdWJzZXRPWiROYW1lcw0KdHJlZSA8LSB0cmVlT1oNCg0KDQoNCg0KDQoNCmBgYA0KDQpSUnBoeWxvDQpgYGB7cn0NClJSIDwtIFJScGh5bG8odHJlZSwgZGF0YTEpDQpzZWFyY2guY29udihSUix0cmVlLGRhdGExLCBQR0xTZj1UUlVFLG5zaW09MTAwMCxyc2ltPTEwMDAsIGNsdXM9LjUsIG1pbi5kaXN0ID0gMywgZm9sZGVybmFtZSA9IkRhdGEiKQ0Kc2VhcmNoLnNoaWZ0KFJSLCBhdXRvLnJlY29nbml6ZSA9ICJ5ZXMiLCB0ZXN0LnNpbmdsZSA9ICJubyIsIHN0YXR1cy50eXBlPSAiY2xhZGUiLCBucmVwID01MDAwLCBmPTEwLCBmb2xkZXJuYW1lID0iRGF0YSIpDQojY292ID0gY2FuIGFkZCBjb3ZhcmlhdGUNCmBgYA0KDQoNCg==</div>
 
 
 
@@ -1849,6 +1821,29 @@ $(document).ready(function () {
 });
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("RRphylo.Rmd");
+  window.initializeCodeFolding("show" === "show");
+});
+</script>
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

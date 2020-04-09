@@ -31,6 +31,24 @@ data1$Brain <- stdize(data1$Brain)
 data1$Body <- stdize(data1$Body)
 
 
+subsetDa <- data[data$Order == "Dasyuromorphia",]
+subsetDi <- data[data$Order == "Diprotodontia",]
+
+treeDa <- clean.data(subsetDa, tree)
+treeDa <- treeDa$tree
+
+treeDi <- clean.data(subsetDi, tree)
+treeDi <- treeDi$tree
+
+
+marsDi <- comparative.data(phy = treeDi, data = subsetDi, names.col = Names, 
+                         vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+marsDa <- comparative.data(phy = treeDa, data = subsetDa, names.col = Names, 
+                         vcv = TRUE, na.omit = FALSE, warn.dropped = TRUE)
+
+model.pgls.res.Di <- pgls(log(Brain) ~ log(BodyN), data = marsDi, lambda='ML')
+model.pgls.res.Da <- pgls(log(Brain) ~ log(BodyN), data = marsDa, lambda='ML')
+
 
 
 
@@ -38,6 +56,11 @@ data1$Body <- stdize(data1$Body)
 data1 <- as.data.frame(model.pgls.res.OZ$res)
 rownames(data1) <- subsetOZ$Names
 tree <- treeOZ
+
+
+
+
+
 
 ```
 
