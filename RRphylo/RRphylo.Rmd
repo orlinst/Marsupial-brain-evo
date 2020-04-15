@@ -81,10 +81,19 @@ search.shift(RR, auto.recognize = "yes", test.single = "no", status.type= "clade
 ```
 
 
-treeDi <- ggtree(tree, layout="circular") + 
-  geom_hilight(node=137, fill="firebrick2", alpha=.6) + 
-  geom_hilight(node=108, fill="limegreen", alpha=.6) +
-  geom_hilight(node=87, fill="firebrick2", alpha=.6)
+treeC <- ggtree(tree, ladderize=F, layout="circular") + geom_tiplab() + geom_nodepoint() +
+  geom_hilight(node=331, fill="firebrick2", alpha=.6) + 
+  geom_hilight(node=313, fill="blue", alpha=.6) +
+  geom_hilight(node=264, fill="blue", alpha=.6) +
+  geom_hilight(node=246, fill="blue", alpha=.6) +
+  geom_hilight(node=281, fill="firebrick2", alpha=.6) +
+  geom_hilight(node=178, fill="firebrick2", alpha=.6)
+  
+# 
+edge=data.frame(tree$edge, edge_num=1:nrow(tree$edge))
+colnames(edge)=c("parent", "node", "edge_num")
+treeC %<+% edge + geom_label(aes(x=branch, label=edge_num))
+#
 
 treeDi + geom_cladelabel(137, 'Acrobatidae + Pseudocheiridae +', angle=-25, hjust = "center", offset.text=5, barsize=3.5, color='red4', offset = 2.5, fontsize = 5) +
     geom_cladelabel(108, 'Macropodidae', angle=5, hjust = "center", offset.text=5, barsize=3.5, color = 'darkgreen', offset = 2.5, fontsize = 5) + 
