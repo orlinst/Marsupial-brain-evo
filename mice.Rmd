@@ -75,6 +75,9 @@ aggr_plot
 
 
 dev.off()
+
+a <- data[rowSums(is.na(data))<(length(data)-2),] #remove >3 NAs
+
 ```
 
 

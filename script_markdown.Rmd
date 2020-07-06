@@ -3,14 +3,15 @@ title: "Marsupial Brain Analyses"
 author: "Orlin Todorov"
 date: "13 February 2019"
 output:
-  pdf_document: default
   html_document:
     fig_caption: yes
     fig_height: 8
     fig_width: 10
+  pdf_document: default
+  
 ---
 #Load packages
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 
 require(caper)
 require(ape)
@@ -35,7 +36,7 @@ require(RColorBrewer)
 
 
 #Load up data and tree
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 data <-read.csv("./Data/marsALL.txt", sep = "\t", header = TRUE) 
 tree <-read.tree("./Data/tree176.nwk")
 rownames(data) <- data$Names
@@ -44,7 +45,7 @@ clean.data(data, tree)  ## check if data == tree names
 
 
 ##Convert vars
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 data$Order <- as.factor(data$Order)
 data$Family <- as.factor(data$Family)
 data$Origin <- as.factor(data$Origin)
@@ -61,7 +62,7 @@ data$Play <- as.factor(data$Play)
 ```
 
 ##Subsetting
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 subsetOZ <- data[data$Origin == "1",]
 subsetNG <- data[data$Origin == "2",]
 subsetAM<- data[data$Origin == "3",]
