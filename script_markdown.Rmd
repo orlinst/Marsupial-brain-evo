@@ -19,8 +19,6 @@ require(dispRity)
 require(geiger)
 require(multcomp)
 require(phytools)
-require(ape)
-require(geiger)
 require(nlme)
 require(evomap)
 require(adephylo)
@@ -35,6 +33,7 @@ require(RColorBrewer)
 ```
 
 
+
 #Load up data and tree
 ```{r, include=FALSE}
 data <-read.csv("./Data/marsALL.txt", sep = "\t", header = TRUE) 
@@ -42,7 +41,6 @@ tree <-read.tree("./Data/tree176.nwk")
 rownames(data) <- data$Names
 clean.data(data, tree)  ## check if data == tree names
 ```
-
 
 ##Convert vars
 ```{r, include=FALSE}
@@ -60,6 +58,32 @@ data$Mating.system <- as.factor(data$Mating.system)
 data$Torpor <- as.factor(data$Torpor)
 data$Play <- as.factor(data$Play)
 ```
+
+
+### Create viz
+```{r, include=FALSE}
+brainsize <-setNames(data$Brain,
+    rownames(data))
+bodysize <-setNames(data$BodyN,
+    rownames(data))
+
+bl.object<-edge.widthMap(tree,brainsize)
+plot(bl.object,fsize=0.9,max.width=0.8,
+    legend="Brain size",
+    color=palette()[4],min.width=0.05,border="black",
+    lwd=3)
+
+#OR mirrored for 2 traits
+
+plot(edge.widthMap(tree,brainsize),color=palette()[2],
+    lwd=4,direction="rightwards",max.width=0.8,
+    ftype="off",legend="Brain",border="black")
+plot(edge.widthMap(tree,bodysize),color=palette()[4],
+    lwd=4,direction="leftwards",max.width=0.8,
+    ftype="off",legend="Body",border="black")
+```
+
+
 
 ##Subsetting
 ```{r, include=FALSE}
@@ -97,6 +121,48 @@ p <- ggplot() +
     geom_jitter(aes(log(subsetTR$Brain), log(subsetTR$BodyN)), colour="blue", shape = 17) + geom_smooth(aes(log(subsetTR$Brain), log(subsetTR$BodyN)), colour = "blue", method=lm, se=FALSE, linetype = "dashed") +
    labs(x = "ln(Brain), Red = NT, Blue = T", y = "ln(Body)")
     
+
+##OR
+
+p1 <- ggplot(data, aes(log(BodyN), log(Brain), color=Origin, shape=Origin)) +
+    geom_point() + 
+    geom_smooth(method=lm, se=FALSE) +
+    theme(legend.position="top") +
+    scale_colour_discrete(name = "Origin", labels = c("Australia", "New Guinea", "Americas")) +
+     scale_shape_discrete(name = "Origin", labels = c("Australia", "New Guinea", "Americas")) +
+    theme_classic() +
+  xlab("log Body weight") + ylab("log Brain volume")
+    
+
+data$Status[data$Status == 3] <- 2 # recode thylacine into 2
+
+p2 <- ggplot(data, aes(log(BodyN), log(Brain), color=Status, shape=Status)) +
+    geom_point() + 
+    geom_smooth(method=lm, se=FALSE) +
+    theme(legend.position="top") +
+    scale_colour_discrete(name = "Status", labels = c("Common", "Vulnerable"), na.translate = F) +
+     scale_shape_discrete(name = "Status", labels = c("Common", "Vulnerable"), na.translate = F) +
+    theme_classic() +
+  xlab("log Body weight") + ylab("log Brain volume")
+
+#3D
+
+pal <- c("red", "blue", "green")
+
+fig <- plot_ly(x=log(data$BodyN), y=log(data$Brain), z=log(data$Litter.size), type="scatter3d", mode="markers", color=~data$Origin, symbol = ~data$Origin, symbols = c('circle','x','o'), marker = list(size = 10))
+
+fig <- fig %>% layout(
+    title="Brain vs Body vs Litter size vs Origin",
+    scene = list(
+      xaxis = list(title = "Body"),
+      yaxis = list(title = "Brain"),
+      zaxis = list(title = "Litter Size"),
+      color = list(title = "Origin")
+))
+
+
+
+
 
 
 
@@ -433,7 +499,7 @@ anova(model.pgls3)
 
 #Environmental model HR significant
 model.pgls4<-pgls(log(Brain) ~ DiurnalityN + Shelter.safety + Arboreality + Diet + log(HR) + log(BodyN), data = mars, lambda='ML')
-summary(model.pgls3)
+summary(model.pgls4)
 
 #Origin model - Sig interaction
 model.pgls4<-pgls(log(Brain) ~ log(BodyN)  * Origin, data = mars, lambda='ML')
