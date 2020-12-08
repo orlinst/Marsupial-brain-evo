@@ -1,18 +1,13 @@
 # Marsupial-brain-evo
 
-Running a smooth MCMC on marsupial brain evolution data
+"Supplementary material for Testing hypotheses of marsupial brain size variation using phylogenetic multiple imputations and a Bayesian comparative framework"
+
+01. Plots Final contains all plots and stats output for all models, and the MCMCglmm output for all the 25 datatsets and 2 chains.
 
 
-
-`mcmc.Rmd` - a quite messy extended MCMC tutorial on my data
-
-`script_markdown.Rmd` - pgls's, ancestral state estimations etc. At the end, this should be the complete file with analysis redirtecting to mice and neatMCMC.
-
-
-`mice.Rmd` - Multiple imputation on missing data of my dataset
-
-`surface.Rmd` - Surface, analysis of convergence
-
-Main code - - >`neatMCMC.Rmd` - MCMC with streamlined analysis of imputed sets, pooling, plotting etc!
-
-
+02. Supplement Final contains 
+1) all the plots for the imputations and the missing data
+2) all the 25 used imputed datatsets 
+3) the original datatset with missing values
+4) the code for all R analyses used
+5) the phylogenetic tree used
