@@ -1,0 +1,439 @@
+---
+title: "Marsupial brain evo"
+author: "Orlin T"
+date: "28/07/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE, error = TRUE, eval = FALSE}
+knitr::opts_chunk$set(
+  error = TRUE 
+)
+
+#Basic packages
+if(!require(ape)) install.packages("ape")
+if(!require(MCMCglmm)) install.packages("MCMCglmm")
+if(!require(mulTree)) install.packages("mulTree")
+if(!require(rlist)) install.packages("rlist")
+
+#For three manipulation
+if(!require(phytools)) install.packages("phytools")
+
+#For reading imputations
+if(!require(mice)) install.packages("mice")library("mice")
+if(!require(phylomice)) install.packages("phylomice")library("phylomice") #might have to request the latest version from Simone on Github
+
+
+#For plotting
+
+if(!require(ggplot2)) install.packages("ggplot2")library("ggplot2")
+if(!require(hdrcde)) install.packages("hdrcde")library("hdrcde")
+if(!require(forcats)) install.packages("forcats")library("forcats")
+if(!require(bayesplot)) install.packages("bayesplot")library("bayesplot")
+if(!require(VIM)) install.packages("VIM")library("VIM")
+
+```
+
+#Load up data and tree
+```{r, include=FALSE, error = TRUE, eval = FALSE}
+data <-read.csv("./Data/marsALL.txt", sep = "\t", header = TRUE) 
+tree <-read.tree("./Data/tree176.nwk")
+rownames(data) <- data$Names
+clean.data(data, tree)  ## check if data == tree names
+```
+
+##Convert vars
+```{r, include=FALSE, error = TRUE, eval = FALSE}
+data$Order <- as.factor(data$Order)
+data$Family <- as.factor(data$Family)
+data$Origin <- as.factor(data$Origin)
+data$Status <- as.factor(data$Status)
+data$DiurnalityN <- as.factor(data$DiurnalityN) 
+data$Arboreality <- as.factor(data$Arboreality)
+data$Shelter.safety <- as.factor(data$Shelter.safety)
+data$Diet <- as.factor(data$Diet)
+data$Group.living <- as.factor(data$Group.living)
+data$Parental.care <- as.factor(data$Parental.care)
+data$Mating.system <- as.factor(data$Mating.system)
+data$Torpor <- as.factor(data$Torpor)
+data$Play <- as.factor(data$Play)
+```
+
+
+
+##Imputations
+```{r, error = TRUE, eval = FALSE}
+data_mice <- data
+
+data_mice$Names <- NULL
+data_mice$Species <- NULL
+data_mice$Order <- NULL
+data_mice$Family <- NULL
+data_mice$Common.Name <- NULL
+data_mice$Status..Endangered..Vulnerable..Common..Abundant..Rare..or.sparse...Declining..Limited. <- NULL
+data_mice$Dimorphism <- NULL
+data_mice$ased <- NULL
+data_mice$BodyM <- NULL
+data_mice$BodyF <- NULL
+
+
+data_mice$BodyN <- log(data_mice$BodyN)
+data_mice$Brain <- log(data_mice$Brain)
+data_mice$Weaning.age <- log(data_mice$Weaning.age)
+data_mice$Litter.size <- log (data_mice$Litter.size)
+data_mice$HR <- log(data_mice$HR)
+data_mice$Population.density <- log(data_mice$Population.density)
+data_mice$FMR.Riek <- log (data_mice$FMR.Riek)
+
+
+#Plot missing data
+
+pdf(file="missing.pdf",width=9,height=12)
+aggr_plot <- aggr(data_mice, col=c('navyblue','red'), numbers=TRUE, sortVars=TRUE, labels=names(data_mice), cex.axis=.5, gap=4, ylab=c("Histogram of missing data","Pattern"))
+
+aggr_plot
+
+
+dev.off()
+
+
+#Impute
+#Phyomice
+
+prec <- precomputePsi(tree)
+
+imp <- mice(data_mice, m=5, meth = c("phpmm", "phpmm", "", "", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm","phpmm","phpmm","phpmm", "phpmm", "phpmm"), psi = prec$psi, psiinv = prec$psiinv, maxit = 2)
+
+pred <- imp$predictorMatrix 
+pred[, "FMR.Riek"] <- 0
+pred[, "Torpor"] <- 0
+pred[, "Play"] <- 0
+pred[, "Population.density"] <- 0
+pred[, "HR"] <- 0
+
+imp <- mice(data_mice, m=5, pred = pred, meth = c("phpmm", "phpmm", "", "", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm", "phpmm","phpmm","phpmm","phpmm", "phpmm", "phpmm"), psi = prec$psi, psiinv = prec$psiinv, maxit = 2000)
+
+save(imp, file = "imp2000.RData")
+
+plot(imp)
+stripplot(imp, pch = 20, cex = 1.2)
+
+complete(imp, 2)
+
+load("./Data/imp20000.Rdata")
+```
+
+
+
+#MCMCGlmm
+```{r, error = TRUE, eval = FALSE}
+
+#assign all the imputed datasets do dataX(num) object
+for(imputedsets in 1: length(imp$imp[[1]])) {
+    assign(paste0("dataX",imputedsets), complete(imp, imputedsets))
+    assign(paste0("dataX",imputedsets), cbind(Names = data[[1]], get(paste0("dataX",imputedsets))))
+}
+
+
+
+#Check for branch lenghts of 0 and add 0.01$ of the median if this is the case
+
+tree$edge.length[which(tree$edge.length == 0)] <- 0.01*median(tree$edge.length[-which(tree$edge.length == 0)])
+tree <- force.ultrametric(tree,method="extend")
+
+
+#Define models for MulTree
+
+formula_dev <- Brain ~ BodyN + Weaning.age + Litter.size
+formula_soc <- Brain ~ Group.living + Parental.care + Mating.system + Population.density + BodyN
+formula_env <- Brain ~ DiurnalityN + Shelter.safety + Arboreality + Diet + HR + BodyN
+formula_ori <- Brain ~ Origin * BodyN
+formula_vul <- Brain ~ Status * BodyN
+formula_tor <- Brain ~ Torpor * BodyN
+formula_pla <- Brain ~ Play * BodyN
+formula_fmr <- Brain ~ FMR.Riek * BodyN
+
+
+#Parameters for the MCMC
+
+# Number of interations
+nitt <- 10
+# Length of burnin -> what to ignore (the initial N ot iterations)
+burnin <- 2
+# Amount of thinning -> lenght of step (sampling rate)
+thin <- 2
+
+
+#Creating mulTree objects
+
+##Creates mulTree objects = to N imputed datasets -> length(imp$imp[[1]])
+##mulTree_data1 <- as.mulTree(data = data1, tree = tree, taxa = "Names")
+
+for(imputedsets in 1:length(imp$imp[[1]])) {
+    assign(paste("mulTree_data",imputedsets,sep=""), as.mulTree(data = get(paste("dataX",imputedsets, sep="")), tree = tree, taxa = "Names"))
+}
+
+##removes the dataX files so they are all within the mulTree objects
+rm(list=ls(pattern="dataX"))
+
+
+#Parameter set up with priors
+
+## The formula will be set within run.mulTree
+## mul_formula <- formula_X
+
+# The MCMC parameters (iterations, thining, burnin)
+mul_parameters <- c(nitt, thin, burnin)
+# The MCMCglmm priors
+mul_priors <- list(R = list(V = 1, nu = 0.002),
+                   G = list(G1 = list(V = 1, nu = 0.002)))
+
+
+
+#Run MCMCglmm on the number of imputed datasets -> length(imp$imp[[1]]) + over all formulas (check the names)
+#set formula names manually, to match the label after the _ in the formulas above
+
+#mulTree(mulTree.data = mulTree_data1, formula = mul_formula, priors = mul_priors,
+#parameters = mul_parameters, output = "./MCMCmodels/model1", ESS = 1000,
+#chains = 2)
+
+
+
+for(imputedsets in 1 : length(imp$imp[[1]])) {
+  for (form in c("dev", "soc", "env", "ori", "vul", "tor", "pla", "fmr"))
+      mulTree(mulTree.data = get(paste0("mulTree_data",imputedsets)), formula = get(paste0("formula_", form)), priors = mul_priors,
+      parameters = mul_parameters, output = paste0("./MCMCmodels/model_", form, "/" , "model", imputedsets), ESS = 1000, chains = 2)
+  }
+
+
+#Extracting solutions from 2 chains per model *<<imputedsets>> and combining in a list
+
+
+#Set WD to the model of interest
+#Load imp if not loaded, as it is used for the count of the number of imputed sets
+#setwd("./MCMCmodels")
+
+#Reading all models + all chains (if more chains are run, add manually here)
+#setwd("C:/Users/uqotodor_local/Dropbox/05. Github/Marsupial-brain-evo/MCMCmodels/model_dev")
+setwd("C:/Users/uqotodor_local/Dropbox/05. Github/Marsupial-brain-evo/MCMCmodels/model_ori3")
+list() -> raw_models_chain1 -> raw_models_chain2
+for(imputedsets in 1:  length(imp$imp[[1]])) {
+  raw_models_chain1[[imputedsets]] <- read.mulTree(paste0("model",imputedsets,"-tree1_chain1"), model = TRUE)
+  raw_models_chain2[[imputedsets]] <- read.mulTree(paste0("model",imputedsets,"-tree1_chain2"), model = TRUE)
+}
+
+raw_models_allchains <- c(raw_models_chain1, raw_models_chain2)
+
+## Get Sol
+# @param model this should be a single model (e.g. one chain output from mcmcglmm)
+# @return the Sol vector from one single chain
+get.Sol <- function(model) {return(model$Sol)}
+
+## Get summary of Sol
+# @param model this should be a single model (e.g. one chain output from mcmcglmm)
+# @return the summary table of the Sol
+get.summary.Sol <- function(model) {return(summary(model$Sol))}
+
+## Turn into dataframe and get statistics
+## obtain Variance (SD^2) and bind to the list
+## remove unnecessary columns
+# @param The output of get.summary.Sol (the summary of Sol)
+# @return dataframe with statistics
+get.stat.Sol <- function(summarySol) {
+  output <- as.data.frame(summarySol$statistics)
+  output$Var <- (output$SD)^2
+  output$SD <- NULL
+  output$`Naive SE` <- NULL
+  output$`Time-series SE` <- NULL
+  return(output)
+}
+
+## Run the functions and get *results*
+all_Sol <- lapply(raw_models_allchains, get.Sol)
+all_summaries <- lapply(raw_models_allchains, get.summary.Sol)
+results <- lapply(all_summaries, get.stat.Sol)
+
+#setwd("./")
+
+##Combining solutions for density plots + percentages
+
+#using list.rbind from rlist
+solX <- as.data.frame(list.rbind(all_Sol))
+
+##Neat up the names!
+
+names(solX)
+names(solX) <- c("Intercept",    "Var1", "Var2", "VarN")
+
+
+
+#Plot density plots
+
+#plot in pdf
+
+
+pdf(file="./MCMCmodels/density.pdf")
+par( mfrow = c( 3, 3 ))
+    for(column in 1 : c(ncol(solX))) {
+    percentage_above_zero <- length(which(solX[,column] >= 0))/length(solX[,column])
+hdr.den(solX[,column],  main = names(solX[column]), sub = paste0(round(percentage_above_zero*100,2), "% above zero"), prob = c(50, 95, 99))
+abline(v = 0, lty = 1)  
+    }
+dev.off()
+
+```
+
+##Pooling the results using the Rubin's rule
+##Make sure to adjust parameters!
+```{r pooling, message=FALSE, warning=FALSE, error = TRUE, eval = FALSE}
+
+# Using the posteriors collated in *results*
+
+mbar <-  function (x, col=1) { # function to calculate average parameter estimates and average variances from the results list
+    vals <- rowMeans(matrix(unlist(lapply(x, function (z) z[, col])),
+                            nrow=dim(x[[1]])[1], ncol=length(x)))
+    names(vals) <- rownames(x[[1]])
+    vals
+}
+
+Bm <- function (x) {
+    Qmbar <- mbar(x)
+    Qvals <- matrix(unlist(lapply(x, function (z) z[,1])),
+                    ncol=length(x), nrow=dim(x[[1]])[1])
+    QQ <- apply(Qvals, 2, function (x) x - Qmbar)
+    apply(QQ, 1, function (z) (z %*% z)/(length(z)-1))
+}
+
+Tm <- function (x) {
+    Umbar <- mbar(x,  col=2)
+    Umbar + (1 + 1/length(x)) * Bm(x)
+}
+
+lambda <- function (nu) {
+    (nu + 1)/(nu + 3)
+}
+
+vm <- function (Bm, Tm, m=5){
+    gammahat <- (1+1/m) * sum(Bm/Tm)/length(Bm)
+    (m-1)/(gammahat^2)
+}
+
+
+# Now we do the analysis:
+
+
+#m - imputed sets * chains
+#n - number of species
+#k - number of params as N of cols in solutions
+
+m <- (length(imp$imp[[1]]))*2
+n <- 176
+k <- ncol(solX)
+## m = number of imputed datasets
+## n = number of observations
+## k = number of parameters
+
+Bm1 <- Bm(results)
+Tm1 <- Tm(results) # total variance
+
+# calculation of the degrees of freedom for t-tests of parameters
+
+vhatobs <- lambda(n-k)*(n-k)*(1- (1+1/m) * sum(Bm1/Tm1)/length(Bm1))
+vm1 <- vm(Bm1, Tm1)
+vmtilde <-  1/(1/vm1+1/vhatobs)
+
+Qmbar <- mbar(results) # mean parameter estimates
+
+WaldT <- Qmbar/sqrt(Tm1)
+upperCI <- Qmbar + sqrt(Tm1) * qt(.95, vmtilde)
+lowerCI <-  Qmbar - sqrt(Tm1) * qt(.95, vmtilde)
+
+tTable <- cbind(Qmbar, SE=sqrt(Tm1), WaldT,
+                df=vmtilde, p=2*(1-pt(abs(WaldT),
+                                    vmtilde)), lowerCI, upperCI)
+```
+
+##DIC calculation
+```{R comparing DIC, error = TRUE, eval = FALSE}
+#Getting DICs and averaging (possibly other ICs)
+
+get.DIC <- function(model) {return(model$DIC)}
+
+model_DICs <- lapply(raw_models_allchains, get.DIC)  
+model_DICs <- as.data.frame(model_DICs)
+DICnames <- c(paste0("Model", 1:ncol(model_DICs)))
+colnames(model_DICs) <- DICnames
+DICs <- mean(t(model_DICs))
+DICs
+```
+
+##H calculation
+```{r h - phylogenetic signal, error = TRUE, eval = FALSE}
+#Calculating average H for all models
+
+get.H <- function(model) {return((var(model$VCV[,"animal"]))/
++     (var(model$VCV[,"animal"]) + var(model$VCV[,"units"])))
+  }
+
+Hs <- lapply(raw_models_allchains, get.H)
+Hs <- as.data.frame(Hs)
+mean(t(Hs))
+
+```
+
+##Plotting 2: Export text and plot output
+```{r sink to txt file, error = TRUE, eval = FALSE}
+#Change row names
+row.names(tTable)
+row.names(tTable) <- names(solX)
+
+#Export a csv table
+#col.names = NA offsets the header with 1
+write.table(as.matrix(tTable), "./MCMCmodels/analysis-output.csv", sep = ",", col.names = NA, row.names = TRUE)
+
+#Export txt with posteriors and Hs and DICs
+sink('./MCMCmodels/analysis-output.txt')
+#options(width=10000) stops word wrapping
+options(width=10000)
+#print pooled results
+tTable
+#print Hs
+print("Mean H")
+mean(t(Hs))
+#print DICs
+print("Mean DIC")
+DICs
+sink()
+
+#Convert data to res.plot
+res.plot <- as.data.frame(tTable)
+
+#res.plot$upperCI <- NULL
+#res.plot$lowerCI <- NULL
+res.plot$p <- NULL
+res.plot$df <- NULL
+res.plot$WaldT <- NULL
+
+#generate pdf with the model
+pdf(file="./MCMCmodels/model.pdf",width=6,height=4)
+p <- ggplot(
+    res.plot, 
+    aes(x = Qmbar, y = fct_relevel(row.names(res.plot), "VarN", "Intercept", after = Inf), xmin = lowerCI, xmax = upperCI)) +
+    geom_point(aes(color = row.names(res.plot))) +
+    geom_errorbarh(aes(color = row.names(res.plot)), height=0.05)+
+    geom_vline(xintercept = 0, color = "red", linetype="longdash", size=0.5) +
+    theme_light()
+p$labels$colour <- "Model parameters"
+p$labels$x <- "Posterior estimate + 95% CI"
+p$labels$y <- "Model parameters"
+p
+
+#generates bayesplot of the model
+color_scheme_set("brightblue")
+mcmc_intervals(t(res.plot))
+
+dev.off()
+
+#optional
+mcmc_areas(t(res.plot))
+```
