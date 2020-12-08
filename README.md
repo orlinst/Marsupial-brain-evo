@@ -13,6 +13,6 @@ Running a smooth MCMC on marsupial brain evolution data
 
 `surface.Rmd` - Surface, analysis of convergence
 
-`neatMCMC.Rmd` - amazing MCMC with streamlined analysis of imputed sets, pooling, plotting etc!
+Main code - - >`neatMCMC.Rmd` - MCMC with streamlined analysis of imputed sets, pooling, plotting etc!
 
 
