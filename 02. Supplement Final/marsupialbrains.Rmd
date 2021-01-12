@@ -36,8 +36,8 @@ if(!require(VIM)) install.packages("VIM")library("VIM")
 
 #Load up data and tree
 ```{r, include=FALSE, error = TRUE, eval = FALSE}
-data <-read.csv("./Data/marsALL.txt", sep = "\t", header = TRUE) 
-tree <-read.tree("./Data/tree176.nwk")
+data <-read.csv("./marsALL.txt", sep = "\t", header = TRUE) 
+tree <-read.tree("./tree176.nwk")
 rownames(data) <- data$Names
 clean.data(data, tree)  ## check if data == tree names
 ```
@@ -437,3 +437,66 @@ dev.off()
 #optional
 mcmc_areas(t(res.plot))
 ```
+
+##Missingness analysis
+```{r sink to txt file, error = TRUE, eval = FALSE}
+library(naniar)
+library(visdat)
+
+vis_dat(data)
+vis_miss(data)
+
+
+ggplot(data, 
+       aes(x = Brain, 
+           y = Litter.size)) + 
+  geom_miss_point()
+
+gg_miss_var(data) + theme_bw() + labs(y = "Look at all the missing ones")
+
+gg_miss_var(data, facet = Origin)
+
+data1 <- as_shadow(data)
+aq_shadow <- bind_shadow(data)
+aq_nab <- nabular(data)
+
+library(dplyr)
+
+data %>%
+  bind_shadow() %>%
+  group_by(HR_NA) %>%
+  summarise_at(.vars = "Brain",
+               .funs = c("mean", "sd", "var", "min", "max"),
+               na.rm = TRUE)
+
+
+ggplot(aq_shadow,
+       aes(x = Litter.size,
+           colour = Population.density_NA)) + 
+  geom_density()
+
+  data %>%
+    bind_shadow() %>%
+    ggplot(aes(x = Litter.size,
+               fill = Population.density_NA)) +
+        geom_histogram()
+  
+  
+  
+  
+  data %>%
+  add_prop_miss() %>%
+  head()
+  
+  library(rpart)
+library(rpart.plot)
+  
+  data %>%
+  add_prop_miss() %>%
+  rpart(prop_miss_all ~ ., data = .) %>%
+  prp(type = 4, extra = 101, prefix = "Prop. Miss = ")
+  
+```
+
+
+
