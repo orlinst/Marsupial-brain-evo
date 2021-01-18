@@ -120,7 +120,7 @@ stripplot(imp, pch = 20, cex = 1.2)
 
 complete(imp, 2)
 
-load("./Data/imp20000.Rdata")
+load("./imp25x500.Rdata")
 ```
 
 
@@ -144,7 +144,7 @@ tree <- force.ultrametric(tree,method="extend")
 
 #Define models for MulTree
 
-formula_dev <- Brain ~ BodyN + Weaning.age + Litter.size
+formula_dev <- Brain ~ Weaning.age + Litter.size + BodyN
 formula_soc <- Brain ~ Group.living + Parental.care + Mating.system + Population.density + BodyN
 formula_env <- Brain ~ DiurnalityN + Shelter.safety + Arboreality + Diet + HR + BodyN
 formula_ori <- Brain ~ Origin * BodyN
@@ -187,8 +187,6 @@ mul_parameters <- c(nitt, thin, burnin)
 # The MCMCglmm priors
 mul_priors <- list(R = list(V = 1, nu = 0.002),
                    G = list(G1 = list(V = 1, nu = 0.002)))
-
-
 
 #Run MCMCglmm on the number of imputed datasets -> length(imp$imp[[1]]) + over all formulas (check the names)
 #set formula names manually, to match the label after the _ in the formulas above
@@ -464,21 +462,21 @@ library(dplyr)
 
 data %>%
   bind_shadow() %>%
-  group_by(HR_NA) %>%
+  group_by(Litter.size_NA) %>%
   summarise_at(.vars = "Brain",
                .funs = c("mean", "sd", "var", "min", "max"),
                na.rm = TRUE)
 
 
 ggplot(aq_shadow,
-       aes(x = Litter.size,
-           colour = Population.density_NA)) + 
+       aes(x = Brain,
+           colour = Litter.size_NA)) + 
   geom_density()
 
   data %>%
     bind_shadow() %>%
-    ggplot(aes(x = Litter.size,
-               fill = Population.density_NA)) +
+    ggplot(aes(x = Brain,
+               fill = Litter.size_NA)) +
         geom_histogram()
   
   
