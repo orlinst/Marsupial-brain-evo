@@ -441,6 +441,7 @@ mcmc_areas(t(res.plot))
 library(naniar)
 library(visdat)
 
+#visualisation of missingness
 vis_dat(data)
 vis_miss(data)
 
@@ -450,10 +451,11 @@ ggplot(data,
            y = Litter.size)) + 
   geom_miss_point()
 
-gg_miss_var(data) + theme_bw() + labs(y = "Look at all the missing ones")
+gg_miss_var(data) + theme_bw() + labs(y = "N missing values")
 
 gg_miss_var(data, facet = Origin)
 
+# creating shadow matrix for NA !NA comparison
 data1 <- as_shadow(data)
 aq_shadow <- bind_shadow(data)
 aq_nab <- nabular(data)
@@ -486,13 +488,21 @@ ggplot(aq_shadow,
   add_prop_miss() %>%
   head()
   
-  library(rpart)
+library(rpart)
 library(rpart.plot)
   
   data %>%
   add_prop_miss() %>%
   rpart(prop_miss_all ~ ., data = .) %>%
   prp(type = 4, extra = 101, prefix = "Prop. Miss = ")
+  
+  
+#Phylogenetic signal in missing data (remove edge labels first)
+  
+#convert the datatset to 0 for NAs and 1s for present data  
+test <- phylo.d(dataNA, tree, Names, VARIABLE.NAME, permut = 1000, rnd.bias=NULL)
+summary(test)
+plot(test)
   
 ```
 
