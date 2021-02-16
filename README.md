@@ -6,8 +6,9 @@
 
 
 02. Supplement Final contains 
-1) all the plots for the imputations and the missing data
+1) all the plots for the imputations and the missing data (link to dryad)
 2) all the 25 used imputed datatsets 
 3) the original datatset with missing values
 4) the code for all R analyses used
 5) the phylogenetic tree used
+6) detailed analysis of the pattern of missingness
