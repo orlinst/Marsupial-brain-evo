@@ -5,10 +5,13 @@ date: "28/07/2020"
 output: html_document
 ---
 
-```{r setup, include=FALSE, error = TRUE, eval = FALSE}
-knitr::opts_chunk$set(
-  error = TRUE 
-)
+```{r setup, cache = F}
+knitr::opts_chunk$set(error = TRUE)
+```
+
+
+```{r, include=FALSE, error = TRUE, eval = FALSE}
+
 
 #Basic packages
 if(!require(ape)) install.packages("ape")
@@ -437,7 +440,7 @@ mcmc_areas(t(res.plot))
 ```
 
 ##Missingness analysis
-```{r sink to txt file, error = TRUE, eval = FALSE}
+```{r missingness, error = TRUE, eval = FALSE}
 library(naniar)
 library(visdat)
 
