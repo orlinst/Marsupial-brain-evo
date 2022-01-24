@@ -1,0 +1,588 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{Marsupial brain evo}
+\author{Orlin T}
+\date{28/07/2020}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Marsupial brain evo},
+  pdfauthor={Orlin T},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}
+  \AttributeTok{warning =} \ConstantTok{TRUE}\NormalTok{, }\CommentTok{\# show warnings}
+  \AttributeTok{message =} \ConstantTok{TRUE}\NormalTok{, }\CommentTok{\# show messages}
+  \AttributeTok{error =} \ConstantTok{TRUE}\NormalTok{, }\CommentTok{\# do not interrupt generation in case of errors,}
+  \AttributeTok{echo =} \ConstantTok{TRUE}  \CommentTok{\# show R code}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\#Load up data and tree
+
+\#\#Convert vars
+
+\#\#Imputations
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_mice }\OtherTok{\textless{}{-}}\NormalTok{ data}
+
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Names }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Species }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Order }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Family }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Common.Name }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Status..Endangered..Vulnerable..Common..Abundant..Rare..or.sparse...Declining..Limited. }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Dimorphism }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{ased }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{BodyM }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{BodyF }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+
+
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{BodyN }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(data\_mice}\SpecialCharTok{$}\NormalTok{BodyN)}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Brain }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(data\_mice}\SpecialCharTok{$}\NormalTok{Brain)}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Weaning.age }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(data\_mice}\SpecialCharTok{$}\NormalTok{Weaning.age)}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Litter.size }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{ (data\_mice}\SpecialCharTok{$}\NormalTok{Litter.size)}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{HR }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(data\_mice}\SpecialCharTok{$}\NormalTok{HR)}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{Population.density }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{(data\_mice}\SpecialCharTok{$}\NormalTok{Population.density)}
+\NormalTok{data\_mice}\SpecialCharTok{$}\NormalTok{FMR.Riek }\OtherTok{\textless{}{-}} \FunctionTok{log}\NormalTok{ (data\_mice}\SpecialCharTok{$}\NormalTok{FMR.Riek)}
+
+
+\CommentTok{\#Plot missing data}
+
+\FunctionTok{pdf}\NormalTok{(}\AttributeTok{file=}\StringTok{"missing.pdf"}\NormalTok{,}\AttributeTok{width=}\DecValTok{9}\NormalTok{,}\AttributeTok{height=}\DecValTok{12}\NormalTok{)}
+\NormalTok{aggr\_plot }\OtherTok{\textless{}{-}} \FunctionTok{aggr}\NormalTok{(data\_mice, }\AttributeTok{col=}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}navyblue\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{), }\AttributeTok{numbers=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{sortVars=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{labels=}\FunctionTok{names}\NormalTok{(data\_mice), }\AttributeTok{cex.axis=}\NormalTok{.}\DecValTok{5}\NormalTok{, }\AttributeTok{gap=}\DecValTok{4}\NormalTok{, }\AttributeTok{ylab=}\FunctionTok{c}\NormalTok{(}\StringTok{"Histogram of missing data"}\NormalTok{,}\StringTok{"Pattern"}\NormalTok{))}
+
+\NormalTok{aggr\_plot}
+
+
+\FunctionTok{dev.off}\NormalTok{()}
+
+
+\CommentTok{\#Impute}
+\CommentTok{\#Phyomice}
+
+\NormalTok{prec }\OtherTok{\textless{}{-}} \FunctionTok{precomputePsi}\NormalTok{(tree)}
+
+\NormalTok{imp }\OtherTok{\textless{}{-}} \FunctionTok{mice}\NormalTok{(data\_mice, }\AttributeTok{m=}\DecValTok{5}\NormalTok{, }\AttributeTok{meth =} \FunctionTok{c}\NormalTok{(}\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{""}\NormalTok{, }\StringTok{""}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{,}\StringTok{"phpmm"}\NormalTok{,}\StringTok{"phpmm"}\NormalTok{,}\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{), }\AttributeTok{psi =}\NormalTok{ prec}\SpecialCharTok{$}\NormalTok{psi, }\AttributeTok{psiinv =}\NormalTok{ prec}\SpecialCharTok{$}\NormalTok{psiinv, }\AttributeTok{maxit =} \DecValTok{2}\NormalTok{)}
+
+\NormalTok{pred }\OtherTok{\textless{}{-}}\NormalTok{ imp}\SpecialCharTok{$}\NormalTok{predictorMatrix }
+\NormalTok{pred[, }\StringTok{"FMR.Riek"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{pred[, }\StringTok{"Torpor"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{pred[, }\StringTok{"Play"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{pred[, }\StringTok{"Population.density"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{pred[, }\StringTok{"HR"}\NormalTok{] }\OtherTok{\textless{}{-}} \DecValTok{0}
+
+\NormalTok{imp }\OtherTok{\textless{}{-}} \FunctionTok{mice}\NormalTok{(data\_mice, }\AttributeTok{m=}\DecValTok{5}\NormalTok{, }\AttributeTok{pred =}\NormalTok{ pred, }\AttributeTok{meth =} \FunctionTok{c}\NormalTok{(}\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{""}\NormalTok{, }\StringTok{""}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{,}\StringTok{"phpmm"}\NormalTok{,}\StringTok{"phpmm"}\NormalTok{,}\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{, }\StringTok{"phpmm"}\NormalTok{), }\AttributeTok{psi =}\NormalTok{ prec}\SpecialCharTok{$}\NormalTok{psi, }\AttributeTok{psiinv =}\NormalTok{ prec}\SpecialCharTok{$}\NormalTok{psiinv, }\AttributeTok{maxit =} \DecValTok{2000}\NormalTok{)}
+
+\FunctionTok{save}\NormalTok{(imp, }\AttributeTok{file =} \StringTok{"imp2000.RData"}\NormalTok{)}
+
+\FunctionTok{plot}\NormalTok{(imp)}
+\FunctionTok{stripplot}\NormalTok{(imp, }\AttributeTok{pch =} \DecValTok{20}\NormalTok{, }\AttributeTok{cex =} \FloatTok{1.2}\NormalTok{)}
+
+\FunctionTok{complete}\NormalTok{(imp, }\DecValTok{2}\NormalTok{)}
+
+\FunctionTok{load}\NormalTok{(}\StringTok{"./imp25x500.Rdata"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\#MCMCGlmm
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#assign all the imputed datasets do dataX(num) object}
+\ControlFlowTok{for}\NormalTok{(imputedsets }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:} \FunctionTok{length}\NormalTok{(imp}\SpecialCharTok{$}\NormalTok{imp[[}\DecValTok{1}\NormalTok{]])) \{}
+    \FunctionTok{assign}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"dataX"}\NormalTok{,imputedsets), }\FunctionTok{complete}\NormalTok{(imp, imputedsets))}
+    \FunctionTok{assign}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"dataX"}\NormalTok{,imputedsets), }\FunctionTok{cbind}\NormalTok{(}\AttributeTok{Names =}\NormalTok{ data[[}\DecValTok{1}\NormalTok{]], }\FunctionTok{get}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"dataX"}\NormalTok{,imputedsets))))}
+\NormalTok{\}}
+
+
+
+\CommentTok{\#Check for branch lenghts of 0 and add 0.01\% of the median if this is the case}
+
+\NormalTok{tree}\SpecialCharTok{$}\NormalTok{edge.length[}\FunctionTok{which}\NormalTok{(tree}\SpecialCharTok{$}\NormalTok{edge.length }\SpecialCharTok{==} \DecValTok{0}\NormalTok{)] }\OtherTok{\textless{}{-}} \FloatTok{0.01}\SpecialCharTok{*}\FunctionTok{median}\NormalTok{(tree}\SpecialCharTok{$}\NormalTok{edge.length[}\SpecialCharTok{{-}}\FunctionTok{which}\NormalTok{(tree}\SpecialCharTok{$}\NormalTok{edge.length }\SpecialCharTok{==} \DecValTok{0}\NormalTok{)])}
+\NormalTok{tree }\OtherTok{\textless{}{-}} \FunctionTok{force.ultrametric}\NormalTok{(tree,}\AttributeTok{method=}\StringTok{"extend"}\NormalTok{)}
+
+
+\CommentTok{\#Define models for MulTree}
+
+\NormalTok{formula\_dev }\OtherTok{\textless{}{-}}\NormalTok{ Brain }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Weaning.age }\SpecialCharTok{+}\NormalTok{ Litter.size }\SpecialCharTok{+}\NormalTok{ BodyN}
+\NormalTok{formula\_soc }\OtherTok{\textless{}{-}}\NormalTok{ Brain }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Group.living }\SpecialCharTok{+}\NormalTok{ Parental.care }\SpecialCharTok{+}\NormalTok{ Mating.system }\SpecialCharTok{+}\NormalTok{ Population.density }\SpecialCharTok{+}\NormalTok{ BodyN}
+\NormalTok{formula\_env }\OtherTok{\textless{}{-}}\NormalTok{ Brain }\SpecialCharTok{\textasciitilde{}}\NormalTok{ DiurnalityN }\SpecialCharTok{+}\NormalTok{ Shelter.safety }\SpecialCharTok{+}\NormalTok{ Arboreality }\SpecialCharTok{+}\NormalTok{ Diet }\SpecialCharTok{+}\NormalTok{ HR }\SpecialCharTok{+}\NormalTok{ BodyN}
+\NormalTok{formula\_ori }\OtherTok{\textless{}{-}}\NormalTok{ Brain }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Origin }\SpecialCharTok{*}\NormalTok{ BodyN}
+\NormalTok{formula\_vul }\OtherTok{\textless{}{-}}\NormalTok{ Brain }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Status }\SpecialCharTok{*}\NormalTok{ BodyN}
+\NormalTok{formula\_tor }\OtherTok{\textless{}{-}}\NormalTok{ Brain }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Torpor }\SpecialCharTok{*}\NormalTok{ BodyN}
+\NormalTok{formula\_pla }\OtherTok{\textless{}{-}}\NormalTok{ Brain }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Play }\SpecialCharTok{*}\NormalTok{ BodyN}
+\NormalTok{formula\_fmr }\OtherTok{\textless{}{-}}\NormalTok{ Brain }\SpecialCharTok{\textasciitilde{}}\NormalTok{ FMR.Riek }\SpecialCharTok{*}\NormalTok{ BodyN}
+
+
+\CommentTok{\#Parameters for the MCMC}
+
+\CommentTok{\# Number of interations}
+\NormalTok{nitt }\OtherTok{\textless{}{-}} \DecValTok{10}
+\CommentTok{\# Length of burnin {-}\textgreater{} what to ignore (the initial N ot iterations)}
+\NormalTok{burnin }\OtherTok{\textless{}{-}} \DecValTok{2}
+\CommentTok{\# Amount of thinning {-}\textgreater{} lenght of step (sampling rate)}
+\NormalTok{thin }\OtherTok{\textless{}{-}} \DecValTok{2}
+
+
+\CommentTok{\#Creating mulTree objects}
+
+\DocumentationTok{\#\#Creates mulTree objects = to N imputed datasets {-}\textgreater{} length(imp$imp[[1]])}
+\DocumentationTok{\#\#mulTree\_data1 \textless{}{-} as.mulTree(data = data1, tree = tree, taxa = "Names")}
+
+\ControlFlowTok{for}\NormalTok{(imputedsets }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(imp}\SpecialCharTok{$}\NormalTok{imp[[}\DecValTok{1}\NormalTok{]])) \{}
+    \FunctionTok{assign}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"mulTree\_data"}\NormalTok{,imputedsets,}\AttributeTok{sep=}\StringTok{""}\NormalTok{), }\FunctionTok{as.mulTree}\NormalTok{(}\AttributeTok{data =} \FunctionTok{get}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"dataX"}\NormalTok{,imputedsets, }\AttributeTok{sep=}\StringTok{""}\NormalTok{)), }\AttributeTok{tree =}\NormalTok{ tree, }\AttributeTok{taxa =} \StringTok{"Names"}\NormalTok{))}
+\NormalTok{\}}
+
+\DocumentationTok{\#\#removes the dataX files so they are all within the mulTree objects}
+\FunctionTok{rm}\NormalTok{(}\AttributeTok{list=}\FunctionTok{ls}\NormalTok{(}\AttributeTok{pattern=}\StringTok{"dataX"}\NormalTok{))}
+
+
+\CommentTok{\#Parameter set up with priors}
+
+\DocumentationTok{\#\# The formula will be set within run.mulTree}
+\DocumentationTok{\#\# mul\_formula \textless{}{-} formula\_X}
+
+\CommentTok{\# The MCMC parameters (iterations, thining, burnin)}
+\NormalTok{mul\_parameters }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(nitt, thin, burnin)}
+\CommentTok{\# The MCMCglmm priors}
+\NormalTok{mul\_priors }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{R =} \FunctionTok{list}\NormalTok{(}\AttributeTok{V =} \DecValTok{1}\NormalTok{, }\AttributeTok{nu =} \FloatTok{0.002}\NormalTok{),}
+                   \AttributeTok{G =} \FunctionTok{list}\NormalTok{(}\AttributeTok{G1 =} \FunctionTok{list}\NormalTok{(}\AttributeTok{V =} \DecValTok{1}\NormalTok{, }\AttributeTok{nu =} \FloatTok{0.002}\NormalTok{)))}
+
+\CommentTok{\#Run MCMCglmm on the number of imputed datasets {-}\textgreater{} length(imp$imp[[1]]) + over all formulas (check the names)}
+\CommentTok{\#set formula names manually, to match the label after the \_ in the formulas above}
+
+\CommentTok{\#mulTree(mulTree.data = mulTree\_data1, formula = mul\_formula, priors = mul\_priors,}
+\CommentTok{\#parameters = mul\_parameters, output = "./MCMCmodels/model1", ESS = 1000,}
+\CommentTok{\#chains = 2)}
+
+
+
+\ControlFlowTok{for}\NormalTok{(imputedsets }\ControlFlowTok{in} \DecValTok{1} \SpecialCharTok{:} \FunctionTok{length}\NormalTok{(imp}\SpecialCharTok{$}\NormalTok{imp[[}\DecValTok{1}\NormalTok{]])) \{}
+  \ControlFlowTok{for}\NormalTok{ (form }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"dev"}\NormalTok{, }\StringTok{"soc"}\NormalTok{, }\StringTok{"env"}\NormalTok{, }\StringTok{"ori"}\NormalTok{, }\StringTok{"vul"}\NormalTok{, }\StringTok{"tor"}\NormalTok{, }\StringTok{"pla"}\NormalTok{, }\StringTok{"fmr"}\NormalTok{))}
+      \FunctionTok{mulTree}\NormalTok{(}\AttributeTok{mulTree.data =} \FunctionTok{get}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"mulTree\_data"}\NormalTok{,imputedsets)), }\AttributeTok{formula =} \FunctionTok{get}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"formula\_"}\NormalTok{, form)), }\AttributeTok{priors =}\NormalTok{ mul\_priors,}
+      \AttributeTok{parameters =}\NormalTok{ mul\_parameters, }\AttributeTok{output =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"./MCMCmodels/model\_"}\NormalTok{, form, }\StringTok{"/"}\NormalTok{ , }\StringTok{"model"}\NormalTok{, imputedsets), }\AttributeTok{ESS =} \DecValTok{1000}\NormalTok{, }\AttributeTok{chains =} \DecValTok{2}\NormalTok{)}
+\NormalTok{  \}}
+
+
+\CommentTok{\#Extracting solutions from 2 chains per model *\textless{}\textless{}imputedsets\textgreater{}\textgreater{} and combining in a list}
+
+
+\CommentTok{\#Set WD to the model of interest}
+\CommentTok{\#Load imp if not loaded, as it is used for the count of the number of imputed sets}
+\CommentTok{\#setwd("./MCMCmodels")}
+
+\CommentTok{\#Reading all models + all chains (if more chains are run, add manually here)}
+\CommentTok{\#setwd("C:/Users/uqotodor\_local/Dropbox/05. Github/Marsupial{-}brain{-}evo/MCMCmodels/model\_dev")}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"C:/Users/uqotodor\_local/Dropbox/05. Github/Marsupial{-}brain{-}evo/MCMCmodels/model\_ori3"}\NormalTok{)}
+\FunctionTok{list}\NormalTok{() }\OtherTok{{-}\textgreater{}}\NormalTok{ raw\_models\_chain1 }\OtherTok{{-}\textgreater{}}\NormalTok{ raw\_models\_chain2}
+\ControlFlowTok{for}\NormalTok{(imputedsets }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}  \FunctionTok{length}\NormalTok{(imp}\SpecialCharTok{$}\NormalTok{imp[[}\DecValTok{1}\NormalTok{]])) \{}
+\NormalTok{  raw\_models\_chain1[[imputedsets]] }\OtherTok{\textless{}{-}} \FunctionTok{read.mulTree}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"model"}\NormalTok{,imputedsets,}\StringTok{"{-}tree1\_chain1"}\NormalTok{), }\AttributeTok{model =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  raw\_models\_chain2[[imputedsets]] }\OtherTok{\textless{}{-}} \FunctionTok{read.mulTree}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"model"}\NormalTok{,imputedsets,}\StringTok{"{-}tree1\_chain2"}\NormalTok{), }\AttributeTok{model =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{raw\_models\_allchains }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(raw\_models\_chain1, raw\_models\_chain2)}
+
+\DocumentationTok{\#\# Get Sol}
+\CommentTok{\# @param model this should be a single model (e.g. one chain output from mcmcglmm)}
+\CommentTok{\# @return the Sol vector from one single chain}
+\NormalTok{get.Sol }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(model) \{}\FunctionTok{return}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{Sol)\}}
+
+\DocumentationTok{\#\# Get summary of Sol}
+\CommentTok{\# @param model this should be a single model (e.g. one chain output from mcmcglmm)}
+\CommentTok{\# @return the summary table of the Sol}
+\NormalTok{get.summary.Sol }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(model) \{}\FunctionTok{return}\NormalTok{(}\FunctionTok{summary}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{Sol))\}}
+
+\DocumentationTok{\#\# Turn into dataframe and get statistics}
+\DocumentationTok{\#\# obtain Variance (SD\^{}2) and bind to the list}
+\DocumentationTok{\#\# remove unnecessary columns}
+\CommentTok{\# @param The output of get.summary.Sol (the summary of Sol)}
+\CommentTok{\# @return dataframe with statistics}
+\NormalTok{get.stat.Sol }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(summarySol) \{}
+\NormalTok{  output }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(summarySol}\SpecialCharTok{$}\NormalTok{statistics)}
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{Var }\OtherTok{\textless{}{-}}\NormalTok{ (output}\SpecialCharTok{$}\NormalTok{SD)}\SpecialCharTok{\^{}}\DecValTok{2}
+\NormalTok{  output}\SpecialCharTok{$}\NormalTok{SD }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{  output}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Naive SE}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{  output}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Time{-}series SE}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \ConstantTok{NULL}
+  \FunctionTok{return}\NormalTok{(output)}
+\NormalTok{\}}
+
+\DocumentationTok{\#\# Run the functions and get *results*}
+\NormalTok{all\_Sol }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(raw\_models\_allchains, get.Sol)}
+\NormalTok{all\_summaries }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(raw\_models\_allchains, get.summary.Sol)}
+\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(all\_summaries, get.stat.Sol)}
+
+\CommentTok{\#setwd("./")}
+
+\DocumentationTok{\#\#Combining solutions for density plots + percentages}
+
+\CommentTok{\#using list.rbind from rlist}
+\NormalTok{solX }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{list.rbind}\NormalTok{(all\_Sol))}
+
+\DocumentationTok{\#\#Neat up the names!}
+
+\FunctionTok{names}\NormalTok{(solX)}
+\FunctionTok{names}\NormalTok{(solX) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Intercept"}\NormalTok{,    }\StringTok{"Var1"}\NormalTok{, }\StringTok{"Var2"}\NormalTok{, }\StringTok{"VarN"}\NormalTok{)}
+
+
+
+\CommentTok{\#Plot density plots}
+
+\CommentTok{\#plot in pdf}
+
+
+\FunctionTok{pdf}\NormalTok{(}\AttributeTok{file=}\StringTok{"./MCMCmodels/density.pdf"}\NormalTok{)}
+\FunctionTok{par}\NormalTok{( }\AttributeTok{mfrow =} \FunctionTok{c}\NormalTok{( }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{ ))}
+    \ControlFlowTok{for}\NormalTok{(column }\ControlFlowTok{in} \DecValTok{1} \SpecialCharTok{:} \FunctionTok{c}\NormalTok{(}\FunctionTok{ncol}\NormalTok{(solX))) \{}
+\NormalTok{    percentage\_above\_zero }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(}\FunctionTok{which}\NormalTok{(solX[,column] }\SpecialCharTok{\textgreater{}=} \DecValTok{0}\NormalTok{))}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(solX[,column])}
+\FunctionTok{hdr.den}\NormalTok{(solX[,column],  }\AttributeTok{main =} \FunctionTok{names}\NormalTok{(solX[column]), }\AttributeTok{sub =} \FunctionTok{paste0}\NormalTok{(}\FunctionTok{round}\NormalTok{(percentage\_above\_zero}\SpecialCharTok{*}\DecValTok{100}\NormalTok{,}\DecValTok{2}\NormalTok{), }\StringTok{"\% above zero"}\NormalTok{), }\AttributeTok{prob =} \FunctionTok{c}\NormalTok{(}\DecValTok{50}\NormalTok{, }\DecValTok{95}\NormalTok{, }\DecValTok{99}\NormalTok{))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{v =} \DecValTok{0}\NormalTok{, }\AttributeTok{lty =} \DecValTok{1}\NormalTok{)  }
+\NormalTok{    \}}
+\FunctionTok{dev.off}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\#\#Pooling the results using the Rubin's rule \#\#Make sure to adjust
+parameters!
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Using the posteriors collated in *results*}
+
+\NormalTok{mbar }\OtherTok{\textless{}{-}}  \ControlFlowTok{function}\NormalTok{ (x, }\AttributeTok{col=}\DecValTok{1}\NormalTok{) \{ }\CommentTok{\# function to calculate average parameter estimates and average variances from the results list}
+\NormalTok{    vals }\OtherTok{\textless{}{-}} \FunctionTok{rowMeans}\NormalTok{(}\FunctionTok{matrix}\NormalTok{(}\FunctionTok{unlist}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(x, }\ControlFlowTok{function}\NormalTok{ (z) z[, col])),}
+                            \AttributeTok{nrow=}\FunctionTok{dim}\NormalTok{(x[[}\DecValTok{1}\NormalTok{]])[}\DecValTok{1}\NormalTok{], }\AttributeTok{ncol=}\FunctionTok{length}\NormalTok{(x)))}
+    \FunctionTok{names}\NormalTok{(vals) }\OtherTok{\textless{}{-}} \FunctionTok{rownames}\NormalTok{(x[[}\DecValTok{1}\NormalTok{]])}
+\NormalTok{    vals}
+\NormalTok{\}}
+
+\NormalTok{Bm }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (x) \{}
+\NormalTok{    Qmbar }\OtherTok{\textless{}{-}} \FunctionTok{mbar}\NormalTok{(x)}
+\NormalTok{    Qvals }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\FunctionTok{unlist}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(x, }\ControlFlowTok{function}\NormalTok{ (z) z[,}\DecValTok{1}\NormalTok{])),}
+                    \AttributeTok{ncol=}\FunctionTok{length}\NormalTok{(x), }\AttributeTok{nrow=}\FunctionTok{dim}\NormalTok{(x[[}\DecValTok{1}\NormalTok{]])[}\DecValTok{1}\NormalTok{])}
+\NormalTok{    QQ }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(Qvals, }\DecValTok{2}\NormalTok{, }\ControlFlowTok{function}\NormalTok{ (x) x }\SpecialCharTok{{-}}\NormalTok{ Qmbar)}
+    \FunctionTok{apply}\NormalTok{(QQ, }\DecValTok{1}\NormalTok{, }\ControlFlowTok{function}\NormalTok{ (z) (z }\SpecialCharTok{\%*\%}\NormalTok{ z)}\SpecialCharTok{/}\NormalTok{(}\FunctionTok{length}\NormalTok{(z)}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{))}
+\NormalTok{\}}
+
+\NormalTok{Tm }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (x) \{}
+\NormalTok{    Umbar }\OtherTok{\textless{}{-}} \FunctionTok{mbar}\NormalTok{(x,  }\AttributeTok{col=}\DecValTok{2}\NormalTok{)}
+\NormalTok{    Umbar }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(x)) }\SpecialCharTok{*} \FunctionTok{Bm}\NormalTok{(x)}
+\NormalTok{\}}
+
+\NormalTok{lambda }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (nu) \{}
+\NormalTok{    (nu }\SpecialCharTok{+} \DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(nu }\SpecialCharTok{+} \DecValTok{3}\NormalTok{)}
+\NormalTok{\}}
+
+\NormalTok{vm }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{ (Bm, Tm, }\AttributeTok{m=}\DecValTok{5}\NormalTok{)\{}
+\NormalTok{    gammahat }\OtherTok{\textless{}{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\NormalTok{m) }\SpecialCharTok{*} \FunctionTok{sum}\NormalTok{(Bm}\SpecialCharTok{/}\NormalTok{Tm)}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(Bm)}
+\NormalTok{    (m}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(gammahat}\SpecialCharTok{\^{}}\DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+
+
+\CommentTok{\# Now we do the analysis:}
+
+
+\CommentTok{\#m {-} imputed sets * chains}
+\CommentTok{\#n {-} number of species}
+\CommentTok{\#k {-} number of params as N of cols in solutions}
+
+\NormalTok{m }\OtherTok{\textless{}{-}}\NormalTok{ (}\FunctionTok{length}\NormalTok{(imp}\SpecialCharTok{$}\NormalTok{imp[[}\DecValTok{1}\NormalTok{]]))}\SpecialCharTok{*}\DecValTok{2}
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{176}
+\NormalTok{k }\OtherTok{\textless{}{-}} \FunctionTok{ncol}\NormalTok{(solX)}
+\DocumentationTok{\#\# m = number of imputed datasets}
+\DocumentationTok{\#\# n = number of observations}
+\DocumentationTok{\#\# k = number of parameters}
+
+\NormalTok{Bm1 }\OtherTok{\textless{}{-}} \FunctionTok{Bm}\NormalTok{(results)}
+\NormalTok{Tm1 }\OtherTok{\textless{}{-}} \FunctionTok{Tm}\NormalTok{(results) }\CommentTok{\# total variance}
+
+\CommentTok{\# calculation of the degrees of freedom for t{-}tests of parameters}
+
+\NormalTok{vhatobs }\OtherTok{\textless{}{-}} \FunctionTok{lambda}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{k)}\SpecialCharTok{*}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{k)}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\NormalTok{m) }\SpecialCharTok{*} \FunctionTok{sum}\NormalTok{(Bm1}\SpecialCharTok{/}\NormalTok{Tm1)}\SpecialCharTok{/}\FunctionTok{length}\NormalTok{(Bm1))}
+\NormalTok{vm1 }\OtherTok{\textless{}{-}} \FunctionTok{vm}\NormalTok{(Bm1, Tm1)}
+\NormalTok{vmtilde }\OtherTok{\textless{}{-}}  \DecValTok{1}\SpecialCharTok{/}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\NormalTok{vm1}\SpecialCharTok{+}\DecValTok{1}\SpecialCharTok{/}\NormalTok{vhatobs)}
+
+\NormalTok{Qmbar }\OtherTok{\textless{}{-}} \FunctionTok{mbar}\NormalTok{(results) }\CommentTok{\# mean parameter estimates}
+
+\NormalTok{WaldT }\OtherTok{\textless{}{-}}\NormalTok{ Qmbar}\SpecialCharTok{/}\FunctionTok{sqrt}\NormalTok{(Tm1)}
+\NormalTok{upperCI }\OtherTok{\textless{}{-}}\NormalTok{ Qmbar }\SpecialCharTok{+} \FunctionTok{sqrt}\NormalTok{(Tm1) }\SpecialCharTok{*} \FunctionTok{qt}\NormalTok{(.}\DecValTok{95}\NormalTok{, vmtilde)}
+\NormalTok{lowerCI }\OtherTok{\textless{}{-}}\NormalTok{  Qmbar }\SpecialCharTok{{-}} \FunctionTok{sqrt}\NormalTok{(Tm1) }\SpecialCharTok{*} \FunctionTok{qt}\NormalTok{(.}\DecValTok{95}\NormalTok{, vmtilde)}
+
+\NormalTok{tTable }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(Qmbar, }\AttributeTok{SE=}\FunctionTok{sqrt}\NormalTok{(Tm1), WaldT,}
+                \AttributeTok{df=}\NormalTok{vmtilde, }\AttributeTok{p=}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pt}\NormalTok{(}\FunctionTok{abs}\NormalTok{(WaldT),}
+\NormalTok{                                    vmtilde)), lowerCI, upperCI)}
+\end{Highlighting}
+\end{Shaded}
+
+\#\#DIC calculation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Getting DICs and averaging (possibly other ICs)}
+
+\NormalTok{get.DIC }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(model) \{}\FunctionTok{return}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{DIC)\}}
+
+\NormalTok{model\_DICs }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(raw\_models\_allchains, get.DIC)  }
+\NormalTok{model\_DICs }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(model\_DICs)}
+\NormalTok{DICnames }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Model"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(model\_DICs)))}
+\FunctionTok{colnames}\NormalTok{(model\_DICs) }\OtherTok{\textless{}{-}}\NormalTok{ DICnames}
+\NormalTok{DICs }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(}\FunctionTok{t}\NormalTok{(model\_DICs))}
+\NormalTok{DICs}
+\end{Highlighting}
+\end{Shaded}
+
+\#\#H calculation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Calculating average H for all models}
+
+\NormalTok{get.H }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(model) \{}\FunctionTok{return}\NormalTok{((}\FunctionTok{var}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{VCV[,}\StringTok{"animal"}\NormalTok{]))}\SpecialCharTok{/}
+\SpecialCharTok{+}\NormalTok{     (}\FunctionTok{var}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{VCV[,}\StringTok{"animal"}\NormalTok{]) }\SpecialCharTok{+} \FunctionTok{var}\NormalTok{(model}\SpecialCharTok{$}\NormalTok{VCV[,}\StringTok{"units"}\NormalTok{])))}
+\NormalTok{  \}}
+
+\NormalTok{Hs }\OtherTok{\textless{}{-}} \FunctionTok{lapply}\NormalTok{(raw\_models\_allchains, get.H)}
+\NormalTok{Hs }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(Hs)}
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{t}\NormalTok{(Hs))}
+\end{Highlighting}
+\end{Shaded}
+
+\#\#Plotting 2: Export text and plot output
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#Change row names}
+\FunctionTok{row.names}\NormalTok{(tTable)}
+\FunctionTok{row.names}\NormalTok{(tTable) }\OtherTok{\textless{}{-}} \FunctionTok{names}\NormalTok{(solX)}
+
+\CommentTok{\#Export a csv table}
+\CommentTok{\#col.names = NA offsets the header with 1}
+\FunctionTok{write.table}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(tTable), }\StringTok{"./MCMCmodels/analysis{-}output.csv"}\NormalTok{, }\AttributeTok{sep =} \StringTok{","}\NormalTok{, }\AttributeTok{col.names =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{row.names =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\#Export txt with posteriors and Hs and DICs}
+\FunctionTok{sink}\NormalTok{(}\StringTok{\textquotesingle{}./MCMCmodels/analysis{-}output.txt\textquotesingle{}}\NormalTok{)}
+\CommentTok{\#options(width=10000) stops word wrapping}
+\FunctionTok{options}\NormalTok{(}\AttributeTok{width=}\DecValTok{10000}\NormalTok{)}
+\CommentTok{\#print pooled results}
+\NormalTok{tTable}
+\CommentTok{\#print Hs}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Mean H"}\NormalTok{)}
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{t}\NormalTok{(Hs))}
+\CommentTok{\#print DICs}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Mean DIC"}\NormalTok{)}
+\NormalTok{DICs}
+\FunctionTok{sink}\NormalTok{()}
+
+\CommentTok{\#Convert data to res.plot}
+\NormalTok{res.plot }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(tTable)}
+
+\CommentTok{\#res.plot$upperCI \textless{}{-} NULL}
+\CommentTok{\#res.plot$lowerCI \textless{}{-} NULL}
+\NormalTok{res.plot}\SpecialCharTok{$}\NormalTok{p }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{res.plot}\SpecialCharTok{$}\NormalTok{df }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+\NormalTok{res.plot}\SpecialCharTok{$}\NormalTok{WaldT }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
+
+\CommentTok{\#generate pdf with the model}
+\FunctionTok{pdf}\NormalTok{(}\AttributeTok{file=}\StringTok{"./MCMCmodels/model.pdf"}\NormalTok{,}\AttributeTok{width=}\DecValTok{6}\NormalTok{,}\AttributeTok{height=}\DecValTok{4}\NormalTok{)}
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}
+\NormalTok{    res.plot, }
+    \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Qmbar, }\AttributeTok{y =} \FunctionTok{fct\_relevel}\NormalTok{(}\FunctionTok{row.names}\NormalTok{(res.plot), }\StringTok{"VarN"}\NormalTok{, }\StringTok{"Intercept"}\NormalTok{, }\AttributeTok{after =} \ConstantTok{Inf}\NormalTok{), }\AttributeTok{xmin =}\NormalTok{ lowerCI, }\AttributeTok{xmax =}\NormalTok{ upperCI)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \FunctionTok{row.names}\NormalTok{(res.plot))) }\SpecialCharTok{+}
+    \FunctionTok{geom\_errorbarh}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =} \FunctionTok{row.names}\NormalTok{(res.plot)), }\AttributeTok{height=}\FloatTok{0.05}\NormalTok{)}\SpecialCharTok{+}
+    \FunctionTok{geom\_vline}\NormalTok{(}\AttributeTok{xintercept =} \DecValTok{0}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{, }\AttributeTok{linetype=}\StringTok{"longdash"}\NormalTok{, }\AttributeTok{size=}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+    \FunctionTok{theme\_light}\NormalTok{()}
+\NormalTok{p}\SpecialCharTok{$}\NormalTok{labels}\SpecialCharTok{$}\NormalTok{colour }\OtherTok{\textless{}{-}} \StringTok{"Model parameters"}
+\NormalTok{p}\SpecialCharTok{$}\NormalTok{labels}\SpecialCharTok{$}\NormalTok{x }\OtherTok{\textless{}{-}} \StringTok{"Posterior estimate + 95\% CI"}
+\NormalTok{p}\SpecialCharTok{$}\NormalTok{labels}\SpecialCharTok{$}\NormalTok{y }\OtherTok{\textless{}{-}} \StringTok{"Model parameters"}
+\NormalTok{p}
+
+\CommentTok{\#generates bayesplot of the model}
+\FunctionTok{color\_scheme\_set}\NormalTok{(}\StringTok{"brightblue"}\NormalTok{)}
+\FunctionTok{mcmc\_intervals}\NormalTok{(}\FunctionTok{t}\NormalTok{(res.plot))}
+
+\FunctionTok{dev.off}\NormalTok{()}
+
+\CommentTok{\#optional}
+\FunctionTok{mcmc\_areas}\NormalTok{(}\FunctionTok{t}\NormalTok{(res.plot))}
+\end{Highlighting}
+\end{Shaded}
+
+\#\#Missingness analysis
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(naniar)}
+\FunctionTok{library}\NormalTok{(visdat)}
+
+\CommentTok{\#visualisation of missingness}
+\FunctionTok{vis\_dat}\NormalTok{(data)}
+\FunctionTok{vis\_miss}\NormalTok{(data)}
+
+
+\FunctionTok{ggplot}\NormalTok{(data, }
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Brain, }
+           \AttributeTok{y =}\NormalTok{ Litter.size)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_miss\_point}\NormalTok{()}
+
+\FunctionTok{gg\_miss\_var}\NormalTok{(data) }\SpecialCharTok{+} \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{y =} \StringTok{"N missing values"}\NormalTok{)}
+
+\FunctionTok{gg\_miss\_var}\NormalTok{(data, }\AttributeTok{facet =}\NormalTok{ Origin)}
+
+\CommentTok{\# creating shadow matrix for NA !NA comparison}
+\NormalTok{data1 }\OtherTok{\textless{}{-}} \FunctionTok{as\_shadow}\NormalTok{(data)}
+\NormalTok{aq\_shadow }\OtherTok{\textless{}{-}} \FunctionTok{bind\_shadow}\NormalTok{(data)}
+\NormalTok{aq\_nab }\OtherTok{\textless{}{-}} \FunctionTok{nabular}\NormalTok{(data)}
+
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\NormalTok{data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_shadow}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(Litter.size\_NA) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise\_at}\NormalTok{(}\AttributeTok{.vars =} \StringTok{"Brain"}\NormalTok{,}
+               \AttributeTok{.funs =} \FunctionTok{c}\NormalTok{(}\StringTok{"mean"}\NormalTok{, }\StringTok{"sd"}\NormalTok{, }\StringTok{"var"}\NormalTok{, }\StringTok{"min"}\NormalTok{, }\StringTok{"max"}\NormalTok{),}
+               \AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+
+\FunctionTok{ggplot}\NormalTok{(aq\_shadow,}
+       \FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Brain,}
+           \AttributeTok{colour =}\NormalTok{ Litter.size\_NA)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_density}\NormalTok{()}
+
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{bind\_shadow}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Brain,}
+               \AttributeTok{fill =}\NormalTok{ Litter.size\_NA)) }\SpecialCharTok{+}
+        \FunctionTok{geom\_histogram}\NormalTok{()}
+  
+  
+  
+  
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_prop\_miss}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{head}\NormalTok{()}
+  
+\FunctionTok{library}\NormalTok{(rpart)}
+\FunctionTok{library}\NormalTok{(rpart.plot)}
+  
+\NormalTok{  data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_prop\_miss}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rpart}\NormalTok{(prop\_miss\_all }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ .) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{prp}\NormalTok{(}\AttributeTok{type =} \DecValTok{4}\NormalTok{, }\AttributeTok{extra =} \DecValTok{101}\NormalTok{, }\AttributeTok{prefix =} \StringTok{"Prop. Miss = "}\NormalTok{)}
+  
+  
+\CommentTok{\#Phylogenetic signal in missing data (remove edge labels first)}
+  
+\CommentTok{\#convert the datatset to 0 for NAs and 1s for present data  }
+\NormalTok{test }\OtherTok{\textless{}{-}} \FunctionTok{phylo.d}\NormalTok{(dataNA, tree, Names, VARIABLE.NAME, }\AttributeTok{permut =} \DecValTok{1000}\NormalTok{, }\AttributeTok{rnd.bias=}\ConstantTok{NULL}\NormalTok{)}
+\FunctionTok{summary}\NormalTok{(test)}
+\FunctionTok{plot}\NormalTok{(test)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}

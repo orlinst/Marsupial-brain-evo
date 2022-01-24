@@ -2,11 +2,19 @@
 title: "Marsupial brain evo"
 author: "Orlin T"
 date: "28/07/2020"
-output: html_document
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
 ---
 
 ```{r setup, cache = F}
-knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(
+  warning = TRUE, # show warnings
+  message = TRUE, # show messages
+  error = TRUE, # do not interrupt generation in case of errors,
+  echo = TRUE  # show R code
+)
 ```
 
 
@@ -139,7 +147,7 @@ for(imputedsets in 1: length(imp$imp[[1]])) {
 
 
 
-#Check for branch lenghts of 0 and add 0.01$ of the median if this is the case
+#Check for branch lenghts of 0 and add 0.01% of the median if this is the case
 
 tree$edge.length[which(tree$edge.length == 0)] <- 0.01*median(tree$edge.length[-which(tree$edge.length == 0)])
 tree <- force.ultrametric(tree,method="extend")
