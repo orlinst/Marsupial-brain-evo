@@ -31,17 +31,24 @@ if(!require(rlist)) install.packages("rlist")
 if(!require(phytools)) install.packages("phytools")
 
 #For reading imputations
-if(!require(mice)) install.packages("mice")library("mice")
-if(!require(phylomice)) install.packages("phylomice")library("phylomice") #might have to request the latest version from Simone on Github
+if(!require(mice)) install.packages("mice") 
+library("mice")
+if(!require(phylomice)) install.packages("phylomice") 
+library("phylomice") #might have to request the latest version from Simone on Github
 
 
 #For plotting
 
-if(!require(ggplot2)) install.packages("ggplot2")library("ggplot2")
-if(!require(hdrcde)) install.packages("hdrcde")library("hdrcde")
-if(!require(forcats)) install.packages("forcats")library("forcats")
-if(!require(bayesplot)) install.packages("bayesplot")library("bayesplot")
-if(!require(VIM)) install.packages("VIM")library("VIM")
+if(!require(ggplot2)) install.packages("ggplot2")
+library("ggplot2")
+if(!require(hdrcde)) install.packages("hdrcde")
+library("hdrcde")
+if(!require(forcats)) install.packages("forcats")
+library("forcats")
+if(!require(bayesplot)) install.packages("bayesplot")
+library("bayesplot")
+if(!require(VIM)) install.packages("VIM")
+library("VIM")
 
 ```
 
